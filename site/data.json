@@ -555,6 +555,7 @@
     "iterm2": "general/iterm2/{slug}.itermcolors",
     "css": "general/css/{slug}.css",
     "fzf": "general/fzf/{slug}.sh",
+    "tmux": "general/tmux/{slug}.conf",
     "noctalia": "general/noctalia/{slug}.json",
     "zed": "zed/themes/rime.json",
     "windows-terminal": "general/windows-terminal/rime.json"

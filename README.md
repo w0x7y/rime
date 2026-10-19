@@ -71,7 +71,7 @@ the same 16 colors per variant. there's a base16 template for almost any softwar
 
 **[terminals and the rest](./general)**
 
-kitty, alacritty, ghostty, wezterm, foot, windows terminal, iterm2, xresources, the noctalia shell, css variables and fzf
+kitty, alacritty, ghostty, wezterm, foot, windows terminal, iterm2, xresources, the noctalia shell, tmux, css variables and fzf
 
 for kitty, put `general/kitty/rime.conf` into `~/.config/kitty/rime.conf`, then add `include rime.conf` to your kitty config. install a Noctalia palette from `general/noctalia/` with the [setup instructions](./general#noctalia); the others are explained in [general/](./general)
 

@@ -119,6 +119,18 @@ Each palette holds one variant, so Noctalia uses the same colors in light and da
 
 Noctalia 4 called these color schemes and read the same file from `~/.config/noctalia/colorschemes/rime/rime.json`.
 
+## tmux
+
+For tmux 3.2 or later. It colors the status bar, pane borders, messages, copy mode and popups; the text in panes keeps your terminal's colors.
+
+```sh
+mkdir -p ~/.config/tmux
+cp tmux/rime.conf ~/.config/tmux/rime.conf
+echo 'source-file ~/.config/tmux/rime.conf' >> ~/.config/tmux/tmux.conf
+```
+
+If your config is `~/.tmux.conf`, add the line there instead.
+
 ## Other formats
 
 | Folder    | Use                                                                                                                                                                             |

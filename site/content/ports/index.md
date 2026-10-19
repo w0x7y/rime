@@ -1,6 +1,6 @@
 ---
 title: ports
-description: rime for neovim, vs code, zed, eight terminals, the noctalia shell, base16, css and fzf.
+description: rime for neovim, vs code, zed, eight terminals, the noctalia shell, tmux, base16, css and fzf.
 ---
 
 # ports

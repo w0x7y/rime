@@ -1409,6 +1409,32 @@ def fzf(spec):
     )
 
 
+def tmux(spec):
+    """tmux 3.2+ styles, dressed like the kitty and WezTerm tab bars; the 16 colors come from the terminal."""
+    c = colours(spec)
+    out = [
+        header(spec),
+        f'set -g status-style "fg={c["muted"]},bg={c["bg_dark"]}"',
+        f'set -g window-status-style "fg={c["comment"]}"',
+        f'set -g window-status-current-style "fg={c["fg_bright"]},bg={c["bg"]}"',
+        f'set -g window-status-activity-style "fg={c["yellow"]}"',
+        f'set -g window-status-bell-style "fg={c["red"]}"',
+        f'set -g pane-border-style "fg={c["bg_sel"]}"',
+        f'set -g pane-active-border-style "fg={c["blue"]}"',
+        f'set -g message-style "fg={c["fg"]},bg={c["bg_alt"]}"',
+        f'set -g message-command-style "fg={c["fg"]},bg={c["bg_alt"]}"',
+        f'set -g mode-style "fg={c["fg_bright"]},bg={c["bg_sel"]}"',
+        f'set -g copy-mode-match-style "fg={c["bg"]},bg={c["yellow"]}"',
+        f'set -g copy-mode-current-match-style "fg={c["bg"]},bg={c["blue"]}"',
+        f'set -g clock-mode-colour "{c["blue"]}"',
+        f'set -g display-panes-colour "{c["comment"]}"',
+        f'set -g display-panes-active-colour "{c["blue"]}"',
+        "# -q: popups arrived in tmux 3.3, so 3.2 skips this line instead of failing",
+        f'set -gq popup-border-style "fg={c["border"]}"',
+    ]
+    return "\n".join(out) + "\n"
+
+
 def noctalia(spec):
     """A Noctalia v5 palette: the shell's 16 colour roles, plus the terminal colours its templates write."""
     c = colours(spec)
@@ -1558,6 +1584,7 @@ PER_VARIANT = [
     ("iterm2", "general/iterm2/{slug}.itermcolors", iterm),
     ("css", "general/css/{slug}.css", css),
     ("fzf", "general/fzf/{slug}.sh", fzf),
+    ("tmux", "general/tmux/{slug}.conf", tmux),
     ("noctalia", "general/noctalia/{slug}.json", lambda spec: json.dumps(noctalia(spec), indent=2) + "\n"),
 ]
 
