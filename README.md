@@ -1,6 +1,6 @@
 **Rime**
 
-a colder colorscheme. [website](https://w0x7y.github.io/rime/)
+a colder colorscheme. [website](https://w0x7y.dev/rime/)
 
 <img width="370" alt="rust code in rime" src="assets/demo.png" />
 
