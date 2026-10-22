@@ -13,7 +13,7 @@ export const OUT = join(import.meta.dir, "dist");
 const ROOT = join(import.meta.dir, "..");
 const CONTENT = join(import.meta.dir, "content");
 const REPO = "https://github.com/w0x7y/rime";
-const SITE_URL = "https://w0x7y.github.io/rime/";
+const SITE_URL = "https://w0x7y.dev/rime/";
 
 const json = (path: string) => JSON.parse(readFileSync(join(ROOT, path), "utf8"));
 const esc = (s: string) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
@@ -259,6 +259,9 @@ async function starCount(): Promise<number | undefined> {
   }
 }
 
+/** A page's absolute address, for its canonical link and the sitemap. */
+const pageUrl = (page: Page) => SITE_URL + (page.path ? `${page.path}/` : "");
+
 const starText = (n: number) => `${n} ${n === 1 ? "star" : "stars"} on github`;
 
 function layout(page: Page, stars?: number) {
@@ -272,6 +275,7 @@ function layout(page: Page, stars?: number) {
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>${esc(title)}</title>
 <meta name="description" content="${esc(page.description)}">
+${page.path === "404" ? "" : `<link rel="canonical" href="${pageUrl(page)}">`}
 <meta property="og:title" content="${esc(title)}">
 <meta property="og:description" content="${esc(page.description)}">
 <meta property="og:image" content="${SITE_URL}og.png">
@@ -429,6 +433,12 @@ async function build() {
   writeFileSync(
     join(OUT, "404.html"),
     rebase(layout({ path: "404", title: "not found", description: "", body: `<p class="dim">E484: Can't open file</p><h1>nothing here</h1><p>this page doesn't exist, or it moved. <a href="/">back home</a>.</p>` }, stars)),
+  );
+
+  // every page for search engines; robots.txt lives at the domain root, in the w0x7y.github.io repository
+  writeFileSync(
+    join(OUT, "sitemap.xml"),
+    `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${pages.map((p) => `<url><loc>${pageUrl(p)}</loc></url>`).join("\n")}\n</urlset>\n`,
   );
 
   // assets: the stylesheet, the font, the icon, the social image and every port's files
