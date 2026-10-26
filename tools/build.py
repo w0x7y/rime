@@ -1427,6 +1427,160 @@ def sublime(spec):
     return json.dumps(theme, indent=2) + "\n"
 
 
+# --------------------------------------------------------------------------- vim
+
+
+def xterm256(h):
+    """The nearest of xterm's 240 fixed colours (the 6x6x6 cube and the gray ramp) to h."""
+    steps = [0, 95, 135, 175, 215, 255]
+    cube = [(16 + 36 * r + 6 * g + b, (steps[r], steps[g], steps[b])) for r in range(6) for g in range(6) for b in range(6)]
+    grays = [(232 + i, (8 + 10 * i,) * 3) for i in range(24)]
+    target = rgb(h)
+    return min(cube + grays, key=lambda e: sum((a - b) ** 2 for a, b in zip(e[1], target)))[0]
+
+
+def vim(spec):
+    """A Vim colorscheme: Neovim's editor and legacy syntax groups, in true colour with 256-colour fallbacks."""
+    c = colours(spec)
+
+    def role(name):
+        fg, style, _ = SYNTAX[name]
+        return {"fg": fg, "style": style}
+
+    # group: {fg, bg, sp: colour names, style: attributes}, or the name of a group to link to
+    groups = {
+        "Normal": {"fg": "fg", "bg": "bg"},
+        "NormalFloat": {"fg": "fg", "bg": "bg_alt"},
+        "Cursor": {"fg": "bg", "bg": "fg"},
+        "lCursor": "Cursor",
+        "CursorIM": "Cursor",
+        "CursorLine": {"bg": "bg_alt"},
+        "CursorColumn": {"bg": "bg_alt"},
+        "ColorColumn": {"bg": "colorcolumn"},
+        "CursorLineNr": {"fg": "fg_bright", "style": "bold"},
+        "LineNr": {"fg": "comment"},
+        "SignColumn": {"fg": "comment"},
+        "FoldColumn": {"fg": "comment"},
+        "Folded": {"fg": "muted", "bg": "bg_alt"},
+        "VertSplit": {"fg": "border"},
+        "StatusLine": {"fg": "muted", "bg": "bg_alt"},
+        "StatusLineNC": {"fg": "comment", "bg": "bg_alt"},
+        "StatusLineTerm": "StatusLine",
+        "StatusLineTermNC": "StatusLineNC",
+        "TabLine": {"fg": "comment", "bg": "bg_alt"},
+        "TabLineSel": {"fg": "fg_bright", "bg": "bg", "style": "bold"},
+        "TabLineFill": {"bg": "bg_dark"},
+        "ToolbarLine": {"bg": "bg_alt"},
+        "ToolbarButton": {"fg": "fg_bright", "bg": "bg_sel", "style": "bold"},
+        "Pmenu": {"fg": "fg", "bg": "bg_alt"},
+        "PmenuSel": {"bg": "bg_sel", "style": "bold"},
+        "PmenuSbar": {"bg": "bg_alt"},
+        "PmenuThumb": {"bg": "comment"},
+        "PmenuMatch": {"fg": "blue", "style": "bold"},
+        "PmenuMatchSel": {"fg": "blue", "bg": "bg_sel", "style": "bold"},
+        "PmenuKind": {"fg": "violet"},
+        "PmenuKindSel": {"fg": "violet", "bg": "bg_sel"},
+        "PmenuExtra": {"fg": "muted"},
+        "PmenuExtraSel": {"fg": "muted", "bg": "bg_sel"},
+        "WildMenu": "PmenuSel",
+        "Visual": {"bg": "bg_sel"},
+        "VisualNOS": "Visual",
+        "Search": {"fg": "fg_bright", "bg": "search"},
+        "CurSearch": {"fg": "bg", "bg": "yellow", "style": "bold"},
+        "IncSearch": "CurSearch",
+        "MatchParen": {"fg": "fg_bright", "bg": "bg_sel", "style": "bold"},
+        "NonText": {"fg": "whitespace"},
+        "EndOfBuffer": {"fg": "bg_sel"},
+        "SpecialKey": {"fg": "whitespace"},
+        "Conceal": {"fg": "comment"},
+        "Directory": {"fg": "blue"},
+        "Title": {"fg": "blue", "style": "bold"},
+        "Question": {"fg": "green"},
+        "MoreMsg": {"fg": "green"},
+        "ModeMsg": {"fg": "fg", "style": "bold"},
+        "ErrorMsg": {"fg": "red"},
+        "WarningMsg": {"fg": "yellow"},
+        "QuickFixLine": {"bg": "bg_sel", "style": "bold"},
+        "SpellBad": {"sp": "red", "style": "undercurl"},
+        "SpellCap": {"sp": "yellow", "style": "undercurl"},
+        "SpellRare": {"sp": "violet", "style": "undercurl"},
+        "SpellLocal": {"sp": "cyan", "style": "undercurl"},
+        "DiffAdd": {"bg": "diff_add"},
+        "DiffChange": {"bg": "diff_change"},
+        "DiffDelete": {"fg": "red", "bg": "diff_delete"},
+        "DiffText": {"bg": "diff_text"},
+        "Added": role("diff.plus"),
+        "Changed": role("diff.delta"),
+        "Removed": role("diff.minus"),
+        "diffAdded": "Added",
+        "diffChanged": "Changed",
+        "diffRemoved": "Removed",
+        "diffFile": {"fg": "blue", "style": "bold"},
+        "diffLine": role("diff.range"),
+        "diffIndexLine": {"fg": "muted"},
+        "Comment": role("comment"),
+        "Constant": role("constant"),
+        "String": role("string"),
+        "Character": {"fg": "green"},
+        "Number": role("number"),
+        "Boolean": role("boolean"),
+        "Float": role("number"),
+        "Identifier": role("variable"),
+        "Function": role("function"),
+        "Statement": role("keyword"),
+        "Conditional": role("keyword.conditional"),
+        "Repeat": role("keyword.repeat"),
+        "Label": role("label"),
+        "Operator": role("operator"),
+        "Keyword": role("keyword"),
+        "Exception": role("keyword.exception"),
+        "PreProc": role("keyword.directive"),
+        "Include": role("keyword.import"),
+        "Define": {"fg": "violet"},
+        "Macro": role("function.macro"),
+        "PreCondit": role("keyword.directive"),
+        "Type": role("type"),
+        "StorageClass": role("keyword.modifier"),
+        "Structure": role("type"),
+        "Typedef": role("type"),
+        "Special": {"fg": "cyan"},
+        "SpecialChar": {"fg": "cyan"},
+        "Tag": role("tag"),
+        "Delimiter": role("punctuation"),
+        "SpecialComment": role("comment.tag"),
+        "Debug": {"fg": "red"},
+        "Underlined": {"style": "underline"},
+        "Ignore": {"fg": "comment"},
+        "Error": {"fg": "red"},
+        "Todo": {"fg": "bg", "bg": "yellow", "style": "bold"},
+    }
+
+    def hi(name, g):
+        if isinstance(g, str):
+            return f"hi! link {name} {g}"
+        parts = [f"hi {name}"]
+        for key, term in (("fg", "fg"), ("bg", "bg")):
+            if g.get(key):
+                h = c[g[key]]
+                parts += [f"gui{term}={h}", f"cterm{term}={xterm256(h)}"]
+        if g.get("sp"):
+            parts.append(f"guisp={c[g['sp']]}")
+        attrs = ",".join(g.get("style", "").split()) or "NONE"
+        parts += [f"gui={attrs}", f"cterm={attrs}"]
+        return " ".join(parts)
+
+    ansi = ", ".join(f"'{h}'" for h in c["ansi"])
+    return (
+        header(spec, '"')
+        + f"set background={spec['appearance']}\n"
+        + "hi clear\n"
+        + "if exists('syntax_on')\n  syntax reset\nendif\n"
+        + f"let g:colors_name = '{spec['slug']}'\n\n"
+        + "".join(hi(n, g) + "\n" for n, g in groups.items())
+        + f"\nlet g:terminal_ansi_colors = [{ansi}]\n"
+    )
+
+
 # --------------------------------------------------------------------------- general use
 
 
@@ -1870,6 +2024,7 @@ def load():
 PER_VARIANT = [
     ("helix", "general/helix/{slug}.toml", helix),
     ("sublime", "general/sublime/{slug}.sublime-color-scheme", sublime),
+    ("vim", "vim/colors/{slug}.vim", vim),
     ("base16", "general/base16/{slug}.yaml", base16_yaml),
     ("kitty", "general/kitty/{slug}.conf", kitty),
     ("alacritty", "general/alacritty/{slug}.toml", alacritty),
@@ -1974,6 +2129,7 @@ def stale(files):
 GENERATED = [
     "general/*/*",
     "colors/*",
+    "vim/colors/*",
     "lua/lualine/themes/*",
     "lua/rime/palettes/*",
     "vscode/themes/*",

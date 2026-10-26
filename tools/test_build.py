@@ -153,6 +153,7 @@ class SyntaxRoles(unittest.TestCase):
             "Zed": self.roles_used_by(build.zed_theme),
             "VS Code": self.roles_used_by(build.vscode_theme),
             "Helix": self.roles_used_by(build.helix),
+            "Vim": self.roles_used_by(build.vim),
         }
         for role in build.SYNTAX:
             users = [port for port, roles in ports.items() if role in roles]

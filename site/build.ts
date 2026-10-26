@@ -70,6 +70,7 @@ const PORTS: Port[] = [
   { slug: "zed", name: "zed", group: "editors", blurb: "all five in one theme file" },
   { slug: "helix", name: "helix", group: "editors", blurb: "a theme file" },
   { slug: "sublime", name: "sublime text", group: "editors", blurb: "a color scheme" },
+  { slug: "vim", name: "vim", group: "editors", blurb: "vimscript, with 256-color fallbacks" },
   { slug: "kitty", name: "kitty", group: "terminals", blurb: "an include file" },
   { slug: "alacritty", name: "alacritty", group: "terminals", blurb: "a toml import" },
   { slug: "ghostty", name: "ghostty", group: "terminals", blurb: "a theme file" },

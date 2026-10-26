@@ -1,11 +1,11 @@
 ---
 title: syntax roles
-description: which color each kind of code gets in rime, shared by neovim, zed, vs code and helix.
+description: which color each kind of code gets in rime, shared by neovim, vim, zed, vs code and helix.
 ---
 
 # syntax roles
 
-a syntax role is what a piece of code is (a function, a keyword, a comment, a json key) and the color and style it gets. neovim, zed, vs code and helix share one table of roles, `SYNTAX` in `tools/build.py`, so a function is blue in all four. the [sublime text](/ports/sublime) scheme and the [bat theme](/ports/bat), which [delta](/ports/delta) uses too, take vs code's colors. this is that table, read from the script when the site is built.
+a syntax role is what a piece of code is (a function, a keyword, a comment, a json key) and the color and style it gets. neovim, vim, zed, vs code and helix share one table of roles, `SYNTAX` in `tools/build.py`, so a function is blue in all five. the [sublime text](/ports/sublime) scheme and the [bat theme](/ports/bat), which [delta](/ports/delta) uses too, take vs code's colors. this is that table, read from the script when the site is built.
 
 {{syntax}}
 

@@ -47,6 +47,10 @@ with lazy.nvim
 
 then `:colorscheme rime`, `rime-glacier`, `rime-aurora`, `rime-abyss` or `rime-frost`. other plugin managers, options and lualine are in [nvim/](./nvim)
 
+**[vim](./vim/colors)**
+
+with vim-plug, `Plug 'w0x7y/rime', { 'rtp': 'vim' }`, or copy a file from `vim/colors/` into `~/.vim/colors/`. then `set termguicolors` and `colorscheme rime`. without `termguicolors` it falls back to the nearest 256 colors
+
 **[zed](./zed)**
 
 put `zed/themes/rime.json` into `~/.config/zed/themes/`, or run `zed: install dev extension` and pick the `zed/` folder. then choose a rime variant in the theme selector
