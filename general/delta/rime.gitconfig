@@ -1,0 +1,21 @@
+# Rime: Soft and muted pastels for long sessions.
+# https://github.com/w0x7y/rime
+
+[delta "rime"]
+	dark = true
+	syntax-theme = rime
+	minus-style = syntax "#3e363f"
+	minus-emph-style = syntax "#5a454f"
+	plus-style = syntax "#354241"
+	plus-emph-style = syntax "#475c54"
+	file-style = "#7aa4e4" bold
+	file-decoration-style = "#3a404b" ul
+	hunk-header-decoration-style = "#3a404b" box
+	hunk-header-file-style = "#7aa4e4"
+	hunk-header-line-number-style = "#bb98d6"
+	line-numbers-minus-style = "#d98a9c"
+	line-numbers-plus-style = "#9ad8ac"
+	line-numbers-zero-style = "#6b768c"
+	line-numbers-left-style = "#3a404b"
+	line-numbers-right-style = "#3a404b"
+	blame-palette = "#23272e #2b3038"

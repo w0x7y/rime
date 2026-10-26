@@ -1,0 +1,21 @@
+# Rime Frost: Frost-white paper under the same cold accents, deepened to read on it.
+# https://github.com/w0x7y/rime
+
+[delta "rime-frost"]
+	light = true
+	syntax-theme = rime-frost
+	minus-style = syntax "#e6d6df"
+	minus-emph-style = syntax "#debbc9"
+	plus-style = syntax "#d0dfdc"
+	plus-emph-style = syntax "#b2cec3"
+	file-style = "#2e62c0" bold
+	file-decoration-style = "#d2d8e2" ul
+	hunk-header-decoration-style = "#d2d8e2" box
+	hunk-header-file-style = "#2e62c0"
+	hunk-header-line-number-style = "#7650c4"
+	line-numbers-minus-style = "#b83d63"
+	line-numbers-plus-style = "#267b4f"
+	line-numbers-zero-style = "#7f899b"
+	line-numbers-left-style = "#d2d8e2"
+	line-numbers-right-style = "#d2d8e2"
+	blame-palette = "#eef1f5 #e3e7ee"

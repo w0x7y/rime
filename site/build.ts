@@ -78,6 +78,8 @@ const PORTS: Port[] = [
   { slug: "xresources", name: "xresources", group: "terminals", blurb: "xterm, urxvt, st" },
   { slug: "noctalia", name: "noctalia", group: "more", blurb: "the desktop shell" },
   { slug: "tmux", name: "tmux", group: "more", blurb: "status bar, borders and copy mode" },
+  { slug: "bat", name: "bat", group: "more", blurb: "a syntax theme" },
+  { slug: "delta", name: "delta", group: "more", blurb: "the git diff pager" },
   { slug: "base16", name: "base16", group: "more", blurb: "for any base16 template" },
   { slug: "css", name: "css", group: "more", blurb: "custom properties" },
   { slug: "fzf", name: "fzf", group: "more", blurb: "FZF_DEFAULT_OPTS" },

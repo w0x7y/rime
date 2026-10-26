@@ -131,6 +131,56 @@ echo 'source-file ~/.config/tmux/rime.conf' >> ~/.config/tmux/tmux.conf
 
 If your config is `~/.tmux.conf`, add the line there instead.
 
+## bat
+
+A syntax theme for [bat](https://github.com/sharkdp/bat), with the same token colors as the VS Code theme. bat names a theme after its file, so this one is `rime`.
+
+```sh
+mkdir -p "$(bat --config-dir)/themes"
+cp bat/rime.tmTheme "$(bat --config-dir)/themes/"
+bat cache --build
+echo '--theme="rime"' >> "$(bat --config-file)"
+```
+
+Comments are italic, which bat only shows with `--italic-text=always`.
+
+## delta
+
+For [delta](https://github.com/dandavison/delta), the git diff pager. delta highlights code with a syntax theme from bat's cache, so it needs the bat theme above; its file here adds the diff colors and names that theme.
+
+Install both. On macOS:
+
+```sh
+brew install git-delta bat
+```
+
+On Arch:
+
+```sh
+sudo pacman -S git-delta bat
+```
+
+Then put the theme in bat's cache and include the delta file:
+
+```sh
+mkdir -p "$(bat --config-dir)/themes"
+cp bat/rime.tmTheme "$(bat --config-dir)/themes/"
+bat cache --build
+
+mkdir -p ~/.config/delta
+cp delta/rime.gitconfig ~/.config/delta/
+git config --global --add include.path ~/.config/delta/rime.gitconfig
+git config --global core.pager delta
+git config --global interactive.diffFilter 'delta --color-only'
+git config --global delta.features rime
+```
+
+Each file is a delta feature named after its variant. If you already use features, list them together: `git config --global delta.features "rime side-by-side"`.
+
+It sets colors only: the backgrounds of removed and added lines and of the words that changed, the file and hunk headers, line numbers (with `delta.line-numbers true`) and the alternating backgrounds of `git blame`. Your terminal needs 24-bit color. delta assumes it when `COLORTERM` is `truecolor` or `24bit`; otherwise set `delta.true-color always`.
+
+If delta warns `Unknown theme 'rime'`, the theme isn't in bat's cache: run `bat cache --build` again. delta reads the cache from bat's default place, so it won't find one you moved with `BAT_CACHE_PATH`.
+
 ## Other formats
 
 | Folder    | Use                                                                                                                                                                             |

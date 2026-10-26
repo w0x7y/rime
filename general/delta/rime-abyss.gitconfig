@@ -1,0 +1,21 @@
+# Rime Abyss: The coldest take, on a darker background: no yellow or orange anywhere, with rose as the only warm accent.
+# https://github.com/w0x7y/rime
+
+[delta "rime-abyss"]
+	dark = true
+	syntax-theme = rime-abyss
+	minus-style = syntax "#352830"
+	minus-emph-style = syntax "#543943"
+	plus-style = syntax "#233331"
+	plus-emph-style = syntax "#304f46"
+	file-style = "#6b9cf4" bold
+	file-decoration-style = "#2c3039" ul
+	hunk-header-decoration-style = "#2c3039" box
+	hunk-header-file-style = "#6b9cf4"
+	hunk-header-line-number-style = "#937ff2"
+	line-numbers-minus-style = "#e8879f"
+	line-numbers-plus-style = "#6fd0a8"
+	line-numbers-zero-style = "#6b768c"
+	line-numbers-left-style = "#2c3039"
+	line-numbers-right-style = "#2c3039"
+	blame-palette = "#15171c #1d2026"

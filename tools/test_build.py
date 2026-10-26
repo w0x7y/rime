@@ -6,6 +6,7 @@ Run: python3 -m unittest discover -s tools
 import json
 import os
 import pathlib
+import plistlib
 import re
 import shutil
 import subprocess
@@ -279,6 +280,20 @@ class Noctalia(unittest.TestCase):
                 build.noctalia(spec)["dark"]["terminal"]["background"],
             ]
             self.assertEqual(terminals, [spec["palette"]["base00"]] * 3, spec["slug"])
+
+
+class Bat(unittest.TestCase):
+    """bat and delta read the tmTheme with syntect, which skips a whole rule whose fontStyle has a word it doesn't know."""
+
+    def test_keeps_every_vscode_token_colour(self):
+        for spec in build.load()[0]:
+            theme = plistlib.loads(build.bat(spec).encode())
+            rules = {r["name"]: r["settings"] for r in theme["settings"][1:]}
+            for rule in build.vscode_theme(spec)["tokenColors"]:
+                if "foreground" in rule["settings"]:
+                    self.assertEqual(rules[rule["name"]]["foreground"], rule["settings"]["foreground"], spec["slug"])
+            for settings in rules.values():
+                self.assertLessEqual(set(settings.get("fontStyle", "").split()), {"bold", "italic", "underline"})
 
 
 class Docs(unittest.TestCase):

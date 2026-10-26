@@ -1,0 +1,21 @@
+# Rime Aurora: Vivid neon accents on a darker background.
+# https://github.com/w0x7y/rime
+
+[delta "rime-aurora"]
+	dark = true
+	syntax-theme = rime-aurora
+	minus-style = syntax "#3e2b35"
+	minus-emph-style = syntax "#603745"
+	plus-style = syntax "#263e38"
+	plus-emph-style = syntax "#305e4c"
+	file-style = "#4fa2ff" bold
+	file-decoration-style = "#333842" ul
+	hunk-header-decoration-style = "#333842" box
+	hunk-header-file-style = "#4fa2ff"
+	hunk-header-line-number-style = "#9b7dff"
+	line-numbers-minus-style = "#ff6f91"
+	line-numbers-plus-style = "#5ef0a6"
+	line-numbers-zero-style = "#6b768c"
+	line-numbers-left-style = "#333842"
+	line-numbers-right-style = "#333842"
+	blame-palette = "#1c1f25 #24282f"

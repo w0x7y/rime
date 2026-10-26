@@ -1,0 +1,21 @@
+# Rime Glacier: Crisper accents with clear separation between every syntax role, on a lighter background.
+# https://github.com/w0x7y/rime
+
+[delta "rime-glacier"]
+	dark = true
+	syntax-theme = rime-glacier
+	minus-style = syntax "#453a44"
+	minus-emph-style = syntax "#614652"
+	plus-style = syntax "#384847"
+	plus-emph-style = syntax "#466257"
+	file-style = "#6eaaf0" bold
+	file-decoration-style = "#414854" ul
+	hunk-header-decoration-style = "#414854" box
+	hunk-header-file-style = "#6eaaf0"
+	hunk-header-line-number-style = "#ae94f0"
+	line-numbers-minus-style = "#e07a90"
+	line-numbers-plus-style = "#88d8a0"
+	line-numbers-zero-style = "#737e94"
+	line-numbers-left-style = "#414854"
+	line-numbers-right-style = "#414854"
+	blame-palette = "#2a2f37 #323841"
