@@ -7,7 +7,7 @@ Programs Rime could be ported to, best value first in each section. Tick an item
 These have syntax highlighting, so their generators read `SYNTAX`.
 
 - [x] Helix: one TOML file per variant. Its highlight names are treesitter scopes and map almost one-to-one onto the `SYNTAX` roles.
-- [ ] Sublime Text: `.sublime-color-scheme`. Check first whether the bat tmTheme already loads.
+- [x] Sublime Text: `.sublime-color-scheme`, from the same token rules as VS Code and bat.
 - [ ] Vim: classic Vimscript colorscheme, for Vim users without Lua.
 - [ ] Emacs: a `deftheme` file.
 - [ ] micro: `.micro` colorscheme.

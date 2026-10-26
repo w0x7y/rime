@@ -67,6 +67,10 @@ it's on the [vs code marketplace](https://marketplace.visualstudio.com/items?ite
 
 put `general/helix/rime.toml` into `~/.config/helix/themes/`, then `:theme rime` or `theme = "rime"` in your helix config
 
+**[sublime text](./general#sublime-text)**
+
+put `general/sublime/rime.sublime-color-scheme` into your `Packages/User` folder, then `UI: Select Color Scheme`
+
 **[base16](./general/base16)**
 
 the same 16 colors per variant. there's a base16 template for almost any software, so you can feed these to a builder like tinty

@@ -1361,6 +1361,72 @@ def helix(spec):
     )
 
 
+# --------------------------------------------------------------------------- sublime text
+
+
+def sublime(spec):
+    """A Sublime Text color scheme: VS Code's token rules, which mostly use Sublime's own scope names."""
+    c = colours(spec)
+    rules = []
+    for r in textmate_rules(c):
+        s = r["settings"]
+        # Sublime has no strikethrough
+        style = " ".join(w for w in s.get("fontStyle", "").split() if w in ("bold", "italic", "underline"))
+        rule = {"name": r["name"], "scope": ", ".join(r["scope"])}
+        if "foreground" in s:
+            rule["foreground"] = s["foreground"]
+        if style:
+            rule["font_style"] = style
+        if len(rule) > 2:
+            rules.append(rule)
+    # the colors plugins such as LSP and GitGutter draw with
+    regions = {
+        "redish": "red", "orangish": "pink", "yellowish": "yellow", "greenish": "green",
+        "cyanish": "cyan", "bluish": "blue", "purplish": "violet", "pinkish": "pink",
+    }
+    rules += [{"scope": f"region.{k}", "foreground": c[v]} for k, v in regions.items()]
+    globals_ = {
+        "background": c["bg"],
+        "foreground": c["fg"],
+        "caret": c["fg"],
+        "invisibles": c["whitespace"],
+        "line_highlight": c["bg_alt"],
+        "selection": c["bg_sel"],
+        "inactive_selection": c["border"],
+        "highlight": c["yellow"],
+        "find_highlight": c["yellow"],
+        "find_highlight_foreground": c["bg"],
+        "accent": c["blue"],
+        "gutter": c["bg"],
+        "gutter_foreground": c["comment"],
+        "gutter_foreground_highlight": c["fg_bright"],
+        "guide": c["bg_sel"],
+        "active_guide": c["comment"],
+        "stack_guide": c["border"],
+        "rulers": c["bg_sel"],
+        "brackets_foreground": c["fg_bright"],
+        "brackets_options": "underline",
+        "bracket_contents_foreground": c["fg_bright"],
+        "bracket_contents_options": "underline",
+        "tags_foreground": c["fg_bright"],
+        "tags_options": "underline",
+        "misspelling": c["red"],
+        "fold_marker": c["muted"],
+        "minimap_border": c["border"],
+        "line_diff_added": c["green"],
+        "line_diff_modified": c["blue"],
+        "line_diff_deleted": c["red"],
+        "shadow": alpha("#000000", 0.25),
+    }
+    theme = {
+        "name": spec["name"],
+        "author": f"{AUTHOR} ({REPO})",
+        "globals": globals_,
+        "rules": rules,
+    }
+    return json.dumps(theme, indent=2) + "\n"
+
+
 # --------------------------------------------------------------------------- general use
 
 
@@ -1803,6 +1869,7 @@ def load():
 # build() writes them and ALL_IN_ONE's from here, and the website offers them as downloads.
 PER_VARIANT = [
     ("helix", "general/helix/{slug}.toml", helix),
+    ("sublime", "general/sublime/{slug}.sublime-color-scheme", sublime),
     ("base16", "general/base16/{slug}.yaml", base16_yaml),
     ("kitty", "general/kitty/{slug}.conf", kitty),
     ("alacritty", "general/alacritty/{slug}.toml", alacritty),

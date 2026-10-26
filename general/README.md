@@ -144,6 +144,17 @@ Then run `:theme rime`, or put `theme = "rime"` at the top of `~/.config/helix/c
 
 Helix gives struct fields and JSON, YAML and TOML keys one scope, so keys are plain text, as in Zed. HTML attributes share the `attribute` scope with decorators.
 
+## Sublime Text
+
+A color scheme per variant for Sublime Text 4, with the same token colors as the VS Code theme. On Linux:
+
+```sh
+mkdir -p ~/.config/sublime-text/Packages/User
+cp sublime/rime.sublime-color-scheme ~/.config/sublime-text/Packages/User/
+```
+
+On macOS the folder is `~/Library/Application Support/Sublime Text/Packages/User`. Then run `UI: Select Color Scheme`, or set `"color_scheme": "rime.sublime-color-scheme"` in your preferences. Sublime Text has no strikethrough, so deprecated code keeps its color without the line.
+
 ## bat
 
 A syntax theme for [bat](https://github.com/sharkdp/bat), with the same token colors as the VS Code theme. bat names a theme after its file, so this one is `rime`.

@@ -297,6 +297,17 @@ class Bat(unittest.TestCase):
                 self.assertLessEqual(set(settings.get("fontStyle", "").split()), {"bold", "italic", "underline"})
 
 
+class Sublime(unittest.TestCase):
+    def test_keeps_every_vscode_token_colour(self):
+        for spec in build.load()[0]:
+            rules = {r.get("name"): r for r in json.loads(build.sublime(spec))["rules"]}
+            for rule in build.vscode_theme(spec)["tokenColors"]:
+                if "foreground" in rule["settings"]:
+                    self.assertEqual(rules[rule["name"]]["foreground"], rule["settings"]["foreground"], spec["slug"])
+            for rule in rules.values():
+                self.assertLessEqual(set(rule.get("font_style", "").split()), {"bold", "italic", "underline"})
+
+
 class Docs(unittest.TestCase):
     """Prose that quotes generated values, so a release or palette change can't leave it behind."""
 
