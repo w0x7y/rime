@@ -556,6 +556,8 @@
     "css": "general/css/{slug}.css",
     "fzf": "general/fzf/{slug}.sh",
     "tmux": "general/tmux/{slug}.conf",
+    "bat": "general/bat/{slug}.tmTheme",
+    "delta": "general/delta/{slug}.gitconfig",
     "noctalia": "general/noctalia/{slug}.json",
     "zed": "zed/themes/rime.json",
     "windows-terminal": "general/windows-terminal/rime.json"
