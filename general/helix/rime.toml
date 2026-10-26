@@ -1,0 +1,140 @@
+# Rime: Soft and muted pastels for long sessions.
+# https://github.com/w0x7y/rime
+"attribute" = { fg = "cyan" }
+"type" = { fg = "yellow" }
+"type.builtin" = { fg = "cyan" }
+"type.enum.variant" = { fg = "pink" }
+"constructor" = { fg = "cyan" }
+"constant" = { fg = "pink" }
+"constant.builtin" = { fg = "cyan" }
+"constant.builtin.boolean" = { fg = "pink" }
+"constant.character" = { fg = "green" }
+"constant.character.escape" = { fg = "cyan" }
+"constant.numeric" = { fg = "pink" }
+"string" = { fg = "green" }
+"string.regexp" = { fg = "cyan" }
+"string.special" = { fg = "cyan" }
+"string.special.url" = { fg = "blue", underline = { style = "line" } }
+"string.special.symbol" = { fg = "pink" }
+"comment" = { fg = "comment", modifiers = ["italic"] }
+"variable" = { fg = "fg" }
+"variable.builtin" = { fg = "cyan" }
+"variable.parameter" = { fg = "fg" }
+"variable.other.member" = { fg = "fg" }
+"label" = { fg = "yellow" }
+"punctuation" = { fg = "steel" }
+"punctuation.special" = { fg = "cyan" }
+"keyword" = { fg = "violet" }
+"keyword.control.conditional" = { fg = "red", modifiers = ["bold"] }
+"keyword.control.repeat" = { fg = "yellow" }
+"keyword.control.import" = { fg = "violet" }
+"keyword.control.return" = { fg = "red" }
+"keyword.control.exception" = { fg = "red" }
+"keyword.directive" = { fg = "yellow" }
+"keyword.storage.modifier" = { fg = "violet" }
+"operator" = { fg = "muted" }
+"function" = { fg = "blue" }
+"function.builtin" = { fg = "cyan" }
+"function.macro" = { fg = "cyan" }
+"function.special" = { fg = "yellow" }
+"tag" = { fg = "red" }
+"namespace" = { fg = "yellow" }
+"markup.heading" = { fg = "blue", modifiers = ["bold"] }
+"markup.list" = { fg = "red" }
+"markup.bold" = { modifiers = ["bold"] }
+"markup.italic" = { modifiers = ["italic"] }
+"markup.strikethrough" = { modifiers = ["crossed_out"] }
+"markup.link.url" = { fg = "blue", underline = { style = "line" } }
+"markup.link.label" = { fg = "cyan" }
+"markup.link.text" = { fg = "cyan" }
+"markup.quote" = { fg = "muted", modifiers = ["italic"] }
+"markup.raw" = { fg = "green" }
+"diff.plus" = { fg = "green" }
+"diff.minus" = { fg = "red" }
+"diff.delta" = { fg = "blue" }
+"special" = { fg = "blue", modifiers = ["bold"] }
+"ui.background" = { bg = "bg" }
+"ui.background.separator" = { fg = "border" }
+"ui.text" = { fg = "fg" }
+"ui.text.focus" = { fg = "fg_bright", bg = "bg_sel", modifiers = ["bold"] }
+"ui.text.inactive" = { fg = "comment" }
+"ui.text.directory" = { fg = "blue" }
+"ui.cursor" = { fg = "bg", bg = "muted" }
+"ui.cursor.primary" = { fg = "bg", bg = "fg" }
+"ui.cursor.match" = { fg = "fg_bright", bg = "bg_sel", modifiers = ["bold"] }
+"ui.selection" = { bg = "border" }
+"ui.selection.primary" = { bg = "bg_sel" }
+"ui.highlight" = { bg = "bg_sel" }
+"ui.cursorline.primary" = { bg = "bg_alt" }
+"ui.cursorcolumn.primary" = { bg = "bg_alt" }
+"ui.linenr" = { fg = "comment" }
+"ui.linenr.selected" = { fg = "fg_bright", modifiers = ["bold"] }
+"ui.statusline" = { fg = "muted", bg = "bg_alt" }
+"ui.statusline.inactive" = { fg = "comment", bg = "bg_alt" }
+"ui.statusline.normal" = { fg = "bg", bg = "blue", modifiers = ["bold"] }
+"ui.statusline.insert" = { fg = "bg", bg = "green", modifiers = ["bold"] }
+"ui.statusline.select" = { fg = "bg", bg = "violet", modifiers = ["bold"] }
+"ui.bufferline" = { fg = "comment", bg = "bg_alt" }
+"ui.bufferline.active" = { fg = "fg_bright", bg = "bg", modifiers = ["bold"] }
+"ui.bufferline.background" = { bg = "bg_dark" }
+"ui.popup" = { fg = "fg", bg = "bg_alt" }
+"ui.window" = { fg = "border" }
+"ui.help" = { fg = "fg", bg = "bg_alt" }
+"ui.menu" = { fg = "fg", bg = "bg_alt" }
+"ui.menu.selected" = { bg = "bg_sel", modifiers = ["bold"] }
+"ui.menu.scroll" = { fg = "comment", bg = "bg_alt" }
+"ui.virtual.ruler" = { bg = "colorcolumn" }
+"ui.virtual.whitespace" = { fg = "whitespace" }
+"ui.virtual.indent-guide" = { fg = "bg_sel" }
+"ui.virtual.inlay-hint" = { fg = "comment", bg = "bg_alt" }
+"ui.virtual.wrap" = { fg = "whitespace" }
+"ui.virtual.jump-label" = { fg = "bg", bg = "red", modifiers = ["bold"] }
+"ui.debug.breakpoint" = { fg = "red" }
+"ui.debug.active" = { fg = "yellow" }
+"tabstop" = { bg = "bg_sel" }
+"diagnostic.unnecessary" = { fg = "comment" }
+"diagnostic.deprecated" = { modifiers = ["crossed_out"] }
+"error" = { fg = "red" }
+"error.diagnostic.inline" = { fg = "red", bg = "diag_error" }
+"diagnostic.error" = { underline = { color = "red", style = "curl" } }
+"warning" = { fg = "yellow" }
+"warning.diagnostic.inline" = { fg = "yellow", bg = "diag_warn" }
+"diagnostic.warning" = { underline = { color = "yellow", style = "curl" } }
+"info" = { fg = "blue" }
+"info.diagnostic.inline" = { fg = "blue", bg = "diag_info" }
+"diagnostic.info" = { underline = { color = "blue", style = "curl" } }
+"hint" = { fg = "cyan" }
+"hint.diagnostic.inline" = { fg = "cyan", bg = "diag_hint" }
+"diagnostic.hint" = { underline = { color = "cyan", style = "curl" } }
+
+[palette]
+bg = "#23272e"
+bg_alt = "#2b3038"
+bg_sel = "#3a404b"
+comment = "#6b768c"
+muted = "#9aa4b6"
+fg = "#c3ccd9"
+fg_bright = "#dce2eb"
+white = "#f0f3f8"
+red = "#d98a9c"
+pink = "#e8a8cc"
+yellow = "#e4d098"
+green = "#9ad8ac"
+cyan = "#7cc4d0"
+blue = "#7aa4e4"
+violet = "#bb98d6"
+steel = "#7987a1"
+bg_dark = "#1d2026"
+border = "#333842"
+colorcolumn = "#272c33"
+whitespace = "#4b5262"
+diff_add = "#354241"
+diff_change = "#2d3644"
+diff_text = "#3d4d65"
+diff_delete = "#3e363f"
+search = "#59564c"
+diag_error = "#353139"
+diag_warn = "#363839"
+diag_info = "#2c3440"
+diag_hint = "#2c373e"
+diag_ok = "#2f393b"

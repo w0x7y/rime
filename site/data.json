@@ -72,6 +72,54 @@
     {
       "name": "border",
       "slot": null
+    },
+    {
+      "name": "colorcolumn",
+      "slot": null
+    },
+    {
+      "name": "whitespace",
+      "slot": null
+    },
+    {
+      "name": "diff_add",
+      "slot": null
+    },
+    {
+      "name": "diff_change",
+      "slot": null
+    },
+    {
+      "name": "diff_text",
+      "slot": null
+    },
+    {
+      "name": "diff_delete",
+      "slot": null
+    },
+    {
+      "name": "search",
+      "slot": null
+    },
+    {
+      "name": "diag_error",
+      "slot": null
+    },
+    {
+      "name": "diag_warn",
+      "slot": null
+    },
+    {
+      "name": "diag_info",
+      "slot": null
+    },
+    {
+      "name": "diag_hint",
+      "slot": null
+    },
+    {
+      "name": "diag_ok",
+      "slot": null
     }
   ],
   "variants": [
@@ -98,7 +146,19 @@
         "violet": "#bb98d6",
         "steel": "#7987a1",
         "bg_dark": "#1d2026",
-        "border": "#333842"
+        "border": "#333842",
+        "colorcolumn": "#272c33",
+        "whitespace": "#4b5262",
+        "diff_add": "#354241",
+        "diff_change": "#2d3644",
+        "diff_text": "#3d4d65",
+        "diff_delete": "#3e363f",
+        "search": "#59564c",
+        "diag_error": "#353139",
+        "diag_warn": "#363839",
+        "diag_info": "#2c3440",
+        "diag_hint": "#2c373e",
+        "diag_ok": "#2f393b"
       }
     },
     {
@@ -124,7 +184,19 @@
         "violet": "#ae94f0",
         "steel": "#788bb0",
         "bg_dark": "#22272d",
-        "border": "#3a404b"
+        "border": "#3a404b",
+        "colorcolumn": "#2e343c",
+        "whitespace": "#525a6a",
+        "diff_add": "#384847",
+        "diff_change": "#323e4d",
+        "diff_text": "#3e546f",
+        "diff_delete": "#453a44",
+        "search": "#5e5f54",
+        "diag_error": "#3c3740",
+        "diag_warn": "#3d4041",
+        "diag_info": "#313b4a",
+        "diag_hint": "#313f47",
+        "diag_ok": "#334042"
       }
     },
     {
@@ -150,7 +222,19 @@
         "violet": "#9b7dff",
         "steel": "#7084b7",
         "bg_dark": "#17191e",
-        "border": "#2c3039"
+        "border": "#2c3039",
+        "colorcolumn": "#20242a",
+        "whitespace": "#474f5e",
+        "diff_add": "#263e38",
+        "diff_change": "#222f3f",
+        "diff_text": "#2b4666",
+        "diff_delete": "#3e2b35",
+        "search": "#555a3d",
+        "diag_error": "#332730",
+        "diag_warn": "#30342e",
+        "diag_info": "#212c3b",
+        "diag_hint": "#1f3239",
+        "diag_ok": "#233432"
       }
     },
     {
@@ -176,7 +260,19 @@
         "violet": "#937ff2",
         "steel": "#7182a8",
         "bg_dark": "#111317",
-        "border": "#252830"
+        "border": "#252830",
+        "colorcolumn": "#191c21",
+        "whitespace": "#444b5a",
+        "diff_add": "#233331",
+        "diff_change": "#1f2736",
+        "diff_text": "#2f3f5d",
+        "diff_delete": "#352830",
+        "search": "#3b5452",
+        "diag_error": "#2a2229",
+        "diag_warn": "#232d2f",
+        "diag_info": "#1e2432",
+        "diag_hint": "#1b272f",
+        "diag_ok": "#1e2a2a"
       }
     },
     {
@@ -202,7 +298,19 @@
         "violet": "#7650c4",
         "steel": "#5f7090",
         "bg_dark": "#f7f8fa",
-        "border": "#dbe0e8"
+        "border": "#dbe0e8",
+        "colorcolumn": "#e9ecf2",
+        "whitespace": "#b1b8c4",
+        "diff_add": "#d0dfdc",
+        "diff_change": "#d7e0ef",
+        "diff_text": "#b4c6e5",
+        "diff_delete": "#e6d6df",
+        "search": "#d1cab2",
+        "diag_error": "#e9dfe6",
+        "diag_warn": "#e4e3dd",
+        "diag_info": "#dbe3f0",
+        "diag_hint": "#d8e5e9",
+        "diag_ok": "#dae5e4"
       }
     }
   ],
@@ -545,6 +653,7 @@
     }
   ],
   "downloads": {
+    "helix": "general/helix/{slug}.toml",
     "base16": "general/base16/{slug}.yaml",
     "kitty": "general/kitty/{slug}.conf",
     "alacritty": "general/alacritty/{slug}.toml",

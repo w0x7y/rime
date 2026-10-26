@@ -152,6 +152,7 @@ class SyntaxRoles(unittest.TestCase):
             "Neovim": self.neovim_roles(),
             "Zed": self.roles_used_by(build.zed_theme),
             "VS Code": self.roles_used_by(build.vscode_theme),
+            "Helix": self.roles_used_by(build.helix),
         }
         for role in build.SYNTAX:
             users = [port for port, roles in ports.items() if role in roles]

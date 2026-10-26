@@ -68,6 +68,7 @@ const PORTS: Port[] = [
   { slug: "neovim", name: "neovim", group: "editors", blurb: "lua, treesitter, lsp and lualine" },
   { slug: "vscode", name: "vs code", group: "editors", blurb: "on the marketplace and open vsx" },
   { slug: "zed", name: "zed", group: "editors", blurb: "all five in one theme file" },
+  { slug: "helix", name: "helix", group: "editors", blurb: "a theme file" },
   { slug: "kitty", name: "kitty", group: "terminals", blurb: "an include file" },
   { slug: "alacritty", name: "alacritty", group: "terminals", blurb: "a toml import" },
   { slug: "ghostty", name: "ghostty", group: "terminals", blurb: "a theme file" },

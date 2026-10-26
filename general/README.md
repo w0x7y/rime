@@ -131,6 +131,19 @@ echo 'source-file ~/.config/tmux/rime.conf' >> ~/.config/tmux/tmux.conf
 
 If your config is `~/.tmux.conf`, add the line there instead.
 
+## Helix
+
+A theme per variant, with the same syntax roles as Neovim, Zed and VS Code. Helix names a theme after its file, so this one is `rime`.
+
+```sh
+mkdir -p ~/.config/helix/themes
+cp helix/rime.toml ~/.config/helix/themes/
+```
+
+Then run `:theme rime`, or put `theme = "rime"` at the top of `~/.config/helix/config.toml`.
+
+Helix gives struct fields and JSON, YAML and TOML keys one scope, so keys are plain text, as in Zed. HTML attributes share the `attribute` scope with decorators.
+
 ## bat
 
 A syntax theme for [bat](https://github.com/sharkdp/bat), with the same token colors as the VS Code theme. bat names a theme after its file, so this one is `rime`.

@@ -9,7 +9,7 @@ Most ports are generated. Edit the source, then run `python3 tools/build.py` and
 | To change                                                     | Edit                                                                                                        |
 | ------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- |
 | A variant's colors and appearance (dark or light)             | `palettes/<slug>.json`                                                                                      |
-| Which color each kind of code gets in Neovim, Zed and VS Code | `SYNTAX` in `tools/build.py`                                                                                |
+| Which color each kind of code gets in the editor ports        | `SYNTAX` in `tools/build.py`                                                                                |
 | Version, extension description, variant list and order        | constants at the top of `tools/build.py` (the first variant in `ORDER` is the default)                      |
 | Neovim UI and plugin highlights, options                      | `lua/rime/groups.lua`, `lua/rime/init.lua`                                                                  |
 | Screenshots and `vscode/icon.png`                             | run `python3 tools/screenshots/render.py` after the above                                                   |

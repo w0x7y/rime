@@ -1,0 +1,140 @@
+# Rime Aurora: Vivid neon accents on a darker background.
+# https://github.com/w0x7y/rime
+"attribute" = { fg = "cyan" }
+"type" = { fg = "yellow" }
+"type.builtin" = { fg = "cyan" }
+"type.enum.variant" = { fg = "pink" }
+"constructor" = { fg = "cyan" }
+"constant" = { fg = "pink" }
+"constant.builtin" = { fg = "cyan" }
+"constant.builtin.boolean" = { fg = "pink" }
+"constant.character" = { fg = "green" }
+"constant.character.escape" = { fg = "cyan" }
+"constant.numeric" = { fg = "pink" }
+"string" = { fg = "green" }
+"string.regexp" = { fg = "cyan" }
+"string.special" = { fg = "cyan" }
+"string.special.url" = { fg = "blue", underline = { style = "line" } }
+"string.special.symbol" = { fg = "pink" }
+"comment" = { fg = "comment", modifiers = ["italic"] }
+"variable" = { fg = "fg" }
+"variable.builtin" = { fg = "cyan" }
+"variable.parameter" = { fg = "fg" }
+"variable.other.member" = { fg = "fg" }
+"label" = { fg = "yellow" }
+"punctuation" = { fg = "steel" }
+"punctuation.special" = { fg = "cyan" }
+"keyword" = { fg = "violet" }
+"keyword.control.conditional" = { fg = "red", modifiers = ["bold"] }
+"keyword.control.repeat" = { fg = "yellow" }
+"keyword.control.import" = { fg = "violet" }
+"keyword.control.return" = { fg = "red" }
+"keyword.control.exception" = { fg = "red" }
+"keyword.directive" = { fg = "yellow" }
+"keyword.storage.modifier" = { fg = "violet" }
+"operator" = { fg = "muted" }
+"function" = { fg = "blue" }
+"function.builtin" = { fg = "cyan" }
+"function.macro" = { fg = "cyan" }
+"function.special" = { fg = "yellow" }
+"tag" = { fg = "red" }
+"namespace" = { fg = "yellow" }
+"markup.heading" = { fg = "blue", modifiers = ["bold"] }
+"markup.list" = { fg = "red" }
+"markup.bold" = { modifiers = ["bold"] }
+"markup.italic" = { modifiers = ["italic"] }
+"markup.strikethrough" = { modifiers = ["crossed_out"] }
+"markup.link.url" = { fg = "blue", underline = { style = "line" } }
+"markup.link.label" = { fg = "cyan" }
+"markup.link.text" = { fg = "cyan" }
+"markup.quote" = { fg = "muted", modifiers = ["italic"] }
+"markup.raw" = { fg = "green" }
+"diff.plus" = { fg = "green" }
+"diff.minus" = { fg = "red" }
+"diff.delta" = { fg = "blue" }
+"special" = { fg = "blue", modifiers = ["bold"] }
+"ui.background" = { bg = "bg" }
+"ui.background.separator" = { fg = "border" }
+"ui.text" = { fg = "fg" }
+"ui.text.focus" = { fg = "fg_bright", bg = "bg_sel", modifiers = ["bold"] }
+"ui.text.inactive" = { fg = "comment" }
+"ui.text.directory" = { fg = "blue" }
+"ui.cursor" = { fg = "bg", bg = "muted" }
+"ui.cursor.primary" = { fg = "bg", bg = "fg" }
+"ui.cursor.match" = { fg = "fg_bright", bg = "bg_sel", modifiers = ["bold"] }
+"ui.selection" = { bg = "border" }
+"ui.selection.primary" = { bg = "bg_sel" }
+"ui.highlight" = { bg = "bg_sel" }
+"ui.cursorline.primary" = { bg = "bg_alt" }
+"ui.cursorcolumn.primary" = { bg = "bg_alt" }
+"ui.linenr" = { fg = "comment" }
+"ui.linenr.selected" = { fg = "fg_bright", modifiers = ["bold"] }
+"ui.statusline" = { fg = "muted", bg = "bg_alt" }
+"ui.statusline.inactive" = { fg = "comment", bg = "bg_alt" }
+"ui.statusline.normal" = { fg = "bg", bg = "blue", modifiers = ["bold"] }
+"ui.statusline.insert" = { fg = "bg", bg = "green", modifiers = ["bold"] }
+"ui.statusline.select" = { fg = "bg", bg = "violet", modifiers = ["bold"] }
+"ui.bufferline" = { fg = "comment", bg = "bg_alt" }
+"ui.bufferline.active" = { fg = "fg_bright", bg = "bg", modifiers = ["bold"] }
+"ui.bufferline.background" = { bg = "bg_dark" }
+"ui.popup" = { fg = "fg", bg = "bg_alt" }
+"ui.window" = { fg = "border" }
+"ui.help" = { fg = "fg", bg = "bg_alt" }
+"ui.menu" = { fg = "fg", bg = "bg_alt" }
+"ui.menu.selected" = { bg = "bg_sel", modifiers = ["bold"] }
+"ui.menu.scroll" = { fg = "comment", bg = "bg_alt" }
+"ui.virtual.ruler" = { bg = "colorcolumn" }
+"ui.virtual.whitespace" = { fg = "whitespace" }
+"ui.virtual.indent-guide" = { fg = "bg_sel" }
+"ui.virtual.inlay-hint" = { fg = "comment", bg = "bg_alt" }
+"ui.virtual.wrap" = { fg = "whitespace" }
+"ui.virtual.jump-label" = { fg = "bg", bg = "red", modifiers = ["bold"] }
+"ui.debug.breakpoint" = { fg = "red" }
+"ui.debug.active" = { fg = "yellow" }
+"tabstop" = { bg = "bg_sel" }
+"diagnostic.unnecessary" = { fg = "comment" }
+"diagnostic.deprecated" = { modifiers = ["crossed_out"] }
+"error" = { fg = "red" }
+"error.diagnostic.inline" = { fg = "red", bg = "diag_error" }
+"diagnostic.error" = { underline = { color = "red", style = "curl" } }
+"warning" = { fg = "yellow" }
+"warning.diagnostic.inline" = { fg = "yellow", bg = "diag_warn" }
+"diagnostic.warning" = { underline = { color = "yellow", style = "curl" } }
+"info" = { fg = "blue" }
+"info.diagnostic.inline" = { fg = "blue", bg = "diag_info" }
+"diagnostic.info" = { underline = { color = "blue", style = "curl" } }
+"hint" = { fg = "cyan" }
+"hint.diagnostic.inline" = { fg = "cyan", bg = "diag_hint" }
+"diagnostic.hint" = { underline = { color = "cyan", style = "curl" } }
+
+[palette]
+bg = "#1c1f25"
+bg_alt = "#24282f"
+bg_sel = "#333842"
+comment = "#6b768c"
+muted = "#9aa4b6"
+fg = "#c8d2e2"
+fg_bright = "#e0e7f2"
+white = "#f5f8fc"
+red = "#ff6f91"
+pink = "#ff8fe0"
+yellow = "#e6f07c"
+green = "#5ef0a6"
+cyan = "#38dce8"
+blue = "#4fa2ff"
+violet = "#9b7dff"
+steel = "#7084b7"
+bg_dark = "#17191e"
+border = "#2c3039"
+colorcolumn = "#20242a"
+whitespace = "#474f5e"
+diff_add = "#263e38"
+diff_change = "#222f3f"
+diff_text = "#2b4666"
+diff_delete = "#3e2b35"
+search = "#555a3d"
+diag_error = "#332730"
+diag_warn = "#30342e"
+diag_info = "#212c3b"
+diag_hint = "#1f3239"
+diag_ok = "#233432"

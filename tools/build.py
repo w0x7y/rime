@@ -97,6 +97,22 @@ def colours(spec):
         mix(r["bg"], "#000000", 0.18) if dark else mix(r["bg"], "#ffffff", 0.5)
     )
     r["border"] = mix(r["bg_alt"], r["bg_sel"], 0.5)
+    r["colorcolumn"] = mix(r["bg"], r["bg_alt"], 0.5)
+    r["whitespace"] = mix(r["comment"], r["bg"], 0.45)
+    # backgrounds: an accent blended most of the way into bg
+    for name, col, t in [
+        ("diff_add", "green", 0.85),
+        ("diff_change", "blue", 0.88),
+        ("diff_text", "blue", 0.7),
+        ("diff_delete", "red", 0.85),
+        ("search", "yellow", 0.72),
+        ("diag_error", "red", 0.9),
+        ("diag_warn", "yellow", 0.9),
+        ("diag_info", "blue", 0.9),
+        ("diag_hint", "cyan", 0.9),
+        ("diag_ok", "green", 0.9),
+    ]:
+        r[name] = mix(r[col], r["bg"], t)
     # 16 ANSI colours: black stays dark and white light, so a light variant swaps which is the text;
     # brights are lifted away from the background
     accents = [r[n] for n in ("red", "green", "yellow", "blue", "violet", "cyan")]
@@ -1198,6 +1214,153 @@ def vscode_package(specs):
     }
 
 
+# --------------------------------------------------------------------------- helix
+
+# Helix's highlight scopes and the syntax role each takes. Helix falls back to the longest
+# matching key, so `function.method` takes `function` unless it is listed.
+HELIX_SYNTAX = {
+    "attribute": "attribute",  # also HTML attributes, which Helix doesn't tell apart
+    "type": "type",
+    "type.builtin": "type.builtin",
+    "type.enum.variant": "constant",
+    "constructor": "constructor",
+    "constant": "constant",
+    "constant.builtin": "constant.builtin",
+    "constant.builtin.boolean": "boolean",
+    "constant.character": "string",
+    "constant.character.escape": "string.escape",
+    "constant.numeric": "number",
+    "string": "string",
+    "string.regexp": "string.regexp",
+    "string.special": "string.special",
+    "string.special.url": "markup.link.url",
+    "string.special.symbol": "string.special.symbol",
+    "comment": "comment",
+    "variable": "variable",
+    "variable.builtin": "variable.builtin",
+    "variable.parameter": "variable.parameter",
+    # Helix gives fields and JSON, YAML and TOML keys this one scope, as Zed does
+    "variable.other.member": "variable.member",
+    "label": "label",
+    "punctuation": "punctuation",
+    "punctuation.special": "punctuation.special",
+    "keyword": "keyword",
+    "keyword.control.conditional": "keyword.conditional",
+    "keyword.control.repeat": "keyword.repeat",
+    "keyword.control.import": "keyword.import",
+    "keyword.control.return": "keyword.return",
+    "keyword.control.exception": "keyword.exception",
+    "keyword.directive": "keyword.directive",
+    "keyword.storage.modifier": "keyword.modifier",
+    "operator": "operator",
+    "function": "function",
+    "function.builtin": "function.builtin",
+    "function.macro": "function.macro",
+    "function.special": "keyword.directive",  # the C preprocessor
+    "tag": "tag",
+    "namespace": "module",
+    "markup.heading": "markup.heading",
+    "markup.list": "markup.list",
+    "markup.bold": "markup.strong",
+    "markup.italic": "markup.italic",
+    "markup.strikethrough": "markup.strikethrough",
+    "markup.link.url": "markup.link.url",
+    "markup.link.label": "markup.link.label",
+    "markup.link.text": "markup.link.label",
+    "markup.quote": "markup.quote",
+    "markup.raw": "markup.raw",
+    "diff.plus": "diff.plus",
+    "diff.minus": "diff.minus",
+    "diff.delta": "diff.delta",
+}
+
+
+def helix(spec):
+    """A Helix theme. It names the colours in a [palette] table and refers to them by name."""
+    c = colours(spec)
+
+    def st(fg=None, bg=None, mods=(), curl=None, line=False):
+        parts = [f'{k} = "{v}"' for k, v in (("fg", fg), ("bg", bg)) if v]
+        if curl:
+            parts.append(f'underline = {{ color = "{curl}", style = "curl" }}')
+        if line:
+            parts.append('underline = { style = "line" }')
+        if mods:
+            parts.append("modifiers = [" + ", ".join(f'"{m}"' for m in mods) + "]")
+        return "{ " + ", ".join(parts) + " }"
+
+    def role(name):
+        fg, style, _ = SYNTAX[name]
+        words = style.split()
+        mods = [{"strikethrough": "crossed_out"}.get(w, w) for w in words if w != "underline"]
+        return st(fg, mods=mods, line="underline" in words)
+
+    def mode(accent):
+        return st("bg", accent, ["bold"])
+
+    keys = {scope: role(r) for scope, r in HELIX_SYNTAX.items()}
+    keys |= {
+        "special": st("blue", mods=["bold"]),  # also the matched letters in pickers
+        "ui.background": st(bg="bg"),
+        "ui.background.separator": st("border"),
+        "ui.text": st("fg"),
+        "ui.text.focus": st("fg_bright", "bg_sel", ["bold"]),
+        "ui.text.inactive": st("comment"),
+        "ui.text.directory": st("blue"),
+        "ui.cursor": st("bg", "muted"),
+        "ui.cursor.primary": st("bg", "fg"),
+        "ui.cursor.match": st("fg_bright", "bg_sel", ["bold"]),
+        "ui.selection": st(bg="border"),
+        "ui.selection.primary": st(bg="bg_sel"),
+        "ui.highlight": st(bg="bg_sel"),
+        "ui.cursorline.primary": st(bg="bg_alt"),
+        "ui.cursorcolumn.primary": st(bg="bg_alt"),
+        "ui.linenr": st("comment"),
+        "ui.linenr.selected": st("fg_bright", mods=["bold"]),
+        "ui.statusline": st("muted", "bg_alt"),
+        "ui.statusline.inactive": st("comment", "bg_alt"),
+        "ui.statusline.normal": mode("blue"),
+        "ui.statusline.insert": mode("green"),
+        "ui.statusline.select": mode("violet"),
+        "ui.bufferline": st("comment", "bg_alt"),
+        "ui.bufferline.active": st("fg_bright", "bg", ["bold"]),
+        "ui.bufferline.background": st(bg="bg_dark"),
+        "ui.popup": st("fg", "bg_alt"),
+        "ui.window": st("border"),
+        "ui.help": st("fg", "bg_alt"),
+        "ui.menu": st("fg", "bg_alt"),
+        "ui.menu.selected": st(bg="bg_sel", mods=["bold"]),
+        "ui.menu.scroll": st("comment", "bg_alt"),
+        "ui.virtual.ruler": st(bg="colorcolumn"),
+        "ui.virtual.whitespace": st("whitespace"),
+        "ui.virtual.indent-guide": st("bg_sel"),
+        "ui.virtual.inlay-hint": st("comment", "bg_alt"),
+        "ui.virtual.wrap": st("whitespace"),
+        "ui.virtual.jump-label": st("bg", "red", ["bold"]),
+        "ui.debug.breakpoint": st("red"),
+        "ui.debug.active": st("yellow"),
+        "tabstop": st(bg="bg_sel"),
+        "diagnostic.unnecessary": st("comment"),
+        "diagnostic.deprecated": st(mods=["crossed_out"]),
+    }
+    for level, col, shade in [
+        ("error", "red", "diag_error"),
+        ("warning", "yellow", "diag_warn"),
+        ("info", "blue", "diag_info"),
+        ("hint", "cyan", "diag_hint"),
+    ]:
+        keys[level] = st(col)
+        keys[f"{level}.diagnostic.inline"] = st(col, shade)
+        keys[f"diagnostic.{level}"] = st(curl=col)
+    palette = {n: v for n, v in c.items() if isinstance(v, str)}
+    return (
+        header(spec)
+        + "".join(f'"{k}" = {v}\n' for k, v in keys.items())
+        + "\n[palette]\n"
+        + "".join(f'{k} = "{v}"\n' for k, v in palette.items())
+    )
+
+
 # --------------------------------------------------------------------------- general use
 
 
@@ -1639,6 +1802,7 @@ def load():
 # The ports that are one file per variant: (port, its path with {slug} for the variant, its text).
 # build() writes them and ALL_IN_ONE's from here, and the website offers them as downloads.
 PER_VARIANT = [
+    ("helix", "general/helix/{slug}.toml", helix),
     ("base16", "general/base16/{slug}.yaml", base16_yaml),
     ("kitty", "general/kitty/{slug}.conf", kitty),
     ("alacritty", "general/alacritty/{slug}.toml", alacritty),

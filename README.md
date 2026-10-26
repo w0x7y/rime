@@ -63,6 +63,10 @@ code --install-extension w0x7y.rime-theme
 
 it's on the [vs code marketplace](https://marketplace.visualstudio.com/items?itemName=w0x7y.rime-theme), and on [open vsx](https://open-vsx.org/extension/w0x7y/rime-theme) for vscodium, cursor and other forks. then `Preferences: Color Theme` and pick a rime variant. building it from source is in [vscode/](./vscode)
 
+**[helix](./general#helix)**
+
+put `general/helix/rime.toml` into `~/.config/helix/themes/`, then `:theme rime` or `theme = "rime"` in your helix config
+
 **[base16](./general/base16)**
 
 the same 16 colors per variant. there's a base16 template for almost any software, so you can feed these to a builder like tinty
@@ -77,7 +81,7 @@ for kitty, put `general/kitty/rime.conf` into `~/.config/kitty/rime.conf`, then 
 
 **[changing colors](./palettes)**
 
-every variant is 16 colors in `palettes/`. which color each kind of code gets (functions, keywords, comments) is the `SYNTAX` table in `tools/build.py`, shared by neovim, zed and vscode. edit either and run `python3 tools/build.py`. it rewrites the neovim, zed, vscode and terminal files and the website's data with only the python standard library
+every variant is 16 colors in `palettes/`. which color each kind of code gets (functions, keywords, comments) is the `SYNTAX` table in `tools/build.py`, shared by the editor ports. edit either and run `python3 tools/build.py`. it rewrites the neovim, zed, vscode and terminal files and the website's data with only the python standard library
 
 `python3 tools/build.py --check` lists anything out of date or no longer generated, and `python3 -m unittest discover -s tools` runs the tests. the screenshots and the vscode icon png come from `python3 tools/screenshots/render.py`
 
