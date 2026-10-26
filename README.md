@@ -71,6 +71,10 @@ it's on the [vs code marketplace](https://marketplace.visualstudio.com/items?ite
 
 put `general/helix/rime.toml` into `~/.config/helix/themes/`, then `:theme rime` or `theme = "rime"` in your helix config
 
+**[emacs](./general#emacs)**
+
+put `general/emacs/rime-theme.el` into a folder on `custom-theme-load-path`, then `(load-theme 'rime t)`
+
 **[micro](./general#micro)**
 
 put `general/micro/rime.micro` into `~/.config/micro/colorschemes/`, then `set colorscheme rime`

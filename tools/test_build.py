@@ -155,6 +155,7 @@ class SyntaxRoles(unittest.TestCase):
             "Helix": self.roles_used_by(build.helix),
             "Vim": self.roles_used_by(build.vim),
             "micro": self.roles_used_by(build.micro),
+            "Emacs": self.roles_used_by(build.emacs),
         }
         for role in build.SYNTAX:
             users = [port for port, roles in ports.items() if role in roles]

@@ -1654,6 +1654,144 @@ def micro(spec):
     return header(spec) + "".join(f"color-link {g} {v}\n" for g, v in groups.items())
 
 
+# --------------------------------------------------------------------------- emacs
+
+# Emacs's font-lock faces and the syntax role each takes. Emacs has one keyword face,
+# so `if`, `for` and `return` share the keyword colour.
+EMACS_SYNTAX = {
+    "font-lock-comment-face": "comment",
+    "font-lock-comment-delimiter-face": "comment",
+    "font-lock-doc-face": "string.documentation",
+    "font-lock-doc-markup-face": "comment.tag",
+    "font-lock-string-face": "string",
+    "font-lock-escape-face": "string.escape",
+    "font-lock-regexp-face": "string.regexp",
+    "font-lock-regexp-grouping-backslash": "string.regexp",
+    "font-lock-regexp-grouping-construct": "string.regexp",
+    "font-lock-number-face": "number",
+    "font-lock-constant-face": "constant",
+    "font-lock-builtin-face": "function.builtin",
+    "font-lock-keyword-face": "keyword",
+    "font-lock-function-name-face": "function",
+    "font-lock-function-call-face": "function",
+    "font-lock-variable-name-face": "variable",
+    "font-lock-variable-use-face": "variable",
+    "font-lock-type-face": "type",
+    "font-lock-property-name-face": "property",  # keys and field definitions
+    "font-lock-property-use-face": "variable.member",
+    "font-lock-preprocessor-face": "keyword.directive",
+    "font-lock-operator-face": "operator",
+    "font-lock-negation-char-face": "operator",
+    "font-lock-punctuation-face": "punctuation",
+    "font-lock-bracket-face": "punctuation",
+    "font-lock-delimiter-face": "punctuation",
+    "font-lock-misc-punctuation-face": "punctuation",
+    "diff-added": "diff.plus",
+    "diff-removed": "diff.minus",
+    "diff-changed": "diff.delta",
+    "diff-hunk-header": "diff.range",
+}
+
+
+def emacs(spec):
+    """An Emacs theme, named after the variant: (load-theme 'rime t)."""
+    c = colours(spec)
+    slug = spec["slug"]
+
+    def face(fg=None, bg=None, style="", curl=None, inherit=None, box=None):
+        a = []
+        if inherit:
+            a.append(f":inherit {inherit}")
+        if fg:
+            a.append(f':foreground "{c[fg]}"')
+        if bg:
+            a.append(f':background "{c[bg]}"')
+        words = style.split()
+        if "bold" in words:
+            a.append(":weight bold")
+        if "italic" in words:
+            a.append(":slant italic")
+        if "underline" in words:
+            a.append(":underline t")
+        if "strikethrough" in words:
+            a.append(":strike-through t")
+        if curl:
+            a.append(f':underline (:style wave :color "{c[curl]}")')
+        if box:
+            a.append(f':box (:line-width 4 :color "{c[box]}")')
+        return " ".join(a)
+
+    faces = {}
+    for name, r in EMACS_SYNTAX.items():
+        fg, style, _ = SYNTAX[r]
+        faces[name] = face(fg, style=style)
+    faces |= {
+        "default": face("fg", "bg"),
+        "cursor": face(bg="fg"),
+        "region": face(bg="bg_sel", inherit="nil"),  # nil: keep the text's own colours
+        "secondary-selection": face(bg="border"),
+        "highlight": face(bg="bg_sel"),
+        "hl-line": face(bg="bg_alt"),
+        "fringe": face("comment", "bg"),
+        "line-number": face("comment", "bg"),
+        "line-number-current-line": face("fg_bright", "bg_alt", "bold"),
+        "fill-column-indicator": face("bg_sel"),
+        "vertical-border": face("border"),
+        "window-divider": face("border"),
+        "mode-line": face("muted", "bg_alt", box="bg_alt"),
+        "mode-line-inactive": face("comment", "bg_dark", box="bg_dark"),
+        "mode-line-buffer-id": face("fg_bright", style="bold"),
+        "header-line": face("muted", "bg_alt"),
+        "tab-bar": face("comment", "bg_dark"),
+        "tab-bar-tab": face("fg_bright", "bg", "bold"),
+        "tab-bar-tab-inactive": face("comment", "bg_alt"),
+        "minibuffer-prompt": face("blue", style="bold"),
+        "isearch": face("bg", "yellow", "bold"),
+        "lazy-highlight": face("fg_bright", "search"),
+        "isearch-fail": face("red", "diag_error"),
+        "match": face("fg_bright", "search"),
+        "show-paren-match": face("fg_bright", "bg_sel", "bold"),
+        "show-paren-mismatch": face("bg", "red", "bold"),
+        "link": face("blue", style="underline"),
+        "link-visited": face("violet", style="underline"),
+        "error": face("red"),
+        "warning": face("yellow"),
+        "success": face("green"),
+        "font-lock-warning-face": face("yellow", style="bold"),
+        "shadow": face("comment"),
+        "trailing-whitespace": face(bg="diff_delete"),
+        "whitespace-space": face("whitespace"),
+        "whitespace-tab": face("whitespace"),
+        "whitespace-newline": face("whitespace"),
+        "whitespace-trailing": face(bg="diff_delete"),
+        "tooltip": face("fg", "bg_alt"),
+        "completions-common-part": face("blue", style="bold"),
+        "completions-first-difference": face("fg_bright", style="bold"),
+        "flymake-error": face(curl="red"),
+        "flymake-warning": face(curl="yellow"),
+        "flymake-note": face(curl="cyan"),
+        "diff-refine-added": face(bg="diff_add", style="bold"),
+        "diff-refine-removed": face(bg="diff_delete", style="bold"),
+        "diff-refine-changed": face(bg="diff_text", style="bold"),
+        "diff-header": face("muted", "bg_alt"),
+        "diff-file-header": face("blue", "bg_alt", "bold"),
+    }
+    # the 16 terminal colours, for shell, term and compilation buffers (Emacs 28+)
+    for i, name in enumerate(ANSI_NAMES):
+        for prefix, h in (("", c["ansi"][i]), ("bright-", c["ansi"][i + 8])):
+            faces[f"ansi-color-{prefix}{name}"] = f':foreground "{h}" :background "{h}"'
+    body = "\n".join(f" '({name} ((t ({attrs}))))" for name, attrs in faces.items())
+    return (
+        f";;; {slug}-theme.el --- {spec['name']}: {spec['description']}  -*- lexical-binding: t -*-\n"
+        f";; {REPO}\n;; Generated by tools/build.py from palettes/{slug}.json. Do not edit.\n\n"
+        ";;; Code:\n\n"
+        f'(deftheme {slug} "{spec["name"]}: {spec["description"]}")\n\n'
+        f"(custom-theme-set-faces\n '{slug}\n{body})\n\n"
+        f"(provide-theme '{slug})\n\n"
+        f";;; {slug}-theme.el ends here\n"
+    )
+
+
 # --------------------------------------------------------------------------- general use
 
 
@@ -2099,6 +2237,7 @@ PER_VARIANT = [
     ("sublime", "general/sublime/{slug}.sublime-color-scheme", sublime),
     ("vim", "vim/colors/{slug}.vim", vim),
     ("micro", "general/micro/{slug}.micro", micro),
+    ("emacs", "general/emacs/{slug}-theme.el", emacs),
     ("base16", "general/base16/{slug}.yaml", base16_yaml),
     ("kitty", "general/kitty/{slug}.conf", kitty),
     ("alacritty", "general/alacritty/{slug}.toml", alacritty),

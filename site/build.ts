@@ -72,6 +72,7 @@ const PORTS: Port[] = [
   { slug: "sublime", name: "sublime text", group: "editors", blurb: "a color scheme" },
   { slug: "vim", name: "vim", group: "editors", blurb: "vimscript, with 256-color fallbacks" },
   { slug: "micro", name: "micro", group: "editors", blurb: "a colorscheme file" },
+  { slug: "emacs", name: "emacs", group: "editors", blurb: "a deftheme per variant" },
   { slug: "kitty", name: "kitty", group: "terminals", blurb: "an include file" },
   { slug: "alacritty", name: "alacritty", group: "terminals", blurb: "a toml import" },
   { slug: "ghostty", name: "ghostty", group: "terminals", blurb: "a theme file" },
@@ -358,7 +359,7 @@ async function build() {
   const started = performance.now();
   const highlighter = await createHighlighter({
     themes: [shikiTheme()],
-    langs: ["lua", "shellscript", "toml", "ini", "json", "jsonc", "css", "viml"],
+    langs: ["lua", "shellscript", "toml", "ini", "json", "jsonc", "css", "viml", "emacs-lisp"],
   });
   const highlight = (code: string, lang: string) => highlighter.codeToHtml(code, { lang: lang || "text", theme: "rime" });
 

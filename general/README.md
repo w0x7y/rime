@@ -144,6 +144,23 @@ Then run `:theme rime`, or put `theme = "rime"` at the top of `~/.config/helix/c
 
 Helix gives struct fields and JSON, YAML and TOML keys one scope, so keys are plain text, as in Zed. HTML attributes share the `attribute` scope with decorators.
 
+## Emacs
+
+A theme per variant for Emacs 28 and later.
+
+```sh
+mkdir -p ~/.emacs.d/themes
+cp emacs/rime-theme.el ~/.emacs.d/themes/
+```
+
+```elisp
+;; init.el
+(add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
+(load-theme 'rime t)
+```
+
+Emacs has one keyword face, so `if`, `for` and `return` share the keyword color.
+
 ## micro
 
 A colorscheme per variant for [micro](https://micro-editor.github.io).

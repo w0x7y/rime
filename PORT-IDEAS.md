@@ -4,13 +4,13 @@ Programs Rime could be ported to, best value first in each section. Tick an item
 
 ## Editors
 
-These have syntax highlighting, so their generators read `SYNTAX`.
+All shipped. Each reads `SYNTAX`, so code gets the same colors as in Neovim, Zed and VS Code.
 
-- [x] Helix: one TOML file per variant. Its highlight names are treesitter scopes and map almost one-to-one onto the `SYNTAX` roles.
-- [x] Sublime Text: `.sublime-color-scheme`, from the same token rules as VS Code and bat.
-- [x] Vim: classic Vimscript colorscheme, for Vim users without Lua.
-- [ ] Emacs: a `deftheme` file.
-- [x] micro: `.micro` colorscheme.
+- [x] Helix: `general/helix/`, a TOML theme per variant.
+- [x] Sublime Text: `general/sublime/`, a `.sublime-color-scheme` from the same token rules as VS Code and bat.
+- [x] Vim: `vim/colors/`, Vimscript with 256-color fallbacks. Kept out of `colors/` so Neovim still loads the Lua plugin.
+- [x] micro: `general/micro/`, a `.micro` colorscheme.
+- [x] Emacs: `general/emacs/`, a `deftheme` per variant.
 
 ## Terminals
 
