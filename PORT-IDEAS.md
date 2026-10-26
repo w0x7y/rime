@@ -10,7 +10,7 @@ These have syntax highlighting, so their generators read `SYNTAX`.
 - [x] Sublime Text: `.sublime-color-scheme`, from the same token rules as VS Code and bat.
 - [x] Vim: classic Vimscript colorscheme, for Vim users without Lua.
 - [ ] Emacs: a `deftheme` file.
-- [ ] micro: `.micro` colorscheme.
+- [x] micro: `.micro` colorscheme.
 
 ## Terminals
 

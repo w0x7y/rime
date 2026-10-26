@@ -1581,6 +1581,79 @@ def vim(spec):
     )
 
 
+# --------------------------------------------------------------------------- micro
+
+# micro's colorscheme groups and the syntax role each takes. Its syntax files are regexes
+# with coarse groups: `statement` holds every keyword, and `identifier` mostly functions.
+MICRO_SYNTAX = {
+    "comment": "comment",
+    "identifier": "function",
+    "identifier.class": "function",  # micro's syntax files use it for functions too
+    "identifier.macro": "function.macro",
+    "identifier.var": "variable",
+    "constant": "constant",
+    "constant.bool": "boolean",
+    "constant.number": "number",
+    "constant.specialChar": "string.escape",
+    "constant.string": "string",
+    "constant.string.url": "markup.link.url",
+    "statement": "keyword",
+    "symbol": "operator",
+    "symbol.operator": "operator",
+    "symbol.brackets": "punctuation",
+    "symbol.tag": "tag",
+    "preproc": "keyword.directive",
+    "type": "type",
+    "type.keyword": "keyword.modifier",
+}
+
+
+def micro(spec):
+    """A micro colorscheme. micro picks the nearest of 256 colours itself when the terminal lacks true colour."""
+    c = colours(spec)
+
+    def link(fg=None, bg=None, style=""):
+        return f'"{style + " " if style else ""}{c[fg] if fg else ""}{"," + c[bg] if bg else ""}"'
+
+    groups = {"default": link("fg", "bg")}
+    for group, r in MICRO_SYNTAX.items():
+        fg, style, _ = SYNTAX[r]
+        groups[group] = link(fg, style=style)
+    groups |= {
+        "special": link("cyan"),
+        "underlined": link(style="underline"),
+        "error": link("red"),
+        "todo": link("bg", "yellow", "bold"),
+        "ignore": link("comment"),
+        "selection": link(bg="bg_sel"),
+        "statusline": link("muted", "bg_alt"),
+        "statusline.inactive": link("comment", "bg_alt"),
+        "statusline.suggestions": link("fg", "bg_alt"),
+        "tabbar": link("comment", "bg_alt"),
+        "tabbar.active": link("fg_bright", "bg", "bold"),
+        "indent-char": link("whitespace"),
+        "line-number": link("comment", "bg"),
+        "current-line-number": link("fg_bright", "bg", "bold"),
+        "cursor-line": link(bg="bg_alt"),
+        "color-column": link(bg="colorcolumn"),
+        "gutter-info": link("blue"),
+        "gutter-error": link("red"),
+        "gutter-warning": link("yellow"),
+        "diff-added": link("green"),
+        "diff-modified": link("blue"),
+        "diff-deleted": link("red"),
+        "scrollbar": link("comment"),
+        "divider": link("border", "bg"),
+        "message": link("fg"),
+        "error-message": link("red"),
+        "match-brace": link("fg_bright", "bg_sel", "bold"),
+        "hlsearch": link("fg_bright", "search"),
+        "tab-error": link(bg="diff_delete"),
+        "trailingws": link(bg="diff_delete"),
+    }
+    return header(spec) + "".join(f"color-link {g} {v}\n" for g, v in groups.items())
+
+
 # --------------------------------------------------------------------------- general use
 
 
@@ -2025,6 +2098,7 @@ PER_VARIANT = [
     ("helix", "general/helix/{slug}.toml", helix),
     ("sublime", "general/sublime/{slug}.sublime-color-scheme", sublime),
     ("vim", "vim/colors/{slug}.vim", vim),
+    ("micro", "general/micro/{slug}.micro", micro),
     ("base16", "general/base16/{slug}.yaml", base16_yaml),
     ("kitty", "general/kitty/{slug}.conf", kitty),
     ("alacritty", "general/alacritty/{slug}.toml", alacritty),

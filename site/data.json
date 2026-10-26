@@ -656,6 +656,7 @@
     "helix": "general/helix/{slug}.toml",
     "sublime": "general/sublime/{slug}.sublime-color-scheme",
     "vim": "vim/colors/{slug}.vim",
+    "micro": "general/micro/{slug}.micro",
     "base16": "general/base16/{slug}.yaml",
     "kitty": "general/kitty/{slug}.conf",
     "alacritty": "general/alacritty/{slug}.toml",

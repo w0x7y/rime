@@ -71,6 +71,10 @@ it's on the [vs code marketplace](https://marketplace.visualstudio.com/items?ite
 
 put `general/helix/rime.toml` into `~/.config/helix/themes/`, then `:theme rime` or `theme = "rime"` in your helix config
 
+**[micro](./general#micro)**
+
+put `general/micro/rime.micro` into `~/.config/micro/colorschemes/`, then `set colorscheme rime`
+
 **[sublime text](./general#sublime-text)**
 
 put `general/sublime/rime.sublime-color-scheme` into your `Packages/User` folder, then `UI: Select Color Scheme`

@@ -144,6 +144,17 @@ Then run `:theme rime`, or put `theme = "rime"` at the top of `~/.config/helix/c
 
 Helix gives struct fields and JSON, YAML and TOML keys one scope, so keys are plain text, as in Zed. HTML attributes share the `attribute` scope with decorators.
 
+## micro
+
+A colorscheme per variant for [micro](https://micro-editor.github.io).
+
+```sh
+mkdir -p ~/.config/micro/colorschemes
+cp micro/rime.micro ~/.config/micro/colorschemes/
+```
+
+Then press `Ctrl-e` and run `set colorscheme rime`, or set `"colorscheme": "rime"` in `~/.config/micro/settings.json`. micro's syntax files put every keyword in one `statement` group, so `if`, `for` and `return` share the keyword color.
+
 ## Sublime Text
 
 A color scheme per variant for Sublime Text 4, with the same token colors as the VS Code theme. On Linux:
