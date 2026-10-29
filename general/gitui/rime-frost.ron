@@ -1,0 +1,26 @@
+// Rime Frost: Frost-white paper under the same cold accents, deepened to read on it.
+// https://github.com/w0x7y/rime
+(
+    selected_tab: Some("#2e62c0"),
+    block_title_focused: Some("#2e62c0"),
+    command_fg: Some("#272d37"),
+    cmdbar_bg: Some("#f7f8fa"),
+    selection_bg: Some("#d2d8e2"),
+    selection_fg: Some("#272d37"),
+    disabled_fg: Some("#7f899b"),
+    diff_line_add: Some("#267b4f"),
+    diff_line_delete: Some("#b83d63"),
+    diff_file_added: Some("#267b4f"),
+    diff_file_removed: Some("#b83d63"),
+    diff_file_moved: Some("#7650c4"),
+    diff_file_modified: Some("#866405"),
+    commit_hash: Some("#7650c4"),
+    commit_time: Some("#0f7480"),
+    commit_author: Some("#267b4f"),
+    danger_fg: Some("#b83d63"),
+    push_gauge_bg: Some("#2e62c0"),
+    push_gauge_fg: Some("#eef1f5"),
+    tag_fg: Some("#a34396"),
+    branch_fg: Some("#866405"),
+    syntax: Some("rime-frost"),
+)

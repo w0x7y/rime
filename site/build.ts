@@ -96,6 +96,7 @@ const PORTS: Port[] = [
   { slug: "fish", name: "fish", group: "more", blurb: "a theme for fish_config" },
   { slug: "starship", name: "starship", group: "more", blurb: "a prompt palette" },
   { slug: "lazygit", name: "lazygit", group: "more", blurb: "the git tui" },
+  { slug: "gitui", name: "gitui", group: "more", blurb: "the other git tui" },
   { slug: "tmux", name: "tmux", group: "more", blurb: "status bar, borders and copy mode" },
   { slug: "zellij", name: "zellij", group: "more", blurb: "tabs, modes and pane frames" },
   { slug: "bat", name: "bat", group: "more", blurb: "a syntax theme" },

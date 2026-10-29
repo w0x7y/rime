@@ -1,0 +1,26 @@
+// Rime Abyss: The coldest take, on a darker background: no yellow or orange anywhere, with rose as the only warm accent.
+// https://github.com/w0x7y/rime
+(
+    selected_tab: Some("#6b9cf4"),
+    block_title_focused: Some("#6b9cf4"),
+    command_fg: Some("#dde5f2"),
+    cmdbar_bg: Some("#111317"),
+    selection_bg: Some("#2c3039"),
+    selection_fg: Some("#dde5f2"),
+    disabled_fg: Some("#6b768c"),
+    diff_line_add: Some("#6fd0a8"),
+    diff_line_delete: Some("#e8879f"),
+    diff_file_added: Some("#6fd0a8"),
+    diff_file_removed: Some("#e8879f"),
+    diff_file_moved: Some("#937ff2"),
+    diff_file_modified: Some("#9cf0dc"),
+    commit_hash: Some("#937ff2"),
+    commit_time: Some("#4fb4dc"),
+    commit_author: Some("#6fd0a8"),
+    danger_fg: Some("#e8879f"),
+    push_gauge_bg: Some("#6b9cf4"),
+    push_gauge_fg: Some("#15171c"),
+    tag_fg: Some("#d4aaff"),
+    branch_fg: Some("#9cf0dc"),
+    syntax: Some("rime-abyss"),
+)

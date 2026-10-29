@@ -29,7 +29,7 @@ Each is a small file per variant, about the size of the tmux or fzf ports.
 - [x] fish: `general/fish/`, a `.theme` file for `fish_config theme`. The command line reads `SYNTAX`.
 - [ ] k9s
 - [ ] vivid, for `LS_COLORS`
-- [ ] gitui
+- [x] gitui: `general/gitui/`, a `theme.ron` that highlights files with the bat theme.
 - [ ] glamour, used by glow
 
 ## Linux desktop

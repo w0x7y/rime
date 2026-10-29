@@ -2864,6 +2864,36 @@ def zellij(spec):
     return header(spec, "//") + f"themes {{\n    {spec['slug']} {{\n" + "".join(out) + "    }\n}\n"
 
 
+def gitui(spec):
+    """A gitui 0.28+ theme.ron: selection and focus as in the lazygit port. Diffs are highlighted with bat's theme."""
+    c = colours(spec)
+    theme = {
+        "selected_tab": c["blue"],
+        "block_title_focused": c["blue"],
+        "command_fg": c["fg_bright"],
+        "cmdbar_bg": c["bg_dark"],
+        "selection_bg": c["bg_sel"],
+        "selection_fg": c["fg_bright"],
+        "disabled_fg": c["comment"],
+        "diff_line_add": c["green"],
+        "diff_line_delete": c["red"],
+        "diff_file_added": c["green"],
+        "diff_file_removed": c["red"],
+        "diff_file_moved": c["violet"],
+        "diff_file_modified": c["yellow"],
+        "commit_hash": c["violet"],
+        "commit_time": c["cyan"],
+        "commit_author": c["green"],
+        "danger_fg": c["red"],
+        "push_gauge_bg": c["blue"],
+        "push_gauge_fg": c["bg"],
+        "tag_fg": c["pink"],
+        "branch_fg": c["yellow"],
+        "syntax": spec["slug"],  # the bat theme, copied next to theme.ron as <slug>.tmTheme
+    }
+    return header(spec, "//") + "(\n" + "".join(f'    {k}: Some("{v}"),\n' for k, v in theme.items()) + ")\n"
+
+
 def swatch_svg(spec):
     """A small palette strip for the README."""
     p = spec["palette"]
@@ -2990,6 +3020,7 @@ PER_VARIANT = [
     ("lazygit", "general/lazygit/{slug}.yml", lazygit),
     ("dunst", "general/dunst/{slug}.conf", dunst),
     ("zellij", "general/zellij/{slug}.kdl", zellij),
+    ("gitui", "general/gitui/{slug}.ron", gitui),
 ]
 
 

@@ -1,0 +1,26 @@
+// Rime Glacier: Crisper accents with clear separation between every syntax role, on a lighter background.
+// https://github.com/w0x7y/rime
+(
+    selected_tab: Some("#6eaaf0"),
+    block_title_focused: Some("#6eaaf0"),
+    command_fg: Some("#dfe5ee"),
+    cmdbar_bg: Some("#22272d"),
+    selection_bg: Some("#414854"),
+    selection_fg: Some("#dfe5ee"),
+    disabled_fg: Some("#737e94"),
+    diff_line_add: Some("#88d8a0"),
+    diff_line_delete: Some("#e07a90"),
+    diff_file_added: Some("#88d8a0"),
+    diff_file_removed: Some("#e07a90"),
+    diff_file_moved: Some("#ae94f0"),
+    diff_file_modified: Some("#e3dc9e"),
+    commit_hash: Some("#ae94f0"),
+    commit_time: Some("#6fd0d8"),
+    commit_author: Some("#88d8a0"),
+    danger_fg: Some("#e07a90"),
+    push_gauge_bg: Some("#6eaaf0"),
+    push_gauge_fg: Some("#2a2f37"),
+    tag_fg: Some("#f2a7e0"),
+    branch_fg: Some("#e3dc9e"),
+    syntax: Some("rime-glacier"),
+)

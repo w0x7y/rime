@@ -1,0 +1,26 @@
+// Rime Aurora: Vivid neon accents on a darker background.
+// https://github.com/w0x7y/rime
+(
+    selected_tab: Some("#4fa2ff"),
+    block_title_focused: Some("#4fa2ff"),
+    command_fg: Some("#e0e7f2"),
+    cmdbar_bg: Some("#17191e"),
+    selection_bg: Some("#333842"),
+    selection_fg: Some("#e0e7f2"),
+    disabled_fg: Some("#6b768c"),
+    diff_line_add: Some("#5ef0a6"),
+    diff_line_delete: Some("#ff6f91"),
+    diff_file_added: Some("#5ef0a6"),
+    diff_file_removed: Some("#ff6f91"),
+    diff_file_moved: Some("#9b7dff"),
+    diff_file_modified: Some("#e6f07c"),
+    commit_hash: Some("#9b7dff"),
+    commit_time: Some("#38dce8"),
+    commit_author: Some("#5ef0a6"),
+    danger_fg: Some("#ff6f91"),
+    push_gauge_bg: Some("#4fa2ff"),
+    push_gauge_fg: Some("#1c1f25"),
+    tag_fg: Some("#ff8fe0"),
+    branch_fg: Some("#e6f07c"),
+    syntax: Some("rime-aurora"),
+)

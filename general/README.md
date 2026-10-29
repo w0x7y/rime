@@ -328,6 +328,18 @@ export LG_CONFIG_FILE="$HOME/.config/lazygit/config.yml,$HOME/.config/lazygit/ri
 
 Put the `export` in your shell's startup file. On macOS lazygit's config folder is `~/Library/Application Support/lazygit` unless `XDG_CONFIG_HOME` is set.
 
+## gitui
+
+A theme per variant for [gitui](https://github.com/gitui-org/gitui) 0.28 or later, with the selection and focus colors of the lazygit theme. gitui highlights file contents with the bat theme of the same name, so copy both:
+
+```sh
+mkdir -p ~/.config/gitui
+cp gitui/rime.ron ~/.config/gitui/theme.ron
+cp bat/rime.tmTheme ~/.config/gitui/
+```
+
+To keep several themes, copy `gitui/rime.ron` under its own name instead and start gitui with `gitui -t rime.ron`. On Windows the folder is `%APPDATA%\gitui`.
+
 ## dunst
 
 A drop-in per variant for the [dunst](https://dunst-project.org) notification daemon, version 1.9 or later. Notifications take the popup shade, framed blue, gray when low and red when critical.

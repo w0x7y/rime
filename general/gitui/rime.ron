@@ -1,0 +1,26 @@
+// Rime: Soft and muted pastels for long sessions.
+// https://github.com/w0x7y/rime
+(
+    selected_tab: Some("#7aa4e4"),
+    block_title_focused: Some("#7aa4e4"),
+    command_fg: Some("#dce2eb"),
+    cmdbar_bg: Some("#1d2026"),
+    selection_bg: Some("#3a404b"),
+    selection_fg: Some("#dce2eb"),
+    disabled_fg: Some("#6b768c"),
+    diff_line_add: Some("#9ad8ac"),
+    diff_line_delete: Some("#d98a9c"),
+    diff_file_added: Some("#9ad8ac"),
+    diff_file_removed: Some("#d98a9c"),
+    diff_file_moved: Some("#bb98d6"),
+    diff_file_modified: Some("#e4d098"),
+    commit_hash: Some("#bb98d6"),
+    commit_time: Some("#7cc4d0"),
+    commit_author: Some("#9ad8ac"),
+    danger_fg: Some("#d98a9c"),
+    push_gauge_bg: Some("#7aa4e4"),
+    push_gauge_fg: Some("#23272e"),
+    tag_fg: Some("#e8a8cc"),
+    branch_fg: Some("#e4d098"),
+    syntax: Some("rime"),
+)
