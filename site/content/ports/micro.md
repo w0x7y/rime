@@ -16,7 +16,7 @@ mkdir -p ~/.config/micro/colorschemes
 curl -fsSL https://raw.githubusercontent.com/w0x7y/rime/main/general/micro/{{slug}}.micro -o ~/.config/micro/colorschemes/{{slug}}.micro
 ```
 
-then press `ctrl-e` and run `set colorscheme {{slug}}`, or add it to `~/.config/micro/settings.json`:
+then press `ctrl-e` and run `set colorscheme` with the file's name, or add it to `~/.config/micro/settings.json`:
 
 ```json
 {

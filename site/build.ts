@@ -447,6 +447,9 @@ async function build() {
           .replace(/<table>/g, '<div class="table"><table>')
           .replace(/<\/table>/g, "</table></div>")
           .replace(/<p>BLOCK(\d+)<\/p>/g, (_, i) => html[Number(i)]);
+        // only code fences fill in a variant, so one anywhere else would show as written
+        const unfilled = body.match(/\{\{(slug|name|key|appearance)\}\}/);
+        if (unfilled) throw new Error(`${path || "index"}: ${unfilled[0]} outside a code fence isn't filled in`);
         pages.push({ path, title: meta.title ?? name, description: meta.description ?? "", body });
       }
     }

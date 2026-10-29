@@ -16,7 +16,7 @@ mkdir -p ~/.config/helix/themes
 curl -fsSL https://raw.githubusercontent.com/w0x7y/rime/main/general/helix/{{slug}}.toml -o ~/.config/helix/themes/{{slug}}.toml
 ```
 
-helix names a theme after its file. pick it with `:theme {{slug}}`, or set it at the top of `~/.config/helix/config.toml`:
+helix names a theme after its file. try it with `:theme` and that name, or set it at the top of `~/.config/helix/config.toml`:
 
 ```toml
 theme = "{{slug}}"

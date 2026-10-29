@@ -11,7 +11,7 @@ a palette for telegram desktop. the chat list and folders take the darker chrome
 
 ## install
 
-send `{{slug}}.tdesktop-palette` to your saved messages and click it, or pick it with **settings → chat settings → chat background → choose from file**. telegram shows a preview; apply it from there.
+send the palette file to your saved messages and click it, or pick it with **settings → chat settings → chat background → choose from file**. telegram shows a preview; apply it from there.
 
 ## notes
 

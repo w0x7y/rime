@@ -11,7 +11,7 @@ a theme for discord, through [betterdiscord](https://betterdiscord.app) or [venc
 
 ## install
 
-open **settings → themes → open themes folder** (both mods have it), save `{{slug}}.theme.css` there and turn it on in the same list. with vencord you can also add its raw link as an online theme:
+open **settings → themes → open themes folder** (both mods have it), save the theme file there and turn it on in the same list. with vencord you can also add its raw link as an online theme:
 
 ```text
 https://raw.githubusercontent.com/w0x7y/rime/main/general/discord/{{slug}}.theme.css

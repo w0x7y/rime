@@ -25,4 +25,4 @@ mkdir -p ~/.local/share/warp-terminal/themes
 curl -fsSL https://raw.githubusercontent.com/w0x7y/rime/main/general/warp/{{slug}}.yaml -o ~/.local/share/warp-terminal/themes/{{slug}}.yaml
 ```
 
-on windows the folder is `%LOCALAPPDATA%\warp\Warp\data\themes`. then pick {{name}} in **settings → appearance → themes**.
+on windows the folder is `%LOCALAPPDATA%\warp\Warp\data\themes`. then pick the theme by its name, such as rime glacier, in **settings → appearance → themes**.

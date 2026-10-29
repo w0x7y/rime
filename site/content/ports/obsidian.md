@@ -17,7 +17,7 @@ mkdir -p .obsidian/snippets
 curl -fsSL https://raw.githubusercontent.com/w0x7y/rime/main/general/obsidian/{{slug}}.css -o .obsidian/snippets/{{slug}}.css
 ```
 
-then turn on `{{slug}}` under **settings → appearance → css snippets**, and set **base color scheme** to {{appearance}}. a snippet only colors its own mode, so a dark variant does nothing while obsidian is light.
+then turn on the snippet under **settings → appearance → css snippets**, and set **base color scheme** to dark, or to light for rime frost. a snippet only colors its own mode, so a dark variant does nothing while obsidian is light.
 
 ## notes
 
