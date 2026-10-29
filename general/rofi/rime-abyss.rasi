@@ -1,0 +1,48 @@
+// Rime Abyss: The coldest take, on a darker background: no yellow or orange anywhere, with rose as the only warm accent.
+// https://github.com/w0x7y/rime
+@import "default"
+
+* {
+    background: #1d2026;
+    foreground: #c2cde0;
+    border-color: #6b9cf4;
+    separatorcolor: #2c3039;
+    normal-background: #1d2026;
+    normal-foreground: #c2cde0;
+    alternate-normal-background: #1d2026;
+    alternate-normal-foreground: #c2cde0;
+    selected-normal-background: #2c3039;
+    selected-normal-foreground: #dde5f2;
+    active-background: #1d2026;
+    active-foreground: #6b9cf4;
+    alternate-active-background: #1d2026;
+    alternate-active-foreground: #6b9cf4;
+    selected-active-background: #2c3039;
+    selected-active-foreground: #6b9cf4;
+    urgent-background: #1d2026;
+    urgent-foreground: #e8879f;
+    alternate-urgent-background: #1d2026;
+    alternate-urgent-foreground: #e8879f;
+    selected-urgent-background: #2c3039;
+    selected-urgent-foreground: #e8879f;
+}
+
+element-text {
+    highlight: bold #6b9cf4;
+}
+
+prompt {
+    text-color: #937ff2;
+}
+
+entry {
+    placeholder-color: #6b768c;
+}
+
+num-filtered-rows, num-rows, textbox-num-sep {
+    text-color: #6b768c;
+}
+
+scrollbar {
+    handle-color: #2c3039;
+}

@@ -93,6 +93,7 @@ const PORTS: Port[] = [
   { slug: "hyprland", name: "hyprland", group: "desktop", blurb: "borders and groups, in lua" },
   { slug: "dunst", name: "dunst", group: "desktop", blurb: "notifications" },
   { slug: "mako", name: "mako", group: "desktop", blurb: "notifications" },
+  { slug: "rofi", name: "rofi", group: "desktop", blurb: "the launcher" },
   { slug: "fish", name: "fish", group: "more", blurb: "a theme for fish_config" },
   { slug: "starship", name: "starship", group: "more", blurb: "a prompt palette" },
   { slug: "lazygit", name: "lazygit", group: "more", blurb: "the git tui" },

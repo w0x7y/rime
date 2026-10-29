@@ -1,0 +1,48 @@
+// Rime Aurora: Vivid neon accents on a darker background.
+// https://github.com/w0x7y/rime
+@import "default"
+
+* {
+    background: #24282f;
+    foreground: #c8d2e2;
+    border-color: #4fa2ff;
+    separatorcolor: #333842;
+    normal-background: #24282f;
+    normal-foreground: #c8d2e2;
+    alternate-normal-background: #24282f;
+    alternate-normal-foreground: #c8d2e2;
+    selected-normal-background: #333842;
+    selected-normal-foreground: #e0e7f2;
+    active-background: #24282f;
+    active-foreground: #4fa2ff;
+    alternate-active-background: #24282f;
+    alternate-active-foreground: #4fa2ff;
+    selected-active-background: #333842;
+    selected-active-foreground: #4fa2ff;
+    urgent-background: #24282f;
+    urgent-foreground: #ff6f91;
+    alternate-urgent-background: #24282f;
+    alternate-urgent-foreground: #ff6f91;
+    selected-urgent-background: #333842;
+    selected-urgent-foreground: #ff6f91;
+}
+
+element-text {
+    highlight: bold #4fa2ff;
+}
+
+prompt {
+    text-color: #9b7dff;
+}
+
+entry {
+    placeholder-color: #6b768c;
+}
+
+num-filtered-rows, num-rows, textbox-num-sep {
+    text-color: #6b768c;
+}
+
+scrollbar {
+    handle-color: #333842;
+}

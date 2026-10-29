@@ -390,6 +390,18 @@ cp mako/rime ~/.config/mako/rime
 
 Add `include=~/.config/mako/rime` as the first line of `~/.config/mako/config`, before any `[section]`, then run `makoctl reload`.
 
+## rofi
+
+A theme per variant for [rofi](https://github.com/davatorium/rofi) 1.7 or later. It keeps rofi's default layout and changes only the colors: the window takes the popup shade and a blue frame like the notifications above, the selected entry the editors' selection gray, and matched letters are bold blue.
+
+```sh
+mkdir -p ~/.config/rofi/themes
+cp rofi/rime.rasi ~/.config/rofi/themes/
+echo '@theme "rime"' >> ~/.config/rofi/config.rasi
+```
+
+Or try it once with `rofi -show drun -theme rime`. `@theme` drops any theme loaded before it, so keep your own tweaks below that line.
+
 ## Hyprland
 
 A Lua module per variant for Hyprland 0.55 or later, which reads `hyprland.lua`. It colors window borders, groups and the groupbar: the focused window and group in blue, locked groups in yellow.

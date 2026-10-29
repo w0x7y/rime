@@ -1,0 +1,48 @@
+// Rime: Soft and muted pastels for long sessions.
+// https://github.com/w0x7y/rime
+@import "default"
+
+* {
+    background: #2b3038;
+    foreground: #c3ccd9;
+    border-color: #7aa4e4;
+    separatorcolor: #3a404b;
+    normal-background: #2b3038;
+    normal-foreground: #c3ccd9;
+    alternate-normal-background: #2b3038;
+    alternate-normal-foreground: #c3ccd9;
+    selected-normal-background: #3a404b;
+    selected-normal-foreground: #dce2eb;
+    active-background: #2b3038;
+    active-foreground: #7aa4e4;
+    alternate-active-background: #2b3038;
+    alternate-active-foreground: #7aa4e4;
+    selected-active-background: #3a404b;
+    selected-active-foreground: #7aa4e4;
+    urgent-background: #2b3038;
+    urgent-foreground: #d98a9c;
+    alternate-urgent-background: #2b3038;
+    alternate-urgent-foreground: #d98a9c;
+    selected-urgent-background: #3a404b;
+    selected-urgent-foreground: #d98a9c;
+}
+
+element-text {
+    highlight: bold #7aa4e4;
+}
+
+prompt {
+    text-color: #bb98d6;
+}
+
+entry {
+    placeholder-color: #6b768c;
+}
+
+num-filtered-rows, num-rows, textbox-num-sep {
+    text-color: #6b768c;
+}
+
+scrollbar {
+    handle-color: #3a404b;
+}

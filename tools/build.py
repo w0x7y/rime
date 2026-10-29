@@ -3021,6 +3021,30 @@ def k9s(spec):
     return header(spec) + "k9s:\n" + emit(skin, 1)
 
 
+def rofi(spec):
+    """A rofi 1.7+ theme: rofi's own layout, recolored like the dunst port's popups, with the editors' selection gray."""
+    c = colours(spec)
+    v = {"background": c["bg_alt"], "foreground": c["fg"], "border-color": c["blue"], "separatorcolor": c["bg_sel"]}
+    for state, fg in (("normal", c["fg"]), ("active", c["blue"]), ("urgent", c["red"])):
+        # rofi stripes alternate rows; the editors don't, so both kinds of row get one background
+        for kind in ("", "alternate-"):
+            v[f"{kind}{state}-background"] = c["bg_alt"]
+            v[f"{kind}{state}-foreground"] = fg
+        v[f"selected-{state}-background"] = c["bg_sel"]
+        v[f"selected-{state}-foreground"] = c["fg_bright"] if state == "normal" else fg
+    rules = {
+        "*": v,
+        "element-text": {"highlight": f"bold {c['blue']}"},
+        "prompt": {"text-color": c["violet"]},
+        "entry": {"placeholder-color": c["comment"]},
+        "num-filtered-rows, num-rows, textbox-num-sep": {"text-color": c["comment"]},
+        "scrollbar": {"handle-color": c["bg_sel"]},
+    }
+    # "default" names the theme built into rofi, so only the colors change
+    block = lambda sel, props: sel + " {\n" + "".join(f"    {k}: {val};\n" for k, val in props.items()) + "}\n"
+    return header(spec, "//") + '@import "default"\n\n' + "\n".join(block(sel, props) for sel, props in rules.items())
+
+
 def swatch_svg(spec):
     """A small palette strip for the README."""
     p = spec["palette"]
@@ -3150,6 +3174,7 @@ PER_VARIANT = [
     ("gitui", "general/gitui/{slug}.ron", gitui),
     ("btop", "general/btop/{slug}.theme", btop),
     ("k9s", "general/k9s/{slug}.yaml", k9s),
+    ("rofi", "general/rofi/{slug}.rasi", rofi),
 ]
 
 

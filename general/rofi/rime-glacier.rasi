@@ -1,0 +1,48 @@
+// Rime Glacier: Crisper accents with clear separation between every syntax role, on a lighter background.
+// https://github.com/w0x7y/rime
+@import "default"
+
+* {
+    background: #323841;
+    foreground: #c5cedd;
+    border-color: #6eaaf0;
+    separatorcolor: #414854;
+    normal-background: #323841;
+    normal-foreground: #c5cedd;
+    alternate-normal-background: #323841;
+    alternate-normal-foreground: #c5cedd;
+    selected-normal-background: #414854;
+    selected-normal-foreground: #dfe5ee;
+    active-background: #323841;
+    active-foreground: #6eaaf0;
+    alternate-active-background: #323841;
+    alternate-active-foreground: #6eaaf0;
+    selected-active-background: #414854;
+    selected-active-foreground: #6eaaf0;
+    urgent-background: #323841;
+    urgent-foreground: #e07a90;
+    alternate-urgent-background: #323841;
+    alternate-urgent-foreground: #e07a90;
+    selected-urgent-background: #414854;
+    selected-urgent-foreground: #e07a90;
+}
+
+element-text {
+    highlight: bold #6eaaf0;
+}
+
+prompt {
+    text-color: #ae94f0;
+}
+
+entry {
+    placeholder-color: #737e94;
+}
+
+num-filtered-rows, num-rows, textbox-num-sep {
+    text-color: #737e94;
+}
+
+scrollbar {
+    handle-color: #414854;
+}

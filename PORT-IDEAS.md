@@ -34,7 +34,7 @@ Each is a small file per variant, about the size of the tmux or fzf ports.
 
 ## Linux desktop
 
-- [ ] rofi: `.rasi`.
+- [x] rofi: `general/rofi/`, a `.rasi` that recolors rofi's default layout, for rofi 1.7+.
 - [x] dunst: `general/dunst/`, a `dunstrc.d` drop-in.
 - [x] mako: `general/mako/`, a config to `include`.
 - [x] Hyprland: `general/hyprland/`, a Lua module with border and group colors, for Hyprland 0.55+.
