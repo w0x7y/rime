@@ -2894,6 +2894,50 @@ def gitui(spec):
     return header(spec, "//") + "(\n" + "".join(f'    {k}: Some("{v}"),\n' for k, v in theme.items()) + ")\n"
 
 
+def btop(spec):
+    """A btop theme: borders and selection as in the other ports; meters run from the dimmed to the bright terminal accent."""
+    c = colours(spec)
+    slot = {"red": 1, "green": 2, "yellow": 3, "blue": 4, "violet": 5, "cyan": 6}
+    ramp = lambda name: (c["ansi_dim"][slot[name]], c["ansi"][slot[name]], c["ansi"][slot[name] + 8])
+    load = (c["green"], c["yellow"], c["red"])
+    v = {
+        "main_bg": c["bg"],
+        "main_fg": c["fg"],
+        "title": c["fg_bright"],
+        "hi_fg": c["blue"],
+        "selected_bg": c["bg_sel"],
+        "selected_fg": c["fg_bright"],
+        "inactive_fg": c["comment"],
+        "graph_text": c["muted"],
+        "meter_bg": c["bg_sel"],
+        "proc_misc": c["cyan"],
+    }
+    v |= {f"{box}_box": c["bg_sel"] for box in ("cpu", "mem", "net", "proc")}
+    v["div_line"] = c["bg_sel"]
+    gradients = {
+        "temp": (c["blue"], c["violet"], c["red"]),
+        "cpu": load,
+        "free": ramp("green"),
+        "cached": ramp("cyan"),
+        "available": ramp("yellow"),
+        "used": ramp("red"),
+        "download": ramp("blue"),
+        "upload": ramp("violet"),
+        "process": load,
+    }
+    v |= {f"{k}_{end}": col for k, cols in gradients.items() for end, col in zip(("start", "mid", "end"), cols)}
+    # btop 1.4.8 added the follow and banner keys; older versions skip keys they don't know
+    v |= {
+        "proc_pause_bg": c["red"],
+        "proc_follow_bg": c["blue"],
+        "proc_banner_bg": c["violet"],
+        "proc_banner_fg": c["bg"],
+        "followed_bg": c["blue"],
+        "followed_fg": c["bg"],
+    }
+    return header(spec) + "".join(f'theme[{k}]="{col}"\n' for k, col in v.items())
+
+
 def swatch_svg(spec):
     """A small palette strip for the README."""
     p = spec["palette"]
@@ -3021,6 +3065,7 @@ PER_VARIANT = [
     ("dunst", "general/dunst/{slug}.conf", dunst),
     ("zellij", "general/zellij/{slug}.kdl", zellij),
     ("gitui", "general/gitui/{slug}.ron", gitui),
+    ("btop", "general/btop/{slug}.theme", btop),
 ]
 
 

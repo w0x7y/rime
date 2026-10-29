@@ -21,7 +21,7 @@ All shipped. Each reads `SYNTAX`, so code gets the same colors as in Neovim, Zed
 Each is a small file per variant, about the size of the tmux or fzf ports.
 
 - [x] lazygit: `general/lazygit/`, a config file to list in `LG_CONFIG_FILE`.
-- [ ] btop
+- [x] btop: `general/btop/`, a `.theme` file.
 - [ ] yazi
 - [x] zellij: `general/zellij/`, a KDL theme for zellij 0.42+.
 - [ ] herdr: themes go in `config.toml` and can ship as a herdr plugin.

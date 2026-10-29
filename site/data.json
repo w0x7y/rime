@@ -685,6 +685,7 @@
     "dunst": "general/dunst/{slug}.conf",
     "zellij": "general/zellij/{slug}.kdl",
     "gitui": "general/gitui/{slug}.ron",
+    "btop": "general/btop/{slug}.theme",
     "zed": "zed/themes/rime.json",
     "windows-terminal": "general/windows-terminal/rime.json",
     "spicetify": "general/spicetify/color.ini"

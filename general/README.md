@@ -340,6 +340,17 @@ cp bat/rime.tmTheme ~/.config/gitui/
 
 To keep several themes, copy `gitui/rime.ron` under its own name instead and start gitui with `gitui -t rime.ron`. On Windows the folder is `%APPDATA%\gitui`.
 
+## btop
+
+A theme per variant for the [btop](https://github.com/aristocratos/btop) system monitor. Box outlines and empty meters take the selection gray, CPU and process graphs go from green through yellow to red, and each memory and network meter runs from its dimmed terminal color to the bright one.
+
+```sh
+mkdir -p ~/.config/btop/themes
+cp btop/rime.theme ~/.config/btop/themes/
+```
+
+Pick it in btop's options menu (`o`), or set `color_theme = "rime"` in `~/.config/btop/btop.conf`. To keep your terminal's background, turn off `theme_background`.
+
 ## dunst
 
 A drop-in per variant for the [dunst](https://dunst-project.org) notification daemon, version 1.9 or later. Notifications take the popup shade, framed blue, gray when low and red when critical.
