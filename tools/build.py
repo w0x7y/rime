@@ -3325,6 +3325,83 @@ def kde(spec):
     )
 
 
+def qutebrowser(spec):
+    """A qutebrowser config to source: tabs like kitty's, the status bar in the chrome shade with each mode tinting
+    its text, popups in the popup shade with the selection gray, and link hints yellow like search matches."""
+    c = colours(spec)
+    v = {
+        "completion.fg": c["fg"],
+        "completion.odd.bg": c["bg_alt"],
+        "completion.even.bg": c["bg_alt"],
+        "completion.category.fg": c["blue"],
+        "completion.category.bg": c["bg_dark"],
+        "completion.category.border.top": c["bg_dark"],
+        "completion.category.border.bottom": c["bg_dark"],
+        "completion.item.selected.fg": c["fg_bright"],
+        "completion.item.selected.bg": c["bg_sel"],
+        "completion.item.selected.border.top": c["bg_sel"],
+        "completion.item.selected.border.bottom": c["bg_sel"],
+        "completion.item.selected.match.fg": c["blue"],
+        "completion.match.fg": c["blue"],
+        "completion.scrollbar.fg": c["bg_sel"],
+        "completion.scrollbar.bg": c["bg_alt"],
+        "contextmenu.menu.fg": c["fg"],
+        "contextmenu.menu.bg": c["bg_alt"],
+        "contextmenu.selected.fg": c["fg_bright"],
+        "contextmenu.selected.bg": c["bg_sel"],
+        "contextmenu.disabled.fg": c["comment"],
+        "contextmenu.disabled.bg": c["bg_alt"],
+        "tooltip.fg": c["fg"],
+        "tooltip.bg": c["bg_alt"],
+        "downloads.bar.bg": c["bg_dark"],
+        "downloads.start.fg": c["bg"],
+        "downloads.start.bg": c["blue"],
+        "downloads.stop.fg": c["bg"],
+        "downloads.stop.bg": c["green"],
+        "downloads.error.fg": c["bg"],
+        "downloads.error.bg": c["red"],
+        "hints.fg": c["bg"],
+        "hints.bg": c["yellow"],
+        "hints.match.fg": c["bg_sel"],  # the letters already typed
+        "keyhint.fg": c["fg"],
+        "keyhint.suffix.fg": c["yellow"],
+        "keyhint.bg": c["bg_alt"],
+        "prompts.fg": c["fg"],
+        "prompts.border": f"1px solid {c['bg_sel']}",
+        "prompts.bg": c["bg_alt"],
+        "prompts.selected.fg": c["fg_bright"],
+        "prompts.selected.bg": c["bg_sel"],
+    }
+    # messages sit in the popup shade with a colored frame, like the dunst port's notifications
+    for level, fg, frame in (("error", "red", "red"), ("warning", "yellow", "yellow"), ("info", "fg", "bg_sel")):
+        v |= {f"messages.{level}.fg": c[fg], f"messages.{level}.bg": c["bg_alt"], f"messages.{level}.border": c[frame]}
+    # the bar stays in the chrome shade, so the URL colors below stay readable in every mode
+    modes = {"normal": "fg", "insert": "green", "passthrough": "cyan", "command": "fg", "caret": "violet", "caret.selection": "violet"}
+    for mode, fg in modes.items():
+        v |= {f"statusbar.{mode}.fg": c[fg], f"statusbar.{mode}.bg": c["bg_dark"]}
+    for mode in ("private", "command.private"):
+        v |= {f"statusbar.{mode}.fg": c["fg"], f"statusbar.{mode}.bg": c["bg_sel"]}
+    v |= {
+        "statusbar.progress.bg": c["blue"],
+        "statusbar.url.fg": c["fg"],
+        "statusbar.url.error.fg": c["red"],
+        "statusbar.url.hover.fg": c["cyan"],
+        "statusbar.url.success.http.fg": c["fg"],
+        "statusbar.url.success.https.fg": c["green"],
+        "statusbar.url.warn.fg": c["yellow"],
+        "tabs.bar.bg": c["bg_dark"],
+        "tabs.indicator.start": c["blue"],
+        "tabs.indicator.stop": c["green"],
+        "tabs.indicator.error": c["red"],
+    }
+    tabs = {"": (c["comment"], c["bg_dark"]), "selected.": (c["fg_bright"], c["bg"]), "pinned.": (c["muted"], c["bg_alt"]), "pinned.selected.": (c["fg_bright"], c["bg"])}
+    for kind, (fg, bg) in tabs.items():
+        for parity in ("odd", "even"):
+            v |= {f"tabs.{kind}{parity}.fg": fg, f"tabs.{kind}{parity}.bg": bg}
+    v["webpage.bg"] = c["bg"]  # shown before a page paints, instead of a white flash
+    return header(spec) + "".join(f'c.colors.{k} = "{col}"\n' for k, col in v.items())
+
+
 def swatch_svg(spec):
     """A small palette strip for the README."""
     p = spec["palette"]
@@ -3459,6 +3536,7 @@ PER_VARIANT = [
     ("glamour", "general/glamour/{slug}.json", glamour),
     ("yazi", "general/yazi/{slug}.yazi/flavor.toml", yazi),
     ("kde", "general/kde/{slug}.colors", kde),
+    ("qutebrowser", "general/qutebrowser/{slug}.py", qutebrowser),
 ]
 
 

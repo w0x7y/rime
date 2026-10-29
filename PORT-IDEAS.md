@@ -39,7 +39,7 @@ Each is a small file per variant, about the size of the tmux or fzf ports.
 - [x] mako: `general/mako/`, a config to `include`.
 - [x] Hyprland: `general/hyprland/`, a Lua module with border and group colors, for Hyprland 0.55+.
 - [x] KDE color scheme: `general/kde/`, a `.colors` file for Plasma and its apps.
-- [ ] qutebrowser
+- [x] qutebrowser: `general/qutebrowser/`, a config file to `config.source()`.
 
 ## Apps
 

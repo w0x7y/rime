@@ -89,6 +89,7 @@ const PORTS: Port[] = [
   { slug: "spicetify", name: "spicetify", group: "apps", blurb: "spotify, all five in one theme" },
   { slug: "firefox", name: "firefox color", group: "apps", blurb: "a link per variant" },
   { slug: "telegram", name: "telegram", group: "apps", blurb: "a desktop palette" },
+  { slug: "qutebrowser", name: "qutebrowser", group: "apps", blurb: "the keyboard browser" },
   { slug: "noctalia", name: "noctalia", group: "desktop", blurb: "the desktop shell" },
   { slug: "hyprland", name: "hyprland", group: "desktop", blurb: "borders and groups, in lua" },
   { slug: "dunst", name: "dunst", group: "desktop", blurb: "notifications" },

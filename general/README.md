@@ -295,6 +295,17 @@ A palette per variant for Telegram Desktop. Send `telegram/rime.tdesktop-palette
 
 A palette has no chat background, so Telegram keeps your current wallpaper. For a plain one, open **Chat background** and pick the solid color closest to the theme's background.
 
+## qutebrowser
+
+A config file per variant for [qutebrowser](https://qutebrowser.org). Tabs look like kitty's, the status bar keeps the darker chrome shade and tints its text by mode (green for insert, violet for caret), menus and completion take the popup shade with the selection gray, and link hints are yellow like search matches.
+
+```sh
+cp qutebrowser/rime.py ~/.config/qutebrowser/
+echo 'config.source("rime.py")' >> ~/.config/qutebrowser/config.py
+```
+
+Then run `:config-source`. If `config.py` is new, put `config.load_autoconfig()` above that line, or the settings you change inside qutebrowser stop loading. On macOS the folder is `~/.qutebrowser`.
+
 ## fish
 
 A theme per variant for fish's `fish_config theme`. The command line follows the same syntax roles as the editor ports.
