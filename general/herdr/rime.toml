@@ -1,0 +1,22 @@
+# Rime: Soft and muted pastels for long sessions.
+# https://github.com/w0x7y/rime
+[theme.custom]
+accent = "#7aa4e4"
+panel_bg = "#1d2026"
+sidebar_bg = "#1d2026"
+active_row_bg = "#2b3038"
+selection_bg = "#3a404b"
+surface0 = "#2b3038"
+surface1 = "#3a404b"
+surface_dim = "#3a404b"
+overlay0 = "#6b768c"
+overlay1 = "#7987a1"
+text = "#c3ccd9"
+subtext0 = "#9aa4b6"
+mauve = "#bb98d6"
+green = "#9ad8ac"
+yellow = "#e4d098"
+red = "#d98a9c"
+blue = "#7aa4e4"
+teal = "#7cc4d0"
+peach = "#e8a8cc"

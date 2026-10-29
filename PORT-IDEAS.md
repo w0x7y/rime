@@ -14,17 +14,19 @@ All shipped. Each reads `SYNTAX`, so code gets the same colors as in Neovim, Zed
 
 ## Terminals
 
+All shipped.
+
 - [x] Warp: `general/warp/`, a YAML theme per variant.
 
 ## CLI and TUI tools
 
-Each is a small file per variant, about the size of the tmux or fzf ports.
+All shipped. Each is a small file per variant, about the size of the tmux or fzf ports; yazi's is a folder.
 
 - [x] lazygit: `general/lazygit/`, a config file to list in `LG_CONFIG_FILE`.
 - [x] btop: `general/btop/`, a `.theme` file.
 - [x] yazi: `general/yazi/`, a flavor folder per variant, with the bat theme for previews.
 - [x] zellij: `general/zellij/`, a KDL theme for zellij 0.42+.
-- [ ] herdr: themes go in `config.toml` and can ship as a herdr plugin.
+- [x] herdr: `general/herdr/`, a `[theme.custom]` table for `config.toml`. Plugins can't carry themes, as of 0.9.5.
 - [x] starship: `general/starship/`, a `[palettes.<variant>]` block.
 - [x] fish: `general/fish/`, a `.theme` file for `fish_config theme`. The command line reads `SYNTAX`.
 - [x] k9s: `general/k9s/`, a skin. Resource YAML reads `SYNTAX`.
@@ -33,6 +35,8 @@ Each is a small file per variant, about the size of the tmux or fzf ports.
 - [x] glamour: `general/glamour/`, a style for glow and gh. Code blocks read `SYNTAX`.
 
 ## Linux desktop
+
+All shipped.
 
 - [x] rofi: `general/rofi/`, a `.rasi` that recolors rofi's default layout, for rofi 1.7+.
 - [x] dunst: `general/dunst/`, a `dunstrc.d` drop-in.

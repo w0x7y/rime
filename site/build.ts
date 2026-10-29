@@ -107,6 +107,7 @@ const PORTS: Port[] = [
   { slug: "yazi", name: "yazi", group: "more", blurb: "the file manager" },
   { slug: "tmux", name: "tmux", group: "more", blurb: "status bar, borders and copy mode" },
   { slug: "zellij", name: "zellij", group: "more", blurb: "tabs, modes and pane frames" },
+  { slug: "herdr", name: "herdr", group: "more", blurb: "workspaces for coding agents" },
   { slug: "bat", name: "bat", group: "more", blurb: "a syntax theme" },
   { slug: "delta", name: "delta", group: "more", blurb: "the git diff pager" },
   { slug: "base16", name: "base16", group: "more", blurb: "for any base16 template" },

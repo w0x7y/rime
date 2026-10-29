@@ -1,0 +1,22 @@
+# Rime Frost: Frost-white paper under the same cold accents, deepened to read on it.
+# https://github.com/w0x7y/rime
+[theme.custom]
+accent = "#2e62c0"
+panel_bg = "#f7f8fa"
+sidebar_bg = "#f7f8fa"
+active_row_bg = "#e3e7ee"
+selection_bg = "#d2d8e2"
+surface0 = "#e3e7ee"
+surface1 = "#d2d8e2"
+surface_dim = "#d2d8e2"
+overlay0 = "#7f899b"
+overlay1 = "#5f7090"
+text = "#363d4a"
+subtext0 = "#566073"
+mauve = "#7650c4"
+green = "#267b4f"
+yellow = "#866405"
+red = "#b83d63"
+blue = "#2e62c0"
+teal = "#0f7480"
+peach = "#a34396"

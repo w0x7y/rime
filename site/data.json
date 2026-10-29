@@ -693,6 +693,7 @@
     "yazi": "general/yazi/{slug}.yazi/flavor.toml",
     "kde": "general/kde/{slug}.colors",
     "qutebrowser": "general/qutebrowser/{slug}.py",
+    "herdr": "general/herdr/{slug}.toml",
     "zed": "zed/themes/rime.json",
     "windows-terminal": "general/windows-terminal/rime.json",
     "spicetify": "general/spicetify/color.ini"

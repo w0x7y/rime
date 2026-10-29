@@ -3402,6 +3402,34 @@ def qutebrowser(spec):
     return header(spec) + "".join(f'c.colors.{k} = "{col}"\n' for k, col in v.items())
 
 
+def herdr(spec):
+    """A [theme.custom] table for herdr's config.toml. It sets every token, so the built-in theme under it doesn't
+    matter. herdr names its tokens after Catppuccin's; the bars, sidebar and rows follow the zellij port."""
+    c = colours(spec)
+    tokens = {
+        "accent": "blue",
+        "panel_bg": "bg_dark",  # tab bar, floating panels and modals
+        "sidebar_bg": "bg_dark",
+        "active_row_bg": "bg_alt",
+        "selection_bg": "bg_sel",
+        "surface0": "bg_alt",
+        "surface1": "bg_sel",
+        "surface_dim": "bg_sel",  # separators
+        "overlay0": "comment",  # unfocused pane borders and muted text, so readable rather than bg_sel
+        "overlay1": "steel",
+        "text": "fg",
+        "subtext0": "muted",
+        "mauve": "violet",
+        "green": "green",
+        "yellow": "yellow",
+        "red": "red",
+        "blue": "blue",
+        "teal": "cyan",
+        "peach": "pink",  # herdr's interrupted state; Rime has no orange
+    }
+    return header(spec) + "[theme.custom]\n" + "".join(f'{k} = "{c[n]}"\n' for k, n in tokens.items())
+
+
 def swatch_svg(spec):
     """A small palette strip for the README."""
     p = spec["palette"]
@@ -3537,6 +3565,7 @@ PER_VARIANT = [
     ("yazi", "general/yazi/{slug}.yazi/flavor.toml", yazi),
     ("kde", "general/kde/{slug}.colors", kde),
     ("qutebrowser", "general/qutebrowser/{slug}.py", qutebrowser),
+    ("herdr", "general/herdr/{slug}.toml", herdr),
 ]
 
 

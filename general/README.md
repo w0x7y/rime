@@ -152,6 +152,17 @@ echo 'theme "rime"' >> ~/.config/zellij/config.kdl
 
 To follow the terminal's dark or light mode, set both `theme_dark "rime"` and `theme_light "rime-frost"` instead (zellij 0.45 or later).
 
+## herdr
+
+A `[theme.custom]` table per variant for [herdr](https://herdr.dev) 0.9 or later. Like the zellij theme, its tab bar, panels and sidebar take the darker chrome shade and the focused pane is framed blue. The table sets every color herdr has, so it works over any built-in theme.
+
+```sh
+cat herdr/rime.toml >> ~/.config/herdr/config.toml
+herdr server reload-config
+```
+
+If your config already has a `[theme.custom]` table, replace it instead of appending.
+
 ## Helix
 
 A theme per variant, with the same syntax roles as Neovim, Zed and VS Code. Helix names a theme after its file, so this one is `rime`.

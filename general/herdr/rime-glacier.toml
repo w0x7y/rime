@@ -1,0 +1,22 @@
+# Rime Glacier: Crisper accents with clear separation between every syntax role, on a lighter background.
+# https://github.com/w0x7y/rime
+[theme.custom]
+accent = "#6eaaf0"
+panel_bg = "#22272d"
+sidebar_bg = "#22272d"
+active_row_bg = "#323841"
+selection_bg = "#414854"
+surface0 = "#323841"
+surface1 = "#414854"
+surface_dim = "#414854"
+overlay0 = "#737e94"
+overlay1 = "#788bb0"
+text = "#c5cedd"
+subtext0 = "#9aa4b6"
+mauve = "#ae94f0"
+green = "#88d8a0"
+yellow = "#e3dc9e"
+red = "#e07a90"
+blue = "#6eaaf0"
+teal = "#6fd0d8"
+peach = "#f2a7e0"
