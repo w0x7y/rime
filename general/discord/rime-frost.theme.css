@@ -1,0 +1,112 @@
+/**
+ * @name Rime Frost
+ * @author Idan Gilboa
+ * @description Frost-white paper under the same cold accents, deepened to read on it.
+ * @version 0.5.1
+ * @source https://github.com/w0x7y/rime
+ */
+
+.theme-light:not(.custom-user-profile-theme) {
+  --background-primary: #eef1f5;
+  --background-secondary: #f7f8fa;
+  --background-secondary-alt: #f7f8fa;
+  --background-tertiary: #f7f8fa;
+  --background-accent: #d2d8e2;
+  --background-floating: #e3e7ee;
+  --background-nested-floating: #e3e7ee;
+  --background-mobile-primary: #eef1f5;
+  --background-mobile-secondary: #f7f8fa;
+  --background-modifier-hover: #d2d8e280;
+  --background-modifier-active: #d2d8e2;
+  --background-modifier-selected: #d2d8e2;
+  --background-modifier-accent: #dbe0e8;
+  --channeltextarea-background: #e3e7ee;
+  --header-primary: #272d37;
+  --header-secondary: #566073;
+  --text-normal: #363d4a;
+  --text-positive: #267b4f;
+  --text-warning: #866405;
+  --text-danger: #b83d63;
+  --interactive-normal: #566073;
+  --interactive-hover: #363d4a;
+  --interactive-active: #272d37;
+  --brand-experiment: #2e62c0;
+  --app-frame-background: #f7f8fa;
+  --app-frame-border: #dbe0e8;
+  --background-base-lowest: #f7f8fa;
+  --background-base-lower: #eef1f5;
+  --background-base-low: #f7f8fa;
+  --background-surface-high: #e3e7ee;
+  --background-surface-higher: #e3e7ee;
+  --background-surface-highest: #d2d8e2;
+  --background-mod-subtle: #d2d8e280;
+  --background-mod-muted: #d2d8e280;
+  --background-mod-normal: #e3e7ee;
+  --background-mod-strong: #d2d8e2;
+  --background-code: #f7f8fa;
+  --chat-background-default: #eef1f5;
+  --home-background: #f7f8fa;
+  --modal-background: #e3e7ee;
+  --modal-footer-background: #f7f8fa;
+  --card-background-default: #e3e7ee;
+  --border-subtle: #dbe0e8;
+  --border-normal: #dbe0e8;
+  --border-strong: #d2d8e2;
+  --text-default: #363d4a;
+  --text-strong: #272d37;
+  --text-subtle: #566073;
+  --text-muted: #7f899b;
+  --text-link: #2e62c0;
+  --text-brand: #2e62c0;
+  --text-feedback-critical: #b83d63;
+  --text-feedback-positive: #267b4f;
+  --text-feedback-warning: #866405;
+  --text-feedback-info: #2e62c0;
+  --channels-default: #566073;
+  --channel-icon: #566073;
+  --icon-default: #566073;
+  --icon-subtle: #566073;
+  --icon-strong: #363d4a;
+  --icon-muted: #7f899b;
+  --interactive-text-default: #566073;
+  --interactive-text-hover: #363d4a;
+  --interactive-text-active: #272d37;
+  --interactive-icon-default: #566073;
+  --interactive-icon-hover: #363d4a;
+  --interactive-icon-active: #272d37;
+  --interactive-muted: #7f899b;
+  --interactive-background-hover: #d2d8e280;
+  --interactive-background-active: #d2d8e2;
+  --interactive-background-selected: #d2d8e2;
+  --input-background-default: #e3e7ee;
+  --input-border-default: #dbe0e8;
+  --input-text-default: #363d4a;
+  --input-placeholder-text-default: #7f899b;
+  --message-background-hover: #e3e7ee;
+  --mention-foreground: #2e62c0;
+  --mention-background: #2e62c033;
+  --message-mentioned-background-default: #86640514;
+  --message-mentioned-background-hover: #8664051f;
+  --status-danger: #b83d63;
+  --status-positive: #267b4f;
+  --status-warning: #866405;
+  --control-primary-background-default: #2e62c0;
+  --control-primary-background-hover: #2958ad;
+  --control-primary-background-active: #254e9a;
+  --control-primary-text-default: #eef1f5;
+  --control-primary-text-hover: #eef1f5;
+  --control-primary-text-active: #eef1f5;
+  --control-secondary-background-default: #e3e7ee;
+  --control-secondary-background-hover: #d2d8e2;
+  --control-secondary-background-active: #d2d8e2;
+  --control-secondary-text-default: #363d4a;
+  --control-critical-primary-background-default: #b83d63;
+  --control-critical-primary-background-hover: #a63759;
+  --control-critical-primary-text-default: #eef1f5;
+  --scrollbar-auto-thumb: #d2d8e2;
+  --scrollbar-auto-track: transparent;
+  --scrollbar-thin-thumb: #d2d8e2;
+  --scrollbar-thin-track: transparent;
+  --brand-500: #2e62c0;
+  --brand-560: #2958ad;
+}

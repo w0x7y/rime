@@ -10,6 +10,8 @@ Zed theme, VS Code themes, extension manifests, icon, the terminal / general-pur
 files and the website's site/data.json are all rewritten. Only the Python standard library is used.
 """
 
+import base64
+import colorsys
 import json
 import math
 import pathlib
@@ -2138,6 +2140,558 @@ def noctalia(spec):
     )
 
 
+
+def warp(spec):
+    """A Warp theme. Warp shades its own chrome from the background, the accent and `details`."""
+    c = colours(spec)
+    block = lambda cols: "".join(f'    {n}: "{cols[i]}"\n' for i, n in enumerate(ANSI_NAMES))
+    return (
+        header(spec)
+        + f'name: "{spec["name"]}"\naccent: "{c["blue"]}"\ncursor: "{c["fg"]}"\n'
+        f'background: "{c["bg"]}"\nforeground: "{c["fg"]}"\n'
+        f'details: {"darker" if spec["appearance"] == "dark" else "lighter"}\n'
+        "terminal_colors:\n  normal:\n" + block(c["ansi"][:8]) + "  bright:\n" + block(c["ansi"][8:])
+    )
+
+
+def css_block(selector, props):
+    return selector + " {\n" + "".join(f"  --{k}: {v};\n" for k, v in props.items()) + "}\n"
+
+
+# Obsidian's code block colours and the syntax role each takes. Prism, which highlights them,
+# puts numbers, booleans and constants in one `value` group, and regexes in `important`.
+OBSIDIAN_SYNTAX = {
+    "comment": "comment",
+    "function": "function",
+    "important": "string.regexp",
+    "keyword": "keyword",
+    "operator": "operator",
+    "property": "property",
+    "punctuation": "punctuation",
+    "string": "string",
+    "tag": "tag",
+    "value": "constant",
+}
+
+
+def obsidian(spec):
+    """An Obsidian CSS snippet over the default theme, dressed like the GUI editors: sidebars in the chrome shade."""
+    c = colours(spec)
+    accent_hsl = colorsys.rgb_to_hls(*(v / 255 for v in rgb(c["blue"])))
+    accents = {"red": "red", "orange": "yellow", "yellow": "yellow", "green": "green", "cyan": "cyan", "blue": "blue", "purple": "violet", "pink": "pink"}
+    v = {
+        "color-base-00": c["bg"],
+        "color-base-05": c["colorcolumn"],
+        "color-base-10": c["bg_alt"],
+        "color-base-20": c["bg_dark"],
+        "color-base-25": c["bg_alt"],
+        "color-base-30": c["border"],
+        "color-base-35": c["bg_sel"],
+        "color-base-40": c["whitespace"],
+        "color-base-50": c["comment"],
+        "color-base-60": c["comment"],
+        "color-base-70": c["muted"],
+        "color-base-100": c["fg"],
+        "color-accent": c["blue"],
+        "color-accent-1": lift(spec, c["blue"], 0.1),
+        "color-accent-2": lift(spec, c["blue"], 0.2),
+        "color-accent-hsl": f"{round(accent_hsl[0] * 360)}, {round(accent_hsl[2] * 100)}%, {round(accent_hsl[1] * 100)}%",
+    }
+    for name, colour in accents.items():
+        v[f"color-{name}"] = c[colour]
+        v[f"color-{name}-rgb"] = ", ".join(str(n) for n in rgb(c[colour]))
+    v |= {
+        "background-primary": c["bg"],
+        "background-primary-alt": c["bg_alt"],
+        "background-secondary": c["bg_dark"],
+        "background-secondary-alt": c["bg_alt"],
+        "background-modifier-hover": alpha(c["fg"], 0.08),
+        "background-modifier-active-hover": alpha(c["blue"], 0.15),
+        "background-modifier-border": c["border"],
+        "background-modifier-border-hover": c["bg_sel"],
+        "background-modifier-border-focus": c["bg_sel"],
+        "background-modifier-form-field": c["bg_alt"],
+        "background-modifier-error": c["red"],
+        "background-modifier-success": c["green"],
+        "text-normal": c["fg"],
+        "text-muted": c["muted"],
+        "text-faint": c["comment"],
+        "text-on-accent": c["bg"],
+        "text-accent": c["blue"],
+        "text-accent-hover": c["cyan"],
+        "text-selection": c["bg_sel"],
+        "text-highlight-bg": alpha(c["yellow"], 0.3),
+        "text-error": c["red"],
+        "text-warning": c["yellow"],
+        "text-success": c["green"],
+        "interactive-normal": c["bg_alt"],
+        "interactive-hover": c["bg_sel"],
+        "interactive-accent": c["blue"],
+        "interactive-accent-hover": lift(spec, c["blue"], 0.15),
+        "code-background": c["bg_alt"],
+        "code-normal": c["fg"],
+    }
+    v |= {f"code-{name}": syntax(c, role)[0] for name, role in OBSIDIAN_SYNTAX.items()}
+    v |= {f"h{i}-color": syntax(c, "markup.heading")[0] for i in range(1, 7)}
+    return (
+        f"/* {spec['name']}: {spec['description']} */\n/* {REPO} */\n"
+        f"/* turn it on under Appearance > CSS snippets, with Obsidian's base color scheme set to {spec['appearance']} */\n"
+        + css_block(f".theme-{spec['appearance']}", v)
+    )
+
+
+def discord(spec):
+    """A Discord theme for BetterDiscord and Vencord: the chat on the background, the lists around it in the chrome shade."""
+    c = colours(spec)
+    hover, selected = alpha(c["bg_sel"], 0.5), c["bg_sel"]
+    v = {
+        # Discord's older names, which some screens and plugins still read
+        "background-primary": c["bg"],
+        "background-secondary": c["bg_dark"],
+        "background-secondary-alt": c["bg_dark"],
+        "background-tertiary": c["bg_dark"],
+        "background-accent": c["bg_sel"],
+        "background-floating": c["bg_alt"],
+        "background-nested-floating": c["bg_alt"],
+        "background-mobile-primary": c["bg"],
+        "background-mobile-secondary": c["bg_dark"],
+        "background-modifier-hover": hover,
+        "background-modifier-active": selected,
+        "background-modifier-selected": selected,
+        "background-modifier-accent": c["border"],
+        "channeltextarea-background": c["bg_alt"],
+        "header-primary": c["fg_bright"],
+        "header-secondary": c["muted"],
+        "text-normal": c["fg"],
+        "text-positive": c["green"],
+        "text-warning": c["yellow"],
+        "text-danger": c["red"],
+        "interactive-normal": c["muted"],
+        "interactive-hover": c["fg"],
+        "interactive-active": c["fg_bright"],
+        "brand-experiment": c["blue"],
+        # the names since Discord's 2025 visual refresh
+        "app-frame-background": c["bg_dark"],
+        "app-frame-border": c["border"],
+        "background-base-lowest": c["bg_dark"],
+        "background-base-lower": c["bg"],
+        "background-base-low": c["bg_dark"],
+        "background-surface-high": c["bg_alt"],
+        "background-surface-higher": c["bg_alt"],
+        "background-surface-highest": c["bg_sel"],
+        "background-mod-subtle": hover,
+        "background-mod-muted": hover,
+        "background-mod-normal": c["bg_alt"],
+        "background-mod-strong": c["bg_sel"],
+        "background-code": c["bg_dark"],
+        "chat-background-default": c["bg"],
+        "home-background": c["bg_dark"],
+        "modal-background": c["bg_alt"],
+        "modal-footer-background": c["bg_dark"],
+        "card-background-default": c["bg_alt"],
+        "border-subtle": c["border"],
+        "border-normal": c["border"],
+        "border-strong": c["bg_sel"],
+        "text-default": c["fg"],
+        "text-strong": c["fg_bright"],
+        "text-subtle": c["muted"],
+        "text-muted": c["comment"],
+        "text-link": c["blue"],
+        "text-brand": c["blue"],
+        "text-feedback-critical": c["red"],
+        "text-feedback-positive": c["green"],
+        "text-feedback-warning": c["yellow"],
+        "text-feedback-info": c["blue"],
+        "channels-default": c["muted"],
+        "channel-icon": c["muted"],
+        "icon-default": c["muted"],
+        "icon-subtle": c["muted"],
+        "icon-strong": c["fg"],
+        "icon-muted": c["comment"],
+        "interactive-text-default": c["muted"],
+        "interactive-text-hover": c["fg"],
+        "interactive-text-active": c["fg_bright"],
+        "interactive-icon-default": c["muted"],
+        "interactive-icon-hover": c["fg"],
+        "interactive-icon-active": c["fg_bright"],
+        "interactive-muted": c["comment"],
+        "interactive-background-hover": hover,
+        "interactive-background-active": selected,
+        "interactive-background-selected": selected,
+        "input-background-default": c["bg_alt"],
+        "input-border-default": c["border"],
+        "input-text-default": c["fg"],
+        "input-placeholder-text-default": c["comment"],
+        "message-background-hover": c["bg_alt"],
+        "mention-foreground": c["blue"],
+        "mention-background": alpha(c["blue"], 0.2),
+        "message-mentioned-background-default": alpha(c["yellow"], 0.08),
+        "message-mentioned-background-hover": alpha(c["yellow"], 0.12),
+        "status-danger": c["red"],
+        "status-positive": c["green"],
+        "status-warning": c["yellow"],
+        "control-primary-background-default": c["blue"],
+        "control-primary-background-hover": lift(spec, c["blue"], 0.1),
+        "control-primary-background-active": lift(spec, c["blue"], 0.2),
+        "control-primary-text-default": c["bg"],
+        "control-primary-text-hover": c["bg"],
+        "control-primary-text-active": c["bg"],
+        "control-secondary-background-default": c["bg_alt"],
+        "control-secondary-background-hover": c["bg_sel"],
+        "control-secondary-background-active": c["bg_sel"],
+        "control-secondary-text-default": c["fg"],
+        "control-critical-primary-background-default": c["red"],
+        "control-critical-primary-background-hover": lift(spec, c["red"], 0.1),
+        "control-critical-primary-text-default": c["bg"],
+        "scrollbar-auto-thumb": c["bg_sel"],
+        "scrollbar-auto-track": "transparent",
+        "scrollbar-thin-thumb": c["bg_sel"],
+        "scrollbar-thin-track": "transparent",
+        "brand-500": c["blue"],
+        "brand-560": lift(spec, c["blue"], 0.1),
+    }
+    # the dark or light modes Discord can be in; a custom profile theme keeps its own colours
+    modes = ["dark", "darker", "midnight"] if spec["appearance"] == "dark" else ["light"]
+    meta = {"name": spec["name"], "author": AUTHOR, "description": spec["description"], "version": VERSION, "source": REPO}
+    return (
+        "/**\n" + "".join(f" * @{k} {val}\n" for k, val in meta.items()) + " */\n\n"
+        + css_block(",\n".join(f".theme-{m}:not(.custom-user-profile-theme)" for m in modes), v)
+    )
+
+
+def spicetify(specs):
+    """Spicetify's color.ini, a colour scheme per variant. Its colours are hex without the #."""
+    out = [f"; Rime for Spotify, through Spicetify\n; {REPO}\n"]
+    for spec in specs:
+        c = colours(spec)
+        keys = {
+            "text": c["fg"],
+            "subtext": c["muted"],
+            "main": c["bg"],
+            "main-elevated": c["bg_alt"],
+            "highlight": c["bg_alt"],
+            "highlight-elevated": c["bg_sel"],
+            "sidebar": c["bg_dark"],
+            "player": c["bg_dark"],
+            "card": c["bg_alt"],
+            "shadow": "#000000",
+            "selected-row": c["fg"],
+            "button": c["blue"],
+            "button-active": lift(spec, c["blue"], 0.15),
+            "button-disabled": c["comment"],
+            "tab-active": c["bg_sel"],
+            "notification": c["blue"],
+            "notification-error": c["red"],
+            "misc": c["comment"],
+        }
+        out.append(f"\n[{spec['slug']}]\n; {spec['description']}\n" + "".join(f"{k:<18} = {h.lstrip('#')}\n" for k, h in keys.items()))
+    return "".join(out)
+
+
+def msgpack(value):
+    """The MessagePack encoding of the dicts, strings and small ints a Firefox Color theme holds."""
+    if isinstance(value, dict):
+        n = len(value)
+        head = bytes([0x80 | n]) if n < 16 else b"\xde" + n.to_bytes(2, "big")
+        return head + b"".join(msgpack(k) + msgpack(v) for k, v in value.items())
+    if isinstance(value, list):
+        return bytes([0x90 | len(value)]) + b"".join(msgpack(v) for v in value)
+    if isinstance(value, str):
+        b = value.encode()
+        return (bytes([0xA0 | len(b)]) if len(b) < 32 else bytes([0xD9, len(b)])) + b
+    if isinstance(value, int) and 0 <= value < 256:
+        return bytes([value]) if value < 128 else bytes([0xCC, value])
+    raise TypeError(f"msgpack() can't encode {value!r}")
+
+
+def lzma_literals(data):
+    """data as an .lzma stream of literals only: no compression, but bytes that depend on nothing
+    else, where liblzma's can change between versions and leave the generated files stale."""
+    lc, prob_init = 3, 1024
+    is_match = [prob_init] * 4  # the state stays 0 after literals, so one per position state (pb = 2)
+    literal = [prob_init] * (0x300 << lc)
+    out = bytearray(b"\x5d" + (1 << 16).to_bytes(4, "little") + len(data).to_bytes(8, "little"))
+    low, rng, cache, cache_size = 0, 0xFFFFFFFF, 0, 1
+
+    def shift_low():
+        nonlocal low, cache, cache_size
+        if (low & 0xFFFFFFFF) < 0xFF000000 or low >> 32:
+            carry, temp = low >> 32, cache
+            while cache_size:
+                out.append((temp + carry) & 0xFF)
+                temp, cache_size = 0xFF, cache_size - 1
+            cache = (low >> 24) & 0xFF
+        cache_size += 1
+        low = (low & 0x00FFFFFF) << 8
+
+    def bit(probs, i, b):
+        nonlocal low, rng
+        bound = (rng >> 11) * probs[i]
+        if b:
+            low, rng = low + bound, rng - bound
+            probs[i] -= probs[i] >> 5
+        else:
+            rng = bound
+            probs[i] += (2048 - probs[i]) >> 5
+        while rng < 1 << 24:
+            rng = (rng << 8) & 0xFFFFFFFF
+            shift_low()
+
+    prev = 0
+    for pos, byte in enumerate(data):
+        bit(is_match, pos & 3, 0)
+        base, symbol = (prev >> (8 - lc)) * 0x300, 1
+        for i in range(7, -1, -1):
+            b = (byte >> i) & 1
+            bit(literal, base + symbol, b)
+            symbol = symbol << 1 | b
+        prev = byte
+    for _ in range(5):
+        shift_low()
+    return bytes(out)
+
+
+def firefox_color_url(theme):
+    """A color.firefox.com link that opens theme: json-url's lzma codec, which is MessagePack, LZMA and URL-safe base64."""
+    return "https://color.firefox.com/?theme=" + base64.urlsafe_b64encode(lzma_literals(msgpack(theme))).decode().rstrip("=")
+
+
+def firefox(spec):
+    """A page that opens the variant in Firefox Color, with the tab strip, sidebars and toolbar like the GUI editors'."""
+    c = colours(spec)
+    names = {
+        "frame": "bg_dark",
+        "frame_inactive": "bg_dark",
+        "tab_background_text": "muted",
+        "tab_background_separator": "border",
+        "tab_selected": "bg",
+        "tab_text": "fg_bright",
+        "tab_line": "blue",
+        "tab_loading": "blue",
+        "toolbar": "bg",
+        "toolbar_text": "fg",
+        "toolbar_top_separator": "bg_dark",
+        "toolbar_bottom_separator": "border",
+        "toolbar_vertical_separator": "border",
+        "toolbar_field": "bg_alt",
+        "toolbar_field_text": "fg",
+        "toolbar_field_border": "border",
+        "toolbar_field_focus": "bg_alt",
+        "toolbar_field_text_focus": "fg_bright",
+        "toolbar_field_border_focus": "blue",
+        "toolbar_field_highlight": "bg_sel",
+        "toolbar_field_highlight_text": "fg_bright",
+        "toolbar_field_separator": "border",
+        "icons": "fg",
+        "icons_attention": "blue",
+        "button_background_hover": "bg_alt",
+        "button_background_active": "bg_sel",
+        "popup": "bg_alt",
+        "popup_text": "fg",
+        "popup_border": "border",
+        "popup_highlight": "bg_sel",
+        "popup_highlight_text": "fg_bright",
+        "sidebar": "bg_dark",
+        "sidebar_text": "fg",
+        "sidebar_border": "border",
+        "sidebar_highlight": "bg_sel",
+        "sidebar_highlight_text": "fg_bright",
+        "ntp_background": "bg",
+        "ntp_text": "fg",
+    }
+    theme = {
+        "colors": {k: dict(zip("rgb", rgb(c[n]))) for k, n in names.items()},
+        "images": {"additional_backgrounds": []},
+        "title": spec["name"],
+    }
+    url = firefox_color_url(theme)
+    return (
+        f"<!doctype html>\n<!-- {spec['name']}: {spec['description']} -->\n<!-- {REPO} -->\n"
+        f'<meta charset="utf-8">\n<title>{spec["name"]} for Firefox Color</title>\n'
+        f'<meta http-equiv="refresh" content="0; url={url}">\n'
+        f'<p><a href="{url}">Open {spec["name"]} in Firefox Color</a></p>\n'
+    )
+
+
+def telegram(spec):
+    """A Telegram Desktop palette. Keys it leaves out that Telegram defines through another key follow that key."""
+    c = colours(spec)
+    shade = lambda col, t: mix(c[col], c["bg"], 1 - t)
+    keys = {
+        "windowBg": c["bg"],
+        "windowFg": c["fg"],
+        "windowBgOver": c["bg_alt"],
+        "windowBgRipple": c["bg_sel"],
+        "windowSubTextFg": c["muted"],
+        "windowSubTextFgOver": c["muted"],
+        "windowBoldFg": c["fg_bright"],
+        "windowBoldFgOver": c["fg_bright"],
+        "windowBgActive": c["blue"],
+        "windowFgActive": c["bg"],
+        "windowActiveTextFg": c["blue"],
+        "windowShadowFgFallback": c["bg_dark"],
+        "activeButtonBgOver": lift(spec, c["blue"], 0.1),
+        "activeButtonBgRipple": lift(spec, c["blue"], 0.2),
+        "activeButtonSecondaryFg": c["bg_sel"],
+        "activeLineFg": c["blue"],
+        "activeLineFgError": c["red"],
+        "lightButtonBgOver": c["bg_alt"],
+        "lightButtonBgRipple": c["bg_sel"],
+        "attentionButtonFg": c["red"],
+        "attentionButtonFgOver": c["red"],
+        "attentionButtonBgOver": c["diag_error"],
+        "attentionButtonBgRipple": c["diff_delete"],
+        "menuBg": c["bg_alt"],
+        "menuBgOver": c["bg_sel"],
+        "menuBgRipple": c["border"],
+        "menuIconFg": c["muted"],
+        "menuIconFgOver": c["fg"],
+        "menuSubmenuArrowFg": c["muted"],
+        "menuFgDisabled": c["comment"],
+        "menuSeparatorFg": c["border"],
+        "scrollBarBg": alpha(c["comment"], 0.6),
+        "scrollBarBgOver": alpha(c["comment"], 0.9),
+        "scrollBg": alpha(c["comment"], 0.1),
+        "scrollBgOver": alpha(c["comment"], 0.2),
+        "smallCloseIconFg": c["comment"],
+        "smallCloseIconFgOver": c["muted"],
+        "placeholderFgActive": c["comment"],
+        "inputBorderFg": c["border"],
+        "filterInputBorderFg": c["blue"],
+        "filterInputActiveBg": c["bg_alt"],
+        "filterInputInactiveBg": c["bg_alt"],
+        "checkboxFg": c["comment"],
+        "sliderBgInactive": c["bg_sel"],
+        "tooltipBg": c["bg_alt"],
+        "tooltipFg": c["fg"],
+        "tooltipBorderFg": c["border"],
+        "titleBg": c["bg_dark"],
+        "titleFg": c["comment"],
+        "titleFgActive": c["muted"],
+        "titleButtonFg": c["comment"],
+        "titleButtonBgOver": c["bg_alt"],
+        "titleButtonFgOver": c["fg"],
+        "titleButtonCloseBgOver": c["red"],
+        "layerBg": alpha("#000000", 0.5),
+        "boxBg": c["bg"],
+        "boxDividerBg": c["bg_dark"],
+        "boxTextFgGood": c["green"],
+        "boxTextFgError": c["red"],
+        "boxTitleFg": c["fg_bright"],
+        "boxTitleAdditionalFg": c["muted"],
+        "introCoverTopBg": c["blue"],
+        "introCoverBottomBg": c["cyan"],
+        "introCoverIconsFg": lift(spec, c["cyan"], 0.2),
+        "dialogsBg": c["bg_dark"],
+        "dialogsBgOver": c["bg_alt"],
+        "dialogsBgActive": c["bg_sel"],
+        "dialogsNameFgActive": c["fg_bright"],
+        "dialogsTextFgActive": c["fg"],
+        "dialogsDateFgActive": c["muted"],
+        "dialogsChatIconFgActive": c["fg_bright"],
+        "dialogsDraftFg": c["red"],
+        "dialogsDraftFgActive": c["red"],
+        "dialogsSendingIconFg": c["comment"],
+        "dialogsSendingIconFgActive": c["muted"],
+        "dialogsSentIconFg": c["green"],
+        "dialogsSentIconFgOver": c["green"],
+        "dialogsSentIconFgActive": c["green"],
+        "dialogsUnreadBg": c["blue"],
+        "dialogsUnreadFg": c["bg"],
+        "dialogsUnreadBgMuted": c["comment"],
+        "dialogsUnreadBgActive": c["blue"],
+        "dialogsUnreadFgActive": c["bg"],
+        "dialogsUnreadBgMutedActive": c["comment"],
+        "dialogsVerifiedIconBgActive": c["blue"],
+        "dialogsVerifiedIconFgActive": c["bg"],
+        "dialogsOnlineBadgeFg": c["green"],
+        "dialogsOnlineBadgeFgActive": c["green"],
+        "dialogsRippleBgActive": c["border"],
+        "searchedTextMatchBg": c["search"],
+        "searchedTextMatchFg": c["fg_bright"],
+        "searchedTextCurrentMatchBg": c["yellow"],
+        "searchedTextCurrentMatchFg": c["bg"],
+        "emojiIconFg": c["muted"],
+        "stickerPreviewBg": alpha(c["bg"], 0.7),
+        "historyComposeAreaBg": c["bg_alt"],
+        "historyOutIconFg": c["green"],
+        "historyOutIconFgSelected": c["green"],
+        "historySendingOutIconFg": c["comment"],
+        "historySendingInIconFg": c["comment"],
+        "historyCallArrowInFg": c["green"],
+        "historyCallArrowInFgSelected": c["green"],
+        "historyUnreadBarBg": c["bg_alt"],
+        "historyUnreadBarFg": c["blue"],
+        "historyScrollBarBg": alpha(c["comment"], 0.6),
+        "historyScrollBarBgOver": alpha(c["comment"], 0.9),
+        "historyScrollBg": alpha(c["comment"], 0.1),
+        "historyScrollBgOver": alpha(c["comment"], 0.2),
+        "msgInBg": c["bg_alt"],
+        "msgInBgSelected": c["bg_sel"],
+        "msgOutBg": shade("blue", 0.22),
+        "msgOutBgSelected": shade("blue", 0.35),
+        "msgInServiceFg": c["blue"],
+        "msgOutServiceFg": c["blue"],
+        "msgOutServiceFgSelected": c["blue"],
+        "msgInDateFg": c["comment"],
+        "msgInDateFgSelected": c["muted"],
+        "msgOutDateFg": c["muted"],
+        "msgOutDateFgSelected": c["muted"],
+        "msgServiceBg": alpha(c["bg_dark"], 0.7),
+        "msgServiceBgSelected": alpha(c["bg_sel"], 0.8),
+        "msgServiceFg": c["fg"],
+        "msgInShadow": alpha("#000000", 0.15),
+        "msgInShadowSelected": alpha("#000000", 0.15),
+        "msgOutShadow": alpha("#000000", 0.15),
+        "msgOutShadowSelected": alpha("#000000", 0.15),
+        "msgSelectOverlay": alpha(c["blue"], 0.3),
+        "msgStickerOverlay": alpha(c["blue"], 0.5),
+        "msgOutReplyBarColor": c["blue"],
+        "msgInMonoFg": c["cyan"],
+        "msgOutMonoFg": c["cyan"],
+        "msgDateImgBg": alpha(c["bg"], 0.6),
+        "msgDateImgBgOver": alpha(c["bg"], 0.8),
+        "msgDateImgBgSelected": alpha(c["bg_sel"], 0.8),
+        "msgFileThumbLinkOutFg": c["blue"],
+        "msgFileThumbLinkOutFgSelected": c["blue"],
+        "msgFileInBgOver": lift(spec, c["blue"], 0.1),
+        "msgFileInBgSelected": c["blue"],
+        "msgFileOutBg": c["blue"],
+        "msgFileOutBgSelected": c["blue"],
+        "msgWaveformInActiveSelected": c["blue"],
+        "msgWaveformInInactive": c["comment"],
+        "msgWaveformInInactiveSelected": c["comment"],
+        "msgWaveformOutActive": c["blue"],
+        "msgWaveformOutActiveSelected": c["blue"],
+        "msgWaveformOutInactive": c["comment"],
+        "msgWaveformOutInactiveSelected": c["comment"],
+        "msgBotKbOverBgAdd": alpha(c["fg"], 0.1),
+        "botKbPrimaryBg": alpha(c["blue"], 0.8),
+        "botKbDangerBg": alpha(c["red"], 0.8),
+        "botKbSuccessBg": alpha(c["green"], 0.8),
+        "toastBg": alpha(c["bg_alt"], 0.95),
+        "toastFg": c["fg"],
+        "profileStatusFgOver": c["muted"],
+        "mediaPlayerDisabledFg": c["comment"],
+        "sideBarBg": c["bg_dark"],
+        "sideBarBgActive": c["bg_sel"],
+        "sideBarBgRipple": c["border"],
+        "sideBarTextFg": c["muted"],
+        "sideBarTextFgActive": c["fg_bright"],
+        "sideBarIconFg": c["muted"],
+        "sideBarIconFgActive": c["blue"],
+        "sideBarBadgeBg": c["blue"],
+        "sideBarBadgeBgMuted": c["comment"],
+        "sideBarBadgeFg": c["bg"],
+    }
+    # the colours of names and profile pictures in groups, in Telegram's order
+    for i, name in enumerate(["red", "green", "yellow", "blue", "violet", "pink", "cyan", "steel"], 1):
+        keys[f"historyPeer{i}NameFg"] = c[name]
+        keys[f"historyPeer{i}UserpicBg"] = c[name]
+    keys["historyPeerUserpicFg"] = c["bg"]
+    return header(spec, "//") + "".join(f"{k}: {v};\n" for k, v in keys.items())
+
+
 def swatch_svg(spec):
     """A small palette strip for the README."""
     p = spec["palette"]
@@ -2252,6 +2806,11 @@ PER_VARIANT = [
     ("bat", "general/bat/{slug}.tmTheme", bat),
     ("delta", "general/delta/{slug}.gitconfig", delta),
     ("noctalia", "general/noctalia/{slug}.json", lambda spec: json.dumps(noctalia(spec), indent=2) + "\n"),
+    ("warp", "general/warp/{slug}.yaml", warp),
+    ("obsidian", "general/obsidian/{slug}.css", obsidian),
+    ("discord", "general/discord/{slug}.theme.css", discord),
+    ("firefox", "general/firefox/{slug}.html", firefox),
+    ("telegram", "general/telegram/{slug}.tdesktop-palette", telegram),
 ]
 
 
@@ -2259,6 +2818,7 @@ PER_VARIANT = [
 ALL_IN_ONE = [
     ("zed", "zed/themes/rime.json", zed_themes),
     ("windows-terminal", "general/windows-terminal/rime.json", windows_terminal),
+    ("spicetify", "general/spicetify/color.ini", spicetify),
 ]
 
 

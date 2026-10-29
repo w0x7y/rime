@@ -1,0 +1,114 @@
+/**
+ * @name Rime
+ * @author Idan Gilboa
+ * @description Soft and muted pastels for long sessions.
+ * @version 0.5.1
+ * @source https://github.com/w0x7y/rime
+ */
+
+.theme-dark:not(.custom-user-profile-theme),
+.theme-darker:not(.custom-user-profile-theme),
+.theme-midnight:not(.custom-user-profile-theme) {
+  --background-primary: #23272e;
+  --background-secondary: #1d2026;
+  --background-secondary-alt: #1d2026;
+  --background-tertiary: #1d2026;
+  --background-accent: #3a404b;
+  --background-floating: #2b3038;
+  --background-nested-floating: #2b3038;
+  --background-mobile-primary: #23272e;
+  --background-mobile-secondary: #1d2026;
+  --background-modifier-hover: #3a404b80;
+  --background-modifier-active: #3a404b;
+  --background-modifier-selected: #3a404b;
+  --background-modifier-accent: #333842;
+  --channeltextarea-background: #2b3038;
+  --header-primary: #dce2eb;
+  --header-secondary: #9aa4b6;
+  --text-normal: #c3ccd9;
+  --text-positive: #9ad8ac;
+  --text-warning: #e4d098;
+  --text-danger: #d98a9c;
+  --interactive-normal: #9aa4b6;
+  --interactive-hover: #c3ccd9;
+  --interactive-active: #dce2eb;
+  --brand-experiment: #7aa4e4;
+  --app-frame-background: #1d2026;
+  --app-frame-border: #333842;
+  --background-base-lowest: #1d2026;
+  --background-base-lower: #23272e;
+  --background-base-low: #1d2026;
+  --background-surface-high: #2b3038;
+  --background-surface-higher: #2b3038;
+  --background-surface-highest: #3a404b;
+  --background-mod-subtle: #3a404b80;
+  --background-mod-muted: #3a404b80;
+  --background-mod-normal: #2b3038;
+  --background-mod-strong: #3a404b;
+  --background-code: #1d2026;
+  --chat-background-default: #23272e;
+  --home-background: #1d2026;
+  --modal-background: #2b3038;
+  --modal-footer-background: #1d2026;
+  --card-background-default: #2b3038;
+  --border-subtle: #333842;
+  --border-normal: #333842;
+  --border-strong: #3a404b;
+  --text-default: #c3ccd9;
+  --text-strong: #dce2eb;
+  --text-subtle: #9aa4b6;
+  --text-muted: #6b768c;
+  --text-link: #7aa4e4;
+  --text-brand: #7aa4e4;
+  --text-feedback-critical: #d98a9c;
+  --text-feedback-positive: #9ad8ac;
+  --text-feedback-warning: #e4d098;
+  --text-feedback-info: #7aa4e4;
+  --channels-default: #9aa4b6;
+  --channel-icon: #9aa4b6;
+  --icon-default: #9aa4b6;
+  --icon-subtle: #9aa4b6;
+  --icon-strong: #c3ccd9;
+  --icon-muted: #6b768c;
+  --interactive-text-default: #9aa4b6;
+  --interactive-text-hover: #c3ccd9;
+  --interactive-text-active: #dce2eb;
+  --interactive-icon-default: #9aa4b6;
+  --interactive-icon-hover: #c3ccd9;
+  --interactive-icon-active: #dce2eb;
+  --interactive-muted: #6b768c;
+  --interactive-background-hover: #3a404b80;
+  --interactive-background-active: #3a404b;
+  --interactive-background-selected: #3a404b;
+  --input-background-default: #2b3038;
+  --input-border-default: #333842;
+  --input-text-default: #c3ccd9;
+  --input-placeholder-text-default: #6b768c;
+  --message-background-hover: #2b3038;
+  --mention-foreground: #7aa4e4;
+  --mention-background: #7aa4e433;
+  --message-mentioned-background-default: #e4d09814;
+  --message-mentioned-background-hover: #e4d0981f;
+  --status-danger: #d98a9c;
+  --status-positive: #9ad8ac;
+  --status-warning: #e4d098;
+  --control-primary-background-default: #7aa4e4;
+  --control-primary-background-hover: #87ade7;
+  --control-primary-background-active: #95b6e9;
+  --control-primary-text-default: #23272e;
+  --control-primary-text-hover: #23272e;
+  --control-primary-text-active: #23272e;
+  --control-secondary-background-default: #2b3038;
+  --control-secondary-background-hover: #3a404b;
+  --control-secondary-background-active: #3a404b;
+  --control-secondary-text-default: #c3ccd9;
+  --control-critical-primary-background-default: #d98a9c;
+  --control-critical-primary-background-hover: #dd96a6;
+  --control-critical-primary-text-default: #23272e;
+  --scrollbar-auto-thumb: #3a404b;
+  --scrollbar-auto-track: transparent;
+  --scrollbar-thin-thumb: #3a404b;
+  --scrollbar-thin-track: transparent;
+  --brand-500: #7aa4e4;
+  --brand-560: #87ade7;
+}

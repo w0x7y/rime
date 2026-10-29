@@ -1,0 +1,114 @@
+/**
+ * @name Rime Aurora
+ * @author Idan Gilboa
+ * @description Vivid neon accents on a darker background.
+ * @version 0.5.1
+ * @source https://github.com/w0x7y/rime
+ */
+
+.theme-dark:not(.custom-user-profile-theme),
+.theme-darker:not(.custom-user-profile-theme),
+.theme-midnight:not(.custom-user-profile-theme) {
+  --background-primary: #1c1f25;
+  --background-secondary: #17191e;
+  --background-secondary-alt: #17191e;
+  --background-tertiary: #17191e;
+  --background-accent: #333842;
+  --background-floating: #24282f;
+  --background-nested-floating: #24282f;
+  --background-mobile-primary: #1c1f25;
+  --background-mobile-secondary: #17191e;
+  --background-modifier-hover: #33384280;
+  --background-modifier-active: #333842;
+  --background-modifier-selected: #333842;
+  --background-modifier-accent: #2c3039;
+  --channeltextarea-background: #24282f;
+  --header-primary: #e0e7f2;
+  --header-secondary: #9aa4b6;
+  --text-normal: #c8d2e2;
+  --text-positive: #5ef0a6;
+  --text-warning: #e6f07c;
+  --text-danger: #ff6f91;
+  --interactive-normal: #9aa4b6;
+  --interactive-hover: #c8d2e2;
+  --interactive-active: #e0e7f2;
+  --brand-experiment: #4fa2ff;
+  --app-frame-background: #17191e;
+  --app-frame-border: #2c3039;
+  --background-base-lowest: #17191e;
+  --background-base-lower: #1c1f25;
+  --background-base-low: #17191e;
+  --background-surface-high: #24282f;
+  --background-surface-higher: #24282f;
+  --background-surface-highest: #333842;
+  --background-mod-subtle: #33384280;
+  --background-mod-muted: #33384280;
+  --background-mod-normal: #24282f;
+  --background-mod-strong: #333842;
+  --background-code: #17191e;
+  --chat-background-default: #1c1f25;
+  --home-background: #17191e;
+  --modal-background: #24282f;
+  --modal-footer-background: #17191e;
+  --card-background-default: #24282f;
+  --border-subtle: #2c3039;
+  --border-normal: #2c3039;
+  --border-strong: #333842;
+  --text-default: #c8d2e2;
+  --text-strong: #e0e7f2;
+  --text-subtle: #9aa4b6;
+  --text-muted: #6b768c;
+  --text-link: #4fa2ff;
+  --text-brand: #4fa2ff;
+  --text-feedback-critical: #ff6f91;
+  --text-feedback-positive: #5ef0a6;
+  --text-feedback-warning: #e6f07c;
+  --text-feedback-info: #4fa2ff;
+  --channels-default: #9aa4b6;
+  --channel-icon: #9aa4b6;
+  --icon-default: #9aa4b6;
+  --icon-subtle: #9aa4b6;
+  --icon-strong: #c8d2e2;
+  --icon-muted: #6b768c;
+  --interactive-text-default: #9aa4b6;
+  --interactive-text-hover: #c8d2e2;
+  --interactive-text-active: #e0e7f2;
+  --interactive-icon-default: #9aa4b6;
+  --interactive-icon-hover: #c8d2e2;
+  --interactive-icon-active: #e0e7f2;
+  --interactive-muted: #6b768c;
+  --interactive-background-hover: #33384280;
+  --interactive-background-active: #333842;
+  --interactive-background-selected: #333842;
+  --input-background-default: #24282f;
+  --input-border-default: #2c3039;
+  --input-text-default: #c8d2e2;
+  --input-placeholder-text-default: #6b768c;
+  --message-background-hover: #24282f;
+  --mention-foreground: #4fa2ff;
+  --mention-background: #4fa2ff33;
+  --message-mentioned-background-default: #e6f07c14;
+  --message-mentioned-background-hover: #e6f07c1f;
+  --status-danger: #ff6f91;
+  --status-positive: #5ef0a6;
+  --status-warning: #e6f07c;
+  --control-primary-background-default: #4fa2ff;
+  --control-primary-background-hover: #61abff;
+  --control-primary-background-active: #72b5ff;
+  --control-primary-text-default: #1c1f25;
+  --control-primary-text-hover: #1c1f25;
+  --control-primary-text-active: #1c1f25;
+  --control-secondary-background-default: #24282f;
+  --control-secondary-background-hover: #333842;
+  --control-secondary-background-active: #333842;
+  --control-secondary-text-default: #c8d2e2;
+  --control-critical-primary-background-default: #ff6f91;
+  --control-critical-primary-background-hover: #ff7d9c;
+  --control-critical-primary-text-default: #1c1f25;
+  --scrollbar-auto-thumb: #333842;
+  --scrollbar-auto-track: transparent;
+  --scrollbar-thin-thumb: #333842;
+  --scrollbar-thin-track: transparent;
+  --brand-500: #4fa2ff;
+  --brand-560: #61abff;
+}

@@ -55,11 +55,12 @@ function themeCss() {
 
 // ------------------------------------------------------------------ ports, docs and syntax roles
 
-type Port = { slug: string; name: string; group: "editors" | "terminals" | "more"; blurb: string };
+type Port = { slug: string; name: string; group: "editors" | "terminals" | "apps" | "more"; blurb: string };
 
 const GROUPS = [
   { id: "editors", label: "editors" },
   { id: "terminals", label: "terminals" },
+  { id: "apps", label: "apps" },
   { id: "more", label: "and the rest" },
 ] as const;
 
@@ -80,7 +81,13 @@ const PORTS: Port[] = [
   { slug: "foot", name: "foot", group: "terminals", blurb: "an ini include" },
   { slug: "windows-terminal", name: "windows terminal", group: "terminals", blurb: "five schemes in one json" },
   { slug: "iterm2", name: "iterm2", group: "terminals", blurb: "a color preset" },
+  { slug: "warp", name: "warp", group: "terminals", blurb: "a theme file" },
   { slug: "xresources", name: "xresources", group: "terminals", blurb: "xterm, urxvt, st" },
+  { slug: "obsidian", name: "obsidian", group: "apps", blurb: "a css snippet" },
+  { slug: "discord", name: "discord", group: "apps", blurb: "betterdiscord and vencord" },
+  { slug: "spicetify", name: "spicetify", group: "apps", blurb: "spotify, all five in one theme" },
+  { slug: "firefox", name: "firefox color", group: "apps", blurb: "a link per variant" },
+  { slug: "telegram", name: "telegram", group: "apps", blurb: "a desktop palette" },
   { slug: "noctalia", name: "noctalia", group: "more", blurb: "the desktop shell" },
   { slug: "tmux", name: "tmux", group: "more", blurb: "status bar, borders and copy mode" },
   { slug: "bat", name: "bat", group: "more", blurb: "a syntax theme" },

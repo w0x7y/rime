@@ -3,7 +3,9 @@
 Run: python3 -m unittest discover -s tools
 """
 
+import base64
 import json
+import lzma
 import os
 import pathlib
 import plistlib
@@ -156,6 +158,7 @@ class SyntaxRoles(unittest.TestCase):
             "Vim": self.roles_used_by(build.vim),
             "micro": self.roles_used_by(build.micro),
             "Emacs": self.roles_used_by(build.emacs),
+            "Obsidian": self.roles_used_by(build.obsidian),
         }
         for role in build.SYNTAX:
             users = [port for port, roles in ports.items() if role in roles]
@@ -309,6 +312,17 @@ class Sublime(unittest.TestCase):
                     self.assertEqual(rules[rule["name"]]["foreground"], rule["settings"]["foreground"], spec["slug"])
             for rule in rules.values():
                 self.assertLessEqual(set(rule.get("font_style", "").split()), {"bold", "italic", "underline"})
+
+
+class FirefoxColor(unittest.TestCase):
+    def test_link_holds_the_theme(self):
+        # Firefox Color reads ?theme= with json-url's lzma codec: MessagePack, then an .lzma stream, then URL-safe base64
+        theme = {"colors": {"frame": {"r": 35, "g": 200, "b": 46}}, "images": {"additional_backgrounds": []}, "title": "Rime"}
+        packed = build.msgpack(theme)
+        self.assertEqual(packed[:8], b"\x83\xa6colors")
+        encoded = build.firefox_color_url(theme).split("?theme=")[1]
+        stream = base64.urlsafe_b64decode(encoded + "=" * (-len(encoded) % 4))
+        self.assertEqual(lzma.decompress(stream, format=lzma.FORMAT_ALONE), packed)
 
 
 class Docs(unittest.TestCase):

@@ -1,0 +1,114 @@
+/**
+ * @name Rime Abyss
+ * @author Idan Gilboa
+ * @description The coldest take, on a darker background: no yellow or orange anywhere, with rose as the only warm accent.
+ * @version 0.5.1
+ * @source https://github.com/w0x7y/rime
+ */
+
+.theme-dark:not(.custom-user-profile-theme),
+.theme-darker:not(.custom-user-profile-theme),
+.theme-midnight:not(.custom-user-profile-theme) {
+  --background-primary: #15171c;
+  --background-secondary: #111317;
+  --background-secondary-alt: #111317;
+  --background-tertiary: #111317;
+  --background-accent: #2c3039;
+  --background-floating: #1d2026;
+  --background-nested-floating: #1d2026;
+  --background-mobile-primary: #15171c;
+  --background-mobile-secondary: #111317;
+  --background-modifier-hover: #2c303980;
+  --background-modifier-active: #2c3039;
+  --background-modifier-selected: #2c3039;
+  --background-modifier-accent: #252830;
+  --channeltextarea-background: #1d2026;
+  --header-primary: #dde5f2;
+  --header-secondary: #9aa4b6;
+  --text-normal: #c2cde0;
+  --text-positive: #6fd0a8;
+  --text-warning: #9cf0dc;
+  --text-danger: #e8879f;
+  --interactive-normal: #9aa4b6;
+  --interactive-hover: #c2cde0;
+  --interactive-active: #dde5f2;
+  --brand-experiment: #6b9cf4;
+  --app-frame-background: #111317;
+  --app-frame-border: #252830;
+  --background-base-lowest: #111317;
+  --background-base-lower: #15171c;
+  --background-base-low: #111317;
+  --background-surface-high: #1d2026;
+  --background-surface-higher: #1d2026;
+  --background-surface-highest: #2c3039;
+  --background-mod-subtle: #2c303980;
+  --background-mod-muted: #2c303980;
+  --background-mod-normal: #1d2026;
+  --background-mod-strong: #2c3039;
+  --background-code: #111317;
+  --chat-background-default: #15171c;
+  --home-background: #111317;
+  --modal-background: #1d2026;
+  --modal-footer-background: #111317;
+  --card-background-default: #1d2026;
+  --border-subtle: #252830;
+  --border-normal: #252830;
+  --border-strong: #2c3039;
+  --text-default: #c2cde0;
+  --text-strong: #dde5f2;
+  --text-subtle: #9aa4b6;
+  --text-muted: #6b768c;
+  --text-link: #6b9cf4;
+  --text-brand: #6b9cf4;
+  --text-feedback-critical: #e8879f;
+  --text-feedback-positive: #6fd0a8;
+  --text-feedback-warning: #9cf0dc;
+  --text-feedback-info: #6b9cf4;
+  --channels-default: #9aa4b6;
+  --channel-icon: #9aa4b6;
+  --icon-default: #9aa4b6;
+  --icon-subtle: #9aa4b6;
+  --icon-strong: #c2cde0;
+  --icon-muted: #6b768c;
+  --interactive-text-default: #9aa4b6;
+  --interactive-text-hover: #c2cde0;
+  --interactive-text-active: #dde5f2;
+  --interactive-icon-default: #9aa4b6;
+  --interactive-icon-hover: #c2cde0;
+  --interactive-icon-active: #dde5f2;
+  --interactive-muted: #6b768c;
+  --interactive-background-hover: #2c303980;
+  --interactive-background-active: #2c3039;
+  --interactive-background-selected: #2c3039;
+  --input-background-default: #1d2026;
+  --input-border-default: #252830;
+  --input-text-default: #c2cde0;
+  --input-placeholder-text-default: #6b768c;
+  --message-background-hover: #1d2026;
+  --mention-foreground: #6b9cf4;
+  --mention-background: #6b9cf433;
+  --message-mentioned-background-default: #9cf0dc14;
+  --message-mentioned-background-hover: #9cf0dc1f;
+  --status-danger: #e8879f;
+  --status-positive: #6fd0a8;
+  --status-warning: #9cf0dc;
+  --control-primary-background-default: #6b9cf4;
+  --control-primary-background-hover: #7aa6f5;
+  --control-primary-background-active: #89b0f6;
+  --control-primary-text-default: #15171c;
+  --control-primary-text-hover: #15171c;
+  --control-primary-text-active: #15171c;
+  --control-secondary-background-default: #1d2026;
+  --control-secondary-background-hover: #2c3039;
+  --control-secondary-background-active: #2c3039;
+  --control-secondary-text-default: #c2cde0;
+  --control-critical-primary-background-default: #e8879f;
+  --control-critical-primary-background-hover: #ea93a9;
+  --control-critical-primary-text-default: #15171c;
+  --scrollbar-auto-thumb: #2c3039;
+  --scrollbar-auto-track: transparent;
+  --scrollbar-thin-thumb: #2c3039;
+  --scrollbar-thin-track: transparent;
+  --brand-500: #6b9cf4;
+  --brand-560: #7aa6f5;
+}

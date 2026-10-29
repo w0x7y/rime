@@ -14,7 +14,7 @@ All shipped. Each reads `SYNTAX`, so code gets the same colors as in Neovim, Zed
 
 ## Terminals
 
-- [ ] Warp: YAML.
+- [x] Warp: `general/warp/`, a YAML theme per variant.
 
 ## CLI and TUI tools
 
@@ -43,10 +43,10 @@ Each is a small file per variant, about the size of the tmux or fzf ports.
 
 ## Apps
 
-Mostly CSS variables, so the CSS port covers much of the work.
+All shipped.
 
-- [ ] Obsidian
-- [ ] Discord, through Vencord or BetterDiscord
-- [ ] Spicetify, for Spotify
-- [ ] Firefox Color
-- [ ] Telegram
+- [x] Obsidian: `general/obsidian/`, a CSS snippet per variant over the default theme. Code blocks read `SYNTAX`.
+- [x] Discord: `general/discord/`, a `.theme.css` per variant for BetterDiscord and Vencord.
+- [x] Spicetify: `general/spicetify/color.ini`, every variant as a color scheme of one theme.
+- [x] Firefox Color: `general/firefox/`, a page per variant that opens it in Firefox Color.
+- [x] Telegram: `general/telegram/`, a Telegram Desktop `.tdesktop-palette` per variant.

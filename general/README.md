@@ -88,6 +88,15 @@ Open **Settings → Open JSON file** and add the entries from `windows-terminal/
 
 Double-click `iterm2/rime.itermcolors` to import it. Then select it in **Settings → Profiles → Colors → Color Presets**.
 
+### Warp
+
+```sh
+mkdir -p ~/.warp/themes  # macOS; ~/.local/share/warp-terminal/themes on Linux, %LOCALAPPDATA%\warp\Warp\data\themes on Windows
+cp warp/rime.yaml ~/.warp/themes/
+```
+
+Then pick Rime in **Settings → Appearance → Themes**. Warp shades its own tabs and blocks from the background and the blue accent.
+
 ### Xresources (xterm, urxvt, st and others)
 
 ```sh
@@ -232,6 +241,47 @@ Each file is a delta feature named after its variant. If you already use feature
 It sets colors only: the backgrounds of removed and added lines and of the words that changed, the file and hunk headers, line numbers (with `delta.line-numbers true`) and the alternating backgrounds of `git blame`. Your terminal needs 24-bit color. delta assumes it when `COLORTERM` is `truecolor` or `24bit`; otherwise set `delta.true-color always`.
 
 If delta warns `Unknown theme 'rime'`, the theme isn't in bat's cache: run `bat cache --build` again. delta reads the cache from bat's default place, so it won't find one you moved with `BAT_CACHE_PATH`.
+
+## Obsidian
+
+A CSS snippet per variant that recolors Obsidian's default theme. Code blocks follow the same syntax roles as the editor ports.
+
+```sh
+cp obsidian/rime.css /path/to/vault/.obsidian/snippets/
+```
+
+Then turn on `rime` under **Settings → Appearance → CSS snippets**. A snippet only applies in its own mode, so set **Base color scheme** to dark for the dark variants and to light for `rime-frost`.
+
+## Discord
+
+A theme per variant for [BetterDiscord](https://betterdiscord.app) or [Vencord](https://vencord.dev). Copy `discord/rime.theme.css` into the themes folder (**Settings → Themes → Open Themes Folder** in either), then turn it on there.
+
+It colors Discord's dark modes (dark, darker and midnight); `rime-frost` colors light mode. Discord renames its color variables now and then, so a Discord update can leave parts of the app in its own colors until the theme catches up.
+
+## Spicetify
+
+All five variants as color schemes of one [Spicetify](https://spicetify.app) theme, for Spotify.
+
+```sh
+mkdir -p "$(dirname "$(spicetify -c)")/Themes/Rime"
+cp spicetify/color.ini "$(dirname "$(spicetify -c)")/Themes/Rime/"
+spicetify config current_theme Rime color_scheme rime inject_css 0 replace_colors 1
+spicetify apply
+```
+
+The schemes are named after the variants: `rime`, `rime-glacier`, `rime-aurora`, `rime-abyss` and `rime-frost`.
+
+## Firefox Color
+
+Open `firefox/rime.html` in Firefox. It sends you to [Firefox Color](https://color.firefox.com) with Rime loaded; install the Firefox Color extension when it asks, and the theme applies. Save it there to keep it.
+
+The tab strip and sidebars use the darker chrome shade, the selected tab and toolbar the background, and the address bar and menus the popup shade, as in the GUI editors.
+
+## Telegram
+
+A palette per variant for Telegram Desktop. Send `telegram/rime.tdesktop-palette` to your Saved Messages and click it, or pick it with **Settings → Chat Settings → Chat background → Choose from file**. Telegram shows a preview; apply it from there.
+
+A palette has no chat background, so Telegram keeps your current wallpaper. For a plain one, open **Chat background** and pick the solid color closest to the theme's background.
 
 ## Other formats
 

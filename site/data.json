@@ -672,7 +672,13 @@
     "bat": "general/bat/{slug}.tmTheme",
     "delta": "general/delta/{slug}.gitconfig",
     "noctalia": "general/noctalia/{slug}.json",
+    "warp": "general/warp/{slug}.yaml",
+    "obsidian": "general/obsidian/{slug}.css",
+    "discord": "general/discord/{slug}.theme.css",
+    "firefox": "general/firefox/{slug}.html",
+    "telegram": "general/telegram/{slug}.tdesktop-palette",
     "zed": "zed/themes/rime.json",
-    "windows-terminal": "general/windows-terminal/rime.json"
+    "windows-terminal": "general/windows-terminal/rime.json",
+    "spicetify": "general/spicetify/color.ini"
   }
 }

@@ -1,0 +1,27 @@
+# Rime Glacier: Crisper accents with clear separation between every syntax role, on a lighter background.
+# https://github.com/w0x7y/rime
+name: "Rime Glacier"
+accent: "#6eaaf0"
+cursor: "#c5cedd"
+background: "#2a2f37"
+foreground: "#c5cedd"
+details: darker
+terminal_colors:
+  normal:
+    black: "#414854"
+    red: "#e07a90"
+    green: "#88d8a0"
+    yellow: "#e3dc9e"
+    blue: "#6eaaf0"
+    magenta: "#ae94f0"
+    cyan: "#6fd0d8"
+    white: "#c5cedd"
+  bright:
+    black: "#737e94"
+    red: "#e797a8"
+    green: "#a2e1b5"
+    yellow: "#e9e4b3"
+    blue: "#8ebdf3"
+    magenta: "#c0acf3"
+    cyan: "#8fdae1"
+    white: "#f3f6fa"

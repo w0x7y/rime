@@ -1,0 +1,114 @@
+/**
+ * @name Rime Glacier
+ * @author Idan Gilboa
+ * @description Crisper accents with clear separation between every syntax role, on a lighter background.
+ * @version 0.5.1
+ * @source https://github.com/w0x7y/rime
+ */
+
+.theme-dark:not(.custom-user-profile-theme),
+.theme-darker:not(.custom-user-profile-theme),
+.theme-midnight:not(.custom-user-profile-theme) {
+  --background-primary: #2a2f37;
+  --background-secondary: #22272d;
+  --background-secondary-alt: #22272d;
+  --background-tertiary: #22272d;
+  --background-accent: #414854;
+  --background-floating: #323841;
+  --background-nested-floating: #323841;
+  --background-mobile-primary: #2a2f37;
+  --background-mobile-secondary: #22272d;
+  --background-modifier-hover: #41485480;
+  --background-modifier-active: #414854;
+  --background-modifier-selected: #414854;
+  --background-modifier-accent: #3a404b;
+  --channeltextarea-background: #323841;
+  --header-primary: #dfe5ee;
+  --header-secondary: #9aa4b6;
+  --text-normal: #c5cedd;
+  --text-positive: #88d8a0;
+  --text-warning: #e3dc9e;
+  --text-danger: #e07a90;
+  --interactive-normal: #9aa4b6;
+  --interactive-hover: #c5cedd;
+  --interactive-active: #dfe5ee;
+  --brand-experiment: #6eaaf0;
+  --app-frame-background: #22272d;
+  --app-frame-border: #3a404b;
+  --background-base-lowest: #22272d;
+  --background-base-lower: #2a2f37;
+  --background-base-low: #22272d;
+  --background-surface-high: #323841;
+  --background-surface-higher: #323841;
+  --background-surface-highest: #414854;
+  --background-mod-subtle: #41485480;
+  --background-mod-muted: #41485480;
+  --background-mod-normal: #323841;
+  --background-mod-strong: #414854;
+  --background-code: #22272d;
+  --chat-background-default: #2a2f37;
+  --home-background: #22272d;
+  --modal-background: #323841;
+  --modal-footer-background: #22272d;
+  --card-background-default: #323841;
+  --border-subtle: #3a404b;
+  --border-normal: #3a404b;
+  --border-strong: #414854;
+  --text-default: #c5cedd;
+  --text-strong: #dfe5ee;
+  --text-subtle: #9aa4b6;
+  --text-muted: #737e94;
+  --text-link: #6eaaf0;
+  --text-brand: #6eaaf0;
+  --text-feedback-critical: #e07a90;
+  --text-feedback-positive: #88d8a0;
+  --text-feedback-warning: #e3dc9e;
+  --text-feedback-info: #6eaaf0;
+  --channels-default: #9aa4b6;
+  --channel-icon: #9aa4b6;
+  --icon-default: #9aa4b6;
+  --icon-subtle: #9aa4b6;
+  --icon-strong: #c5cedd;
+  --icon-muted: #737e94;
+  --interactive-text-default: #9aa4b6;
+  --interactive-text-hover: #c5cedd;
+  --interactive-text-active: #dfe5ee;
+  --interactive-icon-default: #9aa4b6;
+  --interactive-icon-hover: #c5cedd;
+  --interactive-icon-active: #dfe5ee;
+  --interactive-muted: #737e94;
+  --interactive-background-hover: #41485480;
+  --interactive-background-active: #414854;
+  --interactive-background-selected: #414854;
+  --input-background-default: #323841;
+  --input-border-default: #3a404b;
+  --input-text-default: #c5cedd;
+  --input-placeholder-text-default: #737e94;
+  --message-background-hover: #323841;
+  --mention-foreground: #6eaaf0;
+  --mention-background: #6eaaf033;
+  --message-mentioned-background-default: #e3dc9e14;
+  --message-mentioned-background-hover: #e3dc9e1f;
+  --status-danger: #e07a90;
+  --status-positive: #88d8a0;
+  --status-warning: #e3dc9e;
+  --control-primary-background-default: #6eaaf0;
+  --control-primary-background-hover: #7db3f2;
+  --control-primary-background-active: #8bbbf3;
+  --control-primary-text-default: #2a2f37;
+  --control-primary-text-hover: #2a2f37;
+  --control-primary-text-active: #2a2f37;
+  --control-secondary-background-default: #323841;
+  --control-secondary-background-hover: #414854;
+  --control-secondary-background-active: #414854;
+  --control-secondary-text-default: #c5cedd;
+  --control-critical-primary-background-default: #e07a90;
+  --control-critical-primary-background-hover: #e3879b;
+  --control-critical-primary-text-default: #2a2f37;
+  --scrollbar-auto-thumb: #414854;
+  --scrollbar-auto-track: transparent;
+  --scrollbar-thin-thumb: #414854;
+  --scrollbar-thin-track: transparent;
+  --brand-500: #6eaaf0;
+  --brand-560: #7db3f2;
+}

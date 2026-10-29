@@ -1,13 +1,13 @@
 ---
 title: rime
-description: a colder colorscheme. five variants of one cold palette, for neovim, vs code, zed, eight terminals and the rest.
+description: a colder colorscheme. five variants of one cold palette, for neovim, vs code, zed, nine terminals, apps and the rest.
 ---
 
 {{logo}}
 
 # a colder colorscheme.
 
-cool grays and soft, cold accents. five variants, for neovim, vs code, zed, eight terminals and the rest.
+cool grays and soft, cold accents. five variants, for neovim, vs code, zed, nine terminals, apps and the rest.
 
 [install](/ports) · [github](https://github.com/w0x7y/rime) · `{{version}}`
 
