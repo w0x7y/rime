@@ -20,13 +20,13 @@ All shipped. Each reads `SYNTAX`, so code gets the same colors as in Neovim, Zed
 
 Each is a small file per variant, about the size of the tmux or fzf ports.
 
-- [ ] lazygit
+- [x] lazygit: `general/lazygit/`, a config file to list in `LG_CONFIG_FILE`.
 - [ ] btop
 - [ ] yazi
 - [ ] zellij: KDL.
 - [ ] herdr: themes go in `config.toml` and can ship as a herdr plugin.
-- [ ] starship: a `[palettes.rime]` block.
-- [ ] fish: `.theme` file for `fish_config theme`.
+- [x] starship: `general/starship/`, a `[palettes.<variant>]` block.
+- [x] fish: `general/fish/`, a `.theme` file for `fish_config theme`. The command line reads `SYNTAX`.
 - [ ] k9s
 - [ ] vivid, for `LS_COLORS`
 - [ ] gitui
@@ -35,9 +35,9 @@ Each is a small file per variant, about the size of the tmux or fzf ports.
 ## Linux desktop
 
 - [ ] rofi: `.rasi`.
-- [ ] dunst
-- [ ] mako
-- [ ] Hyprland: border and group colors.
+- [x] dunst: `general/dunst/`, a `dunstrc.d` drop-in.
+- [x] mako: `general/mako/`, a config to `include`.
+- [x] Hyprland: `general/hyprland/`, a Lua module with border and group colors, for Hyprland 0.55+.
 - [ ] KDE color scheme: `.colors`.
 - [ ] qutebrowser
 

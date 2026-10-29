@@ -1,0 +1,13 @@
+# Rime Frost: Frost-white paper under the same cold accents, deepened to read on it.
+# https://github.com/w0x7y/rime
+background-color=#e3e7ee
+text-color=#363d4a
+border-color=#2e62c0
+progress-color=over #d2d8e2
+
+[urgency=low]
+text-color=#566073
+border-color=#d2d8e2
+
+[urgency=critical]
+border-color=#b83d63

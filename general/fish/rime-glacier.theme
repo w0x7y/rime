@@ -1,0 +1,34 @@
+# Rime Glacier: Crisper accents with clear separation between every syntax role, on a lighter background.
+# https://github.com/w0x7y/rime
+# name: 'Rime Glacier'
+# preferred_background: 2a2f37
+
+fish_color_normal c5cedd
+fish_color_command 6eaaf0
+fish_color_keyword ae94f0
+fish_color_quote 88d8a0
+fish_color_redirection 9aa4b6
+fish_color_end 9aa4b6
+fish_color_param c5cedd
+fish_color_option c5cedd
+fish_color_comment 737e94 --italics
+fish_color_operator 9aa4b6
+fish_color_escape 6fd0d8
+fish_color_error e07a90
+fish_color_autosuggestion 737e94
+fish_color_selection --background=414854
+fish_color_search_match --background=414854
+fish_color_valid_path --underline
+fish_color_history_current --bold
+fish_color_cancel --reverse
+fish_color_cwd 6eaaf0
+fish_color_cwd_root e07a90
+fish_color_user 88d8a0
+fish_color_host c5cedd
+fish_color_host_remote e3dc9e
+fish_color_status e07a90
+fish_pager_color_progress dfe5ee --background=414854
+fish_pager_color_prefix 6eaaf0 --bold
+fish_pager_color_completion c5cedd
+fish_pager_color_description 737e94
+fish_pager_color_selected_background --background=414854

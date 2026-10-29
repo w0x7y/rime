@@ -1,0 +1,32 @@
+# Rime Abyss: The coldest take, on a darker background: no yellow or orange anywhere, with rose as the only warm accent.
+# https://github.com/w0x7y/rime
+gui:
+  theme:
+    activeBorderColor:
+      - '#6b9cf4'
+      - 'bold'
+    inactiveBorderColor:
+      - '#6b768c'
+    searchingActiveBorderColor:
+      - '#9cf0dc'
+      - 'bold'
+    optionsTextColor:
+      - '#6b9cf4'
+    selectedLineBgColor:
+      - '#2c3039'
+    inactiveViewSelectedLineBgColor:
+      - '#1d2026'
+    cherryPickedCommitFgColor:
+      - '#6b9cf4'
+    cherryPickedCommitBgColor:
+      - '#2c3039'
+    markedBaseCommitFgColor:
+      - '#15171c'
+    markedBaseCommitBgColor:
+      - '#9cf0dc'
+    unstagedChangesColor:
+      - '#e8879f'
+    defaultFgColor:
+      - '#c2cde0'
+  authorColors:
+    '*': '#937ff2'

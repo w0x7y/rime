@@ -1,0 +1,34 @@
+# Rime Frost: Frost-white paper under the same cold accents, deepened to read on it.
+# https://github.com/w0x7y/rime
+# name: 'Rime Frost'
+# preferred_background: eef1f5
+
+fish_color_normal 363d4a
+fish_color_command 2e62c0
+fish_color_keyword 7650c4
+fish_color_quote 267b4f
+fish_color_redirection 566073
+fish_color_end 566073
+fish_color_param 363d4a
+fish_color_option 363d4a
+fish_color_comment 7f899b --italics
+fish_color_operator 566073
+fish_color_escape 0f7480
+fish_color_error b83d63
+fish_color_autosuggestion 7f899b
+fish_color_selection --background=d2d8e2
+fish_color_search_match --background=d2d8e2
+fish_color_valid_path --underline
+fish_color_history_current --bold
+fish_color_cancel --reverse
+fish_color_cwd 2e62c0
+fish_color_cwd_root b83d63
+fish_color_user 267b4f
+fish_color_host 363d4a
+fish_color_host_remote 866405
+fish_color_status b83d63
+fish_pager_color_progress 272d37 --background=d2d8e2
+fish_pager_color_prefix 2e62c0 --bold
+fish_pager_color_completion 363d4a
+fish_pager_color_description 7f899b
+fish_pager_color_selected_background --background=d2d8e2

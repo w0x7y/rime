@@ -1,0 +1,32 @@
+# Rime Glacier: Crisper accents with clear separation between every syntax role, on a lighter background.
+# https://github.com/w0x7y/rime
+gui:
+  theme:
+    activeBorderColor:
+      - '#6eaaf0'
+      - 'bold'
+    inactiveBorderColor:
+      - '#737e94'
+    searchingActiveBorderColor:
+      - '#e3dc9e'
+      - 'bold'
+    optionsTextColor:
+      - '#6eaaf0'
+    selectedLineBgColor:
+      - '#414854'
+    inactiveViewSelectedLineBgColor:
+      - '#323841'
+    cherryPickedCommitFgColor:
+      - '#6eaaf0'
+    cherryPickedCommitBgColor:
+      - '#414854'
+    markedBaseCommitFgColor:
+      - '#2a2f37'
+    markedBaseCommitBgColor:
+      - '#e3dc9e'
+    unstagedChangesColor:
+      - '#e07a90'
+    defaultFgColor:
+      - '#c5cedd'
+  authorColors:
+    '*': '#ae94f0'

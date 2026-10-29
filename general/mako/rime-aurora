@@ -1,0 +1,13 @@
+# Rime Aurora: Vivid neon accents on a darker background.
+# https://github.com/w0x7y/rime
+background-color=#24282f
+text-color=#c8d2e2
+border-color=#4fa2ff
+progress-color=over #333842
+
+[urgency=low]
+text-color=#9aa4b6
+border-color=#333842
+
+[urgency=critical]
+border-color=#ff6f91

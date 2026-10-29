@@ -1,0 +1,32 @@
+# Rime Frost: Frost-white paper under the same cold accents, deepened to read on it.
+# https://github.com/w0x7y/rime
+gui:
+  theme:
+    activeBorderColor:
+      - '#2e62c0'
+      - 'bold'
+    inactiveBorderColor:
+      - '#7f899b'
+    searchingActiveBorderColor:
+      - '#866405'
+      - 'bold'
+    optionsTextColor:
+      - '#2e62c0'
+    selectedLineBgColor:
+      - '#d2d8e2'
+    inactiveViewSelectedLineBgColor:
+      - '#e3e7ee'
+    cherryPickedCommitFgColor:
+      - '#2e62c0'
+    cherryPickedCommitBgColor:
+      - '#d2d8e2'
+    markedBaseCommitFgColor:
+      - '#eef1f5'
+    markedBaseCommitBgColor:
+      - '#866405'
+    unstagedChangesColor:
+      - '#b83d63'
+    defaultFgColor:
+      - '#363d4a'
+  authorColors:
+    '*': '#7650c4'

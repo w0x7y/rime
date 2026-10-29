@@ -2692,6 +2692,142 @@ def telegram(spec):
     return header(spec, "//") + "".join(f"{k}: {v};\n" for k, v in keys.items())
 
 
+
+# fish's syntax colours and the syntax role each takes. fish has one colour for every keyword.
+FISH_SYNTAX = {
+    "command": "function",
+    "keyword": "keyword",
+    "quote": "string",
+    "redirection": "operator",
+    "end": "operator",
+    "param": "variable.parameter",
+    "option": "variable.parameter",
+    "comment": "comment",
+    "operator": "operator",
+    "escape": "string.escape",
+}
+
+
+def fish(spec):
+    """A fish theme for `fish_config theme choose`: the command line by SYNTAX, the prompt and pager like the editors'."""
+    c = colours(spec)
+    n = lambda name: c[name].lstrip("#")
+    flags = {"bold": " --bold", "italic": " --italics", "underline": " --underline"}
+
+    def role(r):
+        colour, style = syntax(c, r)
+        return colour.lstrip("#") + "".join(flags.get(w, "") for w in style.split())
+
+    v = {"fish_color_normal": n("fg")}
+    v |= {f"fish_color_{k}": role(r) for k, r in FISH_SYNTAX.items()}
+    v |= {
+        "fish_color_error": n("red"),
+        "fish_color_autosuggestion": n("comment"),
+        "fish_color_selection": f"--background={n('bg_sel')}",
+        "fish_color_search_match": f"--background={n('bg_sel')}",
+        "fish_color_valid_path": "--underline",
+        "fish_color_history_current": "--bold",
+        "fish_color_cancel": "--reverse",
+        "fish_color_cwd": n("blue"),
+        "fish_color_cwd_root": n("red"),
+        "fish_color_user": n("green"),
+        "fish_color_host": n("fg"),
+        "fish_color_host_remote": n("yellow"),
+        "fish_color_status": n("red"),
+        "fish_pager_color_progress": f"{n('fg_bright')} --background={n('bg_sel')}",
+        "fish_pager_color_prefix": f"{n('blue')} --bold",
+        "fish_pager_color_completion": n("fg"),
+        "fish_pager_color_description": n("comment"),
+        "fish_pager_color_selected_background": f"--background={n('bg_sel')}",
+    }
+    return (
+        header(spec)
+        + f"# name: '{spec['name']}'\n# preferred_background: {n('bg')}\n\n"
+        + "".join(f"{k} {val}\n" for k, val in v.items())
+    )
+
+
+def starship(spec):
+    """A starship palette. Starship's modules name terminal colours, so the palette sets those to the 16 terminal colours, and adds the colour names."""
+    c = colours(spec)
+    names = ANSI_NAMES[:5] + ["purple"] + ANSI_NAMES[6:]  # starship calls magenta purple
+    v = dict(zip(names, c["ansi"][:8]))
+    v |= {f"bright-{name}": col for name, col in zip(names, c["ansi"][8:])}
+    v |= {name: c[name] for name in SLOT_NAMES.values() if name not in v}
+    return header(spec) + f"[palettes.{spec['slug']}]\n" + "".join(f'{k} = "{col}"\n' for k, col in v.items())
+
+
+def lazygit(spec):
+    """lazygit's theme, as a config file to list after your own in LG_CONFIG_FILE."""
+    c = colours(spec)
+    theme = {
+        "activeBorderColor": [c["blue"], "bold"],
+        "inactiveBorderColor": [c["comment"]],
+        "searchingActiveBorderColor": [c["yellow"], "bold"],
+        "optionsTextColor": [c["blue"]],
+        "selectedLineBgColor": [c["bg_sel"]],
+        "inactiveViewSelectedLineBgColor": [c["bg_alt"]],
+        "cherryPickedCommitFgColor": [c["blue"]],
+        "cherryPickedCommitBgColor": [c["bg_sel"]],
+        "markedBaseCommitFgColor": [c["bg"]],
+        "markedBaseCommitBgColor": [c["yellow"]],
+        "unstagedChangesColor": [c["red"]],
+        "defaultFgColor": [c["fg"]],
+    }
+    lines = "".join(f"    {k}:\n" + "".join(f"      - '{v}'\n" for v in vals) for k, vals in theme.items())
+    return header(spec) + "gui:\n  theme:\n" + lines + f"  authorColors:\n    '*': '{c['violet']}'\n"
+
+
+def dunst(spec):
+    """A dunst drop-in: notifications in the popup shade, framed blue, or red when critical."""
+    c = colours(spec)
+    sections = {
+        "global": {"separator_color": "frame", "highlight": c["blue"]},
+        "urgency_low": {"background": c["bg_alt"], "foreground": c["muted"], "frame_color": c["bg_sel"]},
+        "urgency_normal": {"background": c["bg_alt"], "foreground": c["fg"], "frame_color": c["blue"]},
+        "urgency_critical": {"background": c["bg_alt"], "foreground": c["fg"], "frame_color": c["red"], "highlight": c["red"]},
+    }
+    return header(spec) + "\n".join(
+        f"[{name}]\n" + "".join(f'    {k} = "{v}"\n' for k, v in keys.items()) for name, keys in sections.items()
+    )
+
+
+def mako(spec):
+    """A mako config to include: the same notifications as the dunst port."""
+    c = colours(spec)
+    return header(spec) + (
+        f"background-color={c['bg_alt']}\ntext-color={c['fg']}\nborder-color={c['blue']}\n"
+        f"progress-color=over {c['bg_sel']}\n"
+        f"\n[urgency=low]\ntext-color={c['muted']}\nborder-color={c['bg_sel']}\n"
+        f"\n[urgency=critical]\nborder-color={c['red']}\n"
+    )
+
+
+def hyprland(spec):
+    """A Hyprland Lua module (Hyprland 0.55+): window borders and groups, focused in blue and locked groups in yellow."""
+    c = colours(spec)
+    q = lambda name: f'"rgb({c[name].lstrip("#")})"'
+    return header(spec, "--") + (
+        "hl.config({\n"
+        "    general = {\n"
+        f"        col = {{ active_border = {q('blue')}, inactive_border = {q('bg_sel')}, "
+        f"nogroup_border = {q('bg_sel')}, nogroup_border_active = {q('violet')} }},\n"
+        "    },\n"
+        "    group = {\n"
+        f"        col = {{ border_active = {q('blue')}, border_inactive = {q('bg_sel')}, "
+        f"border_locked_active = {q('yellow')}, border_locked_inactive = {q('bg_sel')} }},\n"
+        "        groupbar = {\n"
+        f"            text_color = {q('fg')},\n"
+        f"            text_color_inactive = {q('comment')},\n"
+        f"            col = {{ active = {q('blue')}, inactive = {q('bg_sel')}, "
+        f"locked_active = {q('yellow')}, locked_inactive = {q('bg_sel')} }},\n"
+        "        },\n"
+        "    },\n"
+        f"    misc = {{ background_color = {q('bg')} }},\n"
+        "})\n"
+    )
+
+
 def swatch_svg(spec):
     """A small palette strip for the README."""
     p = spec["palette"]
@@ -2811,6 +2947,12 @@ PER_VARIANT = [
     ("discord", "general/discord/{slug}.theme.css", discord),
     ("firefox", "general/firefox/{slug}.html", firefox),
     ("telegram", "general/telegram/{slug}.tdesktop-palette", telegram),
+    ("mako", "general/mako/{slug}", mako),
+    ("hyprland", "general/hyprland/{slug}.lua", hyprland),
+    ("fish", "general/fish/{slug}.theme", fish),
+    ("starship", "general/starship/{slug}.toml", starship),
+    ("lazygit", "general/lazygit/{slug}.yml", lazygit),
+    ("dunst", "general/dunst/{slug}.conf", dunst),
 ]
 
 

@@ -159,6 +159,7 @@ class SyntaxRoles(unittest.TestCase):
             "micro": self.roles_used_by(build.micro),
             "Emacs": self.roles_used_by(build.emacs),
             "Obsidian": self.roles_used_by(build.obsidian),
+            "fish": self.roles_used_by(build.fish),
         }
         for role in build.SYNTAX:
             users = [port for port, roles in ports.items() if role in roles]

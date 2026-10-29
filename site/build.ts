@@ -55,12 +55,13 @@ function themeCss() {
 
 // ------------------------------------------------------------------ ports, docs and syntax roles
 
-type Port = { slug: string; name: string; group: "editors" | "terminals" | "apps" | "more"; blurb: string };
+type Port = { slug: string; name: string; group: "editors" | "terminals" | "apps" | "desktop" | "more"; blurb: string };
 
 const GROUPS = [
   { id: "editors", label: "editors" },
   { id: "terminals", label: "terminals" },
   { id: "apps", label: "apps" },
+  { id: "desktop", label: "linux desktop" },
   { id: "more", label: "and the rest" },
 ] as const;
 
@@ -88,7 +89,13 @@ const PORTS: Port[] = [
   { slug: "spicetify", name: "spicetify", group: "apps", blurb: "spotify, all five in one theme" },
   { slug: "firefox", name: "firefox color", group: "apps", blurb: "a link per variant" },
   { slug: "telegram", name: "telegram", group: "apps", blurb: "a desktop palette" },
-  { slug: "noctalia", name: "noctalia", group: "more", blurb: "the desktop shell" },
+  { slug: "noctalia", name: "noctalia", group: "desktop", blurb: "the desktop shell" },
+  { slug: "hyprland", name: "hyprland", group: "desktop", blurb: "borders and groups, in lua" },
+  { slug: "dunst", name: "dunst", group: "desktop", blurb: "notifications" },
+  { slug: "mako", name: "mako", group: "desktop", blurb: "notifications" },
+  { slug: "fish", name: "fish", group: "more", blurb: "a theme for fish_config" },
+  { slug: "starship", name: "starship", group: "more", blurb: "a prompt palette" },
+  { slug: "lazygit", name: "lazygit", group: "more", blurb: "the git tui" },
   { slug: "tmux", name: "tmux", group: "more", blurb: "status bar, borders and copy mode" },
   { slug: "bat", name: "bat", group: "more", blurb: "a syntax theme" },
   { slug: "delta", name: "delta", group: "more", blurb: "the git diff pager" },

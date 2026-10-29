@@ -1,0 +1,13 @@
+# Rime: Soft and muted pastels for long sessions.
+# https://github.com/w0x7y/rime
+background-color=#2b3038
+text-color=#c3ccd9
+border-color=#7aa4e4
+progress-color=over #3a404b
+
+[urgency=low]
+text-color=#9aa4b6
+border-color=#3a404b
+
+[urgency=critical]
+border-color=#d98a9c

@@ -283,6 +283,70 @@ A palette per variant for Telegram Desktop. Send `telegram/rime.tdesktop-palette
 
 A palette has no chat background, so Telegram keeps your current wallpaper. For a plain one, open **Chat background** and pick the solid color closest to the theme's background.
 
+## fish
+
+A theme per variant for fish's `fish_config theme`. The command line follows the same syntax roles as the editor ports.
+
+```sh
+mkdir -p ~/.config/fish/themes
+cp fish/rime.theme ~/.config/fish/themes/
+fish_config theme choose rime
+```
+
+`choose` applies it to the current session; add the same line to `config.fish` to keep it. fish has one color for every keyword, so `if`, `for` and `return` share it.
+
+## starship
+
+A [starship](https://starship.rs) palette per variant. Starship's modules name terminal colors (`blue`, `bold green`), so the palette sets those to the 16 terminal colors above. It also adds the color names (`bg`, `fg`, `comment`, `pink`, `steel` and the rest) for your own styles.
+
+```sh
+cat starship/rime.toml >> ~/.config/starship.toml
+```
+
+Then put `palette = "rime"` near the top of `starship.toml`, before any `[section]`.
+
+## lazygit
+
+A [lazygit](https://github.com/jesseduffield/lazygit) theme per variant, as a config file that lazygit reads after yours.
+
+```sh
+cp lazygit/rime.yml ~/.config/lazygit/rime.yml
+export LG_CONFIG_FILE="$HOME/.config/lazygit/config.yml,$HOME/.config/lazygit/rime.yml"
+```
+
+Put the `export` in your shell's startup file. On macOS lazygit's config folder is `~/Library/Application Support/lazygit` unless `XDG_CONFIG_HOME` is set.
+
+## dunst
+
+A drop-in per variant for the [dunst](https://dunst-project.org) notification daemon, version 1.9 or later. Notifications take the popup shade, framed blue, gray when low and red when critical.
+
+```sh
+mkdir -p ~/.config/dunst/dunstrc.d
+cp dunst/rime.conf ~/.config/dunst/dunstrc.d/
+dunstctl reload
+```
+
+## mako
+
+The same notifications for [mako](https://github.com/emersion/mako).
+
+```sh
+cp mako/rime ~/.config/mako/rime
+```
+
+Add `include=~/.config/mako/rime` as the first line of `~/.config/mako/config`, before any `[section]`, then run `makoctl reload`.
+
+## Hyprland
+
+A Lua module per variant for Hyprland 0.55 or later, which reads `hyprland.lua`. It colors window borders, groups and the groupbar: the focused window and group in blue, locked groups in yellow.
+
+```sh
+cp hyprland/rime.lua ~/.config/hypr/rime.lua
+echo 'require("rime")' >> ~/.config/hypr/hyprland.lua
+```
+
+Put the `require` after your own `hl.config` calls; the last value set wins.
+
 ## Other formats
 
 | Folder    | Use                                                                                                                                                                             |

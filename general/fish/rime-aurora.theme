@@ -1,0 +1,34 @@
+# Rime Aurora: Vivid neon accents on a darker background.
+# https://github.com/w0x7y/rime
+# name: 'Rime Aurora'
+# preferred_background: 1c1f25
+
+fish_color_normal c8d2e2
+fish_color_command 4fa2ff
+fish_color_keyword 9b7dff
+fish_color_quote 5ef0a6
+fish_color_redirection 9aa4b6
+fish_color_end 9aa4b6
+fish_color_param c8d2e2
+fish_color_option c8d2e2
+fish_color_comment 6b768c --italics
+fish_color_operator 9aa4b6
+fish_color_escape 38dce8
+fish_color_error ff6f91
+fish_color_autosuggestion 6b768c
+fish_color_selection --background=333842
+fish_color_search_match --background=333842
+fish_color_valid_path --underline
+fish_color_history_current --bold
+fish_color_cancel --reverse
+fish_color_cwd 4fa2ff
+fish_color_cwd_root ff6f91
+fish_color_user 5ef0a6
+fish_color_host c8d2e2
+fish_color_host_remote e6f07c
+fish_color_status ff6f91
+fish_pager_color_progress e0e7f2 --background=333842
+fish_pager_color_prefix 4fa2ff --bold
+fish_pager_color_completion c8d2e2
+fish_pager_color_description 6b768c
+fish_pager_color_selected_background --background=333842
