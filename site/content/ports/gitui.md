@@ -17,4 +17,10 @@ curl -fsSL https://raw.githubusercontent.com/w0x7y/rime/main/general/gitui/{{slu
 curl -fsSL https://raw.githubusercontent.com/w0x7y/rime/main/general/bat/{{slug}}.tmTheme -o ~/.config/gitui/{{slug}}.tmTheme
 ```
 
-gitui reads `theme.ron` from its config folder. to keep several themes, save each under its own name and start gitui with `gitui -t {{slug}}.ron`. on windows the folder is `%APPDATA%\gitui`.
+gitui reads `theme.ron` from its config folder. to keep several themes, save each under its own name instead and pick one when you start gitui:
+
+```sh
+gitui -t {{slug}}.ron
+```
+
+on windows the folder is `%APPDATA%\gitui`.
