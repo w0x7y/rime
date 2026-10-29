@@ -22,7 +22,7 @@ Each is a small file per variant, about the size of the tmux or fzf ports.
 
 - [x] lazygit: `general/lazygit/`, a config file to list in `LG_CONFIG_FILE`.
 - [x] btop: `general/btop/`, a `.theme` file.
-- [ ] yazi
+- [x] yazi: `general/yazi/`, a flavor folder per variant, with the bat theme for previews.
 - [x] zellij: `general/zellij/`, a KDL theme for zellij 0.42+.
 - [ ] herdr: themes go in `config.toml` and can ship as a herdr plugin.
 - [x] starship: `general/starship/`, a `[palettes.<variant>]` block.

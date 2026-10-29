@@ -102,6 +102,7 @@ const PORTS: Port[] = [
   { slug: "k9s", name: "k9s", group: "more", blurb: "kubernetes in the terminal" },
   { slug: "vivid", name: "vivid", group: "more", blurb: "LS_COLORS" },
   { slug: "glamour", name: "glamour", group: "more", blurb: "markdown in glow and gh" },
+  { slug: "yazi", name: "yazi", group: "more", blurb: "the file manager" },
   { slug: "tmux", name: "tmux", group: "more", blurb: "status bar, borders and copy mode" },
   { slug: "zellij", name: "zellij", group: "more", blurb: "tabs, modes and pane frames" },
   { slug: "bat", name: "bat", group: "more", blurb: "a syntax theme" },
@@ -214,8 +215,12 @@ const fileName = (path: string) => path.split("/").pop()!;
 function downloads(port: Port) {
   const paths = portFiles(port);
   if (paths.length === 0) return "";
-  const links = paths.map((p) => `<a href="/files/${p}" download>${esc(fileName(p))}</a>`).join(" · ");
-  return `<p class="files"><span class="dim">${paths.length > 1 ? "files" : "file"}:</span> ${links} · <a href="${REPO}/tree/main/${dirname(paths[0])}">on github</a></p>`;
+  // when the folder names the variant (yazi's rime.yazi/flavor.toml), label each file with its folder and link their parent
+  const perFolder = paths.length > 1 && !fileName(DATA.downloads[port.slug]).includes("{slug}");
+  const label = (p: string) => (perFolder ? p.split("/").slice(-2).join("/") : fileName(p));
+  const links = paths.map((p) => `<a href="/files/${p}" download>${esc(label(p))}</a>`).join(" · ");
+  const folder = perFolder ? dirname(dirname(paths[0])) : dirname(paths[0]);
+  return `<p class="files"><span class="dim">${paths.length > 1 ? "files" : "file"}:</span> ${links} · <a href="${REPO}/tree/main/${folder}">on github</a></p>`;
 }
 
 function portList() {

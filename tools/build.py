@@ -3185,6 +3185,88 @@ def glamour(spec):
     return json.dumps(style, indent=2, ensure_ascii=False) + "\n"
 
 
+def yazi(spec):
+    """A yazi flavor.toml: modes and tabs like the lualine theme, popups framed blue, and file colors as in the
+    vivid port. Symbols and icons stay yazi's. build() writes the bat theme next to it as tmtheme.xml."""
+    c = colours(spec)
+
+    def s(fg=None, bg=None, **flags):
+        props = {"fg": c[fg] if fg else None, "bg": c[bg] if bg else None}
+        return {k: v for k, v in props.items() if v} | flags
+
+    block = lambda accent: (s("bg", accent, bold=True), s(accent, "bg_sel"))  # lualine's a and b sections
+    popup = {"border": s("blue"), "title": s("blue")}
+    sections = {
+        "mgr": {
+            "cwd": s("cyan"),
+            "find_keyword": s("yellow", bold=True, italic=True, underline=True),
+            "find_position": s("violet", bold=True, italic=True),
+            "marker_copied": s("green", "green"),
+            "marker_cut": s("red", "red"),
+            "marker_marked": s("cyan", "cyan"),
+            "marker_selected": s("yellow", "yellow"),
+            "count_copied": s("bg", "green"),
+            "count_cut": s("bg", "red"),
+            "count_selected": s("bg", "yellow"),
+            "border_style": s("bg_sel"),
+        },
+        "tabs": dict(zip(("active", "inactive"), block("blue"))),
+        "mode": {
+            f"{mode}_{part}": style
+            for mode, accent in (("normal", "blue"), ("select", "violet"), ("unset", "red"))
+            for part, style in zip(("main", "alt"), block(accent))
+        },
+        # the hovered file keeps its own color, on the selection gray
+        "indicator": {"parent": s(bg="bg_alt"), "current": s(bg="bg_sel"), "preview": s(underline=True)},
+        "status": {
+            "perm_sep": s("comment"),
+            "perm_type": s("green"),
+            "perm_read": s("yellow"),
+            "perm_write": s("red"),
+            "perm_exec": s("cyan"),
+            "progress_label": s("fg_bright", bold=True),
+            "progress_normal": s("blue", "bg_sel"),
+            "progress_error": s("red", "bg_sel"),
+        },
+        "which": {
+            "border": s("blue"),
+            "mask": s(bg="bg_alt"),
+            "cand": s("cyan"),
+            "rest": s("comment"),
+            "desc": s("violet"),
+            "separator_style": s("comment"),
+        },
+        "confirm": popup | {"btn_yes": s("bg", "blue")},
+        "spot": popup | {"tbl_col": s("blue"), "tbl_cell": s("fg_bright", "bg_sel")},
+        "notify": {"title_info": s("green"), "title_warn": s("yellow"), "title_error": s("red")},
+        "pick": {"border": s("blue"), "active": s("violet", bold=True)},
+        "input": {"border": s("blue"), "selected": s(bg="bg_sel")},
+        "cmp": {"border": s("blue"), "active": s(bg="bg_sel")},
+        "tasks": {"border": s("blue"), "hovered": s("violet", bold=True)},
+        "help": {"border": s("blue"), "chord": s("cyan"), "hovered": s(bg="bg_sel", bold=True)},
+    }
+    # the vivid port's file colors; documents keep the text color
+    archives = "**/application/{zip,rar,7z*,tar,gzip,xz,zstd,bzip*,lzma,compress,archive,cpio,arj,xar,ms-cab*}"
+    rules = [
+        {"mime": "**/{image,audio,video}/*"} | s("pink"),
+        {"mime": archives} | s("red", bold=True),
+        {"mime": "vfs/{absent,stale}"} | s("comment"),
+        {"url": "*", "is": "orphan"} | s("red"),
+        {"url": "*", "is": "exec"} | s("green", bold=True),
+        {"url": "*", "is": "dummy"} | s("red"),
+        {"url": "*/", "is": "dummy"} | s("red"),
+        {"url": "*/"} | s("blue"),
+    ]
+
+    value = lambda v: "true" if v is True else f'"{v}"'
+    inline = lambda d: "{ " + ", ".join(f"{k} = {value(v)}" for k, v in d.items()) + " }"
+    out = [header(spec)]
+    for name, keys in sections.items():
+        out.append(f"[{name}]\n" + "".join(f"{k} = {inline(v)}\n" for k, v in keys.items()))
+    out.append("[filetype]\nrules = [\n" + "".join(f"\t{inline(r)},\n" for r in rules) + "]\n")
+    return "\n".join(out)
+
+
 def swatch_svg(spec):
     """A small palette strip for the README."""
     p = spec["palette"]
@@ -3317,6 +3399,7 @@ PER_VARIANT = [
     ("rofi", "general/rofi/{slug}.rasi", rofi),
     ("vivid", "general/vivid/{slug}.yml", vivid),
     ("glamour", "general/glamour/{slug}.json", glamour),
+    ("yazi", "general/yazi/{slug}.yazi/flavor.toml", yazi),
 ]
 
 
@@ -3366,6 +3449,8 @@ def build(specs, licence):
         for _, path, text in PER_VARIANT:
             files[path.format(slug=slug)] = text(spec)
         files[f"assets/palette-{slug}.svg"] = swatch_svg(spec)
+        # a yazi flavor is a folder; its code previews take the bat theme under the name yazi looks for
+        files[f"general/yazi/{slug}.yazi/tmtheme.xml"] = bat(spec)
     for _, path, text in ALL_IN_ONE:
         files[path] = text(specs)
     files["lua/rime/variants.lua"] = nvim_variants(specs)
@@ -3407,6 +3492,7 @@ def stale(files):
 # paths that hold only generated files, so any other match is left over from an older build
 GENERATED = [
     "general/*/*",
+    "general/yazi/*/*",
     "colors/*",
     "vim/colors/*",
     "lua/lualine/themes/*",

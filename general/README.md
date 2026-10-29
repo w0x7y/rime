@@ -383,6 +383,25 @@ glow -s ~/.config/glow/rime.json README.md
 
 To make it glow's default, run `glow config` and set `style:` to the file's full path, such as `"/home/you/.config/glow/rime.json"`; glow doesn't expand `~` there. For `gh`, set `export GLAMOUR_STYLE="$HOME/.config/glow/rime.json"` in your shell's startup file. glow draws code blocks in the nearest of the 256 terminal colors, so they come out slightly off.
 
+## yazi
+
+A flavor per variant for the [yazi](https://yazi-rs.github.io) file manager, version 26.8 or later. Modes and tabs look like the lualine theme, popups are framed blue, the hovered file sits on the selection gray, and files take the colors of the vivid theme above. Each flavor holds the bat theme as `tmtheme.xml`, so previews highlight code the same way.
+
+```sh
+mkdir -p ~/.config/yazi/flavors
+cp -r yazi/rime.yazi yazi/rime-frost.yazi ~/.config/yazi/flavors/
+```
+
+Then put this in `~/.config/yazi/theme.toml`, so yazi follows the terminal between a dark variant and Frost:
+
+```toml
+[flavor]
+dark = "rime"
+light = "rime-frost"
+```
+
+Anything else in `theme.toml` overrides the flavor.
+
 ## btop
 
 A theme per variant for the [btop](https://github.com/aristocratos/btop) system monitor. Box outlines and empty meters take the selection gray, CPU and process graphs go from green through yellow to red, and each memory and network meter runs from its dimmed terminal color to the bright one.
