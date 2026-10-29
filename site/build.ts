@@ -97,6 +97,7 @@ const PORTS: Port[] = [
   { slug: "starship", name: "starship", group: "more", blurb: "a prompt palette" },
   { slug: "lazygit", name: "lazygit", group: "more", blurb: "the git tui" },
   { slug: "tmux", name: "tmux", group: "more", blurb: "status bar, borders and copy mode" },
+  { slug: "zellij", name: "zellij", group: "more", blurb: "tabs, modes and pane frames" },
   { slug: "bat", name: "bat", group: "more", blurb: "a syntax theme" },
   { slug: "delta", name: "delta", group: "more", blurb: "the git diff pager" },
   { slug: "base16", name: "base16", group: "more", blurb: "for any base16 template" },
@@ -373,7 +374,7 @@ async function build() {
   const started = performance.now();
   const highlighter = await createHighlighter({
     themes: [shikiTheme()],
-    langs: ["lua", "shellscript", "toml", "ini", "json", "jsonc", "css", "viml", "emacs-lisp"],
+    langs: ["lua", "shellscript", "toml", "ini", "json", "jsonc", "css", "viml", "emacs-lisp", "kdl"],
   });
   const highlight = (code: string, lang: string) => highlighter.codeToHtml(code, { lang: lang || "text", theme: "rime" });
 

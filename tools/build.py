@@ -2828,6 +2828,42 @@ def hyprland(spec):
     )
 
 
+def zellij(spec):
+    """A zellij 0.42+ theme: bars in the chrome shade as in the tmux port, blue for the focused tab, mode and pane."""
+    c = colours(spec)
+    accents = [c[n] for n in ("yellow", "cyan", "green", "violet")]  # emphasis_0 (key hints) to emphasis_3
+    # component: (base, background or None to leave it unset, the four emphases)
+    components = {
+        "text_unselected": (c["fg"], c["bg_dark"], accents),
+        "text_selected": (c["fg_bright"], c["bg_sel"], accents),
+        # emphasis_1 is the hovered tab's background and emphasis_3 a tab's text when its bell rings
+        "ribbon_unselected": (c["fg"], c["bg_sel"], [c["yellow"], c["bg_alt"], c["blue"], c["red"]]),
+        "ribbon_selected": (c["bg"], c["blue"], [c["bg_dark"]] * 4),
+        "table_title": (c["blue"], c["bg"], accents),
+        "table_cell_unselected": (c["fg"], c["bg"], accents),
+        "table_cell_selected": (c["fg_bright"], c["bg_sel"], accents),
+        "list_unselected": (c["fg"], c["bg"], accents),
+        "list_selected": (c["fg_bright"], c["bg_sel"], accents),
+        # an unfocused frame colors its title too, so it takes the comment gray rather than bg_sel
+        "frame_unselected": (c["comment"], None, accents),
+        "frame_selected": (c["blue"], None, accents),
+        "frame_highlight": (c["yellow"], None, [c["violet"]] + [c["yellow"]] * 3),
+        "exit_code_success": (c["green"], None, accents),
+        "exit_code_error": (c["red"], None, accents),
+    }
+    players = [c[n] for n in ("violet", "blue", "green", "yellow", "cyan", "pink", "red", "steel", "muted", "fg_bright")]
+
+    def node(name, entries):
+        return f"        {name} {{\n" + "".join(f'            {k} "{v}"\n' for k, v in entries) + "        }\n"
+
+    out = []
+    for name, (base, background, emphases) in components.items():
+        entries = [("base", base)] + ([("background", background)] if background else [])
+        out.append(node(name, entries + [(f"emphasis_{i}", e) for i, e in enumerate(emphases)]))
+    out.append(node("multiplayer_user_colors", [(f"player_{i}", p) for i, p in enumerate(players, 1)]))
+    return header(spec, "//") + f"themes {{\n    {spec['slug']} {{\n" + "".join(out) + "    }\n}\n"
+
+
 def swatch_svg(spec):
     """A small palette strip for the README."""
     p = spec["palette"]
@@ -2953,6 +2989,7 @@ PER_VARIANT = [
     ("starship", "general/starship/{slug}.toml", starship),
     ("lazygit", "general/lazygit/{slug}.yml", lazygit),
     ("dunst", "general/dunst/{slug}.conf", dunst),
+    ("zellij", "general/zellij/{slug}.kdl", zellij),
 ]
 
 

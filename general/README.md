@@ -140,6 +140,18 @@ echo 'source-file ~/.config/tmux/rime.conf' >> ~/.config/tmux/tmux.conf
 
 If your config is `~/.tmux.conf`, add the line there instead.
 
+## zellij
+
+A theme per variant for zellij 0.42 or later. The tab bar and status bar take the darker chrome shade, as in tmux. The focused tab, the current mode and the focused pane's frame are blue, and the frame turns yellow while you're in a mode such as `PANE` or `TAB`.
+
+```sh
+mkdir -p ~/.config/zellij/themes
+cp zellij/rime.kdl ~/.config/zellij/themes/
+echo 'theme "rime"' >> ~/.config/zellij/config.kdl
+```
+
+To follow the terminal's dark or light mode, set both `theme_dark "rime"` and `theme_light "rime-frost"` instead (zellij 0.45 or later).
+
 ## Helix
 
 A theme per variant, with the same syntax roles as Neovim, Zed and VS Code. Helix names a theme after its file, so this one is `rime`.
