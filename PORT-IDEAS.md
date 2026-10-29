@@ -30,7 +30,7 @@ Each is a small file per variant, about the size of the tmux or fzf ports.
 - [x] k9s: `general/k9s/`, a skin. Resource YAML reads `SYNTAX`.
 - [x] vivid: `general/vivid/`, a theme that `vivid generate` turns into `LS_COLORS`.
 - [x] gitui: `general/gitui/`, a `theme.ron` that highlights files with the bat theme.
-- [ ] glamour, used by glow
+- [x] glamour: `general/glamour/`, a style for glow and gh. Code blocks read `SYNTAX`.
 
 ## Linux desktop
 

@@ -3106,6 +3106,85 @@ def vivid(spec):
     return header(spec) + colors + "\n" + emit(categories, 0)
 
 
+# glamour's chroma token names and the syntax role each takes, for code blocks in glow and gh
+GLAMOUR_SYNTAX = {
+    "text": "variable",
+    "comment": "comment",
+    "comment_preproc": "keyword.directive",
+    "keyword": "keyword",
+    "keyword_reserved": "keyword",
+    "keyword_namespace": "keyword.import",
+    "keyword_type": "type.builtin",
+    "operator": "operator",
+    "punctuation": "punctuation",
+    "name": "variable",
+    "name_builtin": "function.builtin",
+    "name_tag": "tag",
+    "name_attribute": "tag.attribute",
+    "name_class": "type",
+    "name_constant": "constant",
+    "name_decorator": "attribute",
+    "name_exception": "type",
+    "name_function": "function",
+    "name_other": "variable",
+    "literal": "constant",
+    "literal_number": "number",
+    "literal_date": "number",
+    "literal_string": "string",
+    "literal_string_escape": "string.escape",
+    "generic_deleted": "diff.minus",
+    "generic_emph": "markup.italic",
+    "generic_inserted": "diff.plus",
+    "generic_strong": "markup.strong",
+    "generic_subheading": "diff.range",
+}
+
+
+def glamour(spec):
+    """A glamour style for glow and gh: glamour's dark layout, with Markdown and code by SYNTAX."""
+    c = colours(spec)
+    flags = {"bold": "bold", "italic": "italic", "underline": "underline", "strikethrough": "crossed_out"}
+
+    def role(r, **extra):
+        colour, style = syntax(c, r)
+        return ({"color": colour} if colour else {}) | {flags[w]: True for w in style.split()} | extra
+
+    chroma = {k: role(r) for k, r in GLAMOUR_SYNTAX.items()}
+    chroma["error"] = {"color": c["red"]}
+    chroma["background"] = {"background_color": c["bg_alt"]}
+    # the layout (prefixes, margins, indents) is glamour's dark.json; a style file replaces all of it
+    style = {
+        "document": {"block_prefix": "\n", "block_suffix": "\n", "color": c["fg"], "margin": 2},
+        "block_quote": role("markup.quote", indent=1, indent_token="│ "),
+        "paragraph": {},
+        "list": {"level_indent": 2},
+        "heading": role("markup.heading", block_suffix="\n"),
+        "h1": {"prefix": " ", "suffix": " ", "color": c["bg"], "background_color": c["blue"], "bold": True},
+        **{f"h{n}": {"prefix": "#" * n + " "} for n in range(2, 7)},
+        "text": {},
+        "strikethrough": {"crossed_out": True},
+        "emph": {"italic": True},
+        "strong": {"bold": True},
+        "hr": {"color": c["comment"], "format": "\n--------\n"},
+        "item": {"block_prefix": "• "},
+        "enumeration": {"block_prefix": ". "},
+        "task": {"ticked": "[✓] ", "unticked": "[ ] "},
+        "link": role("markup.link.url"),
+        "link_text": role("markup.link.label", bold=True),
+        "image": role("markup.link.url"),
+        "image_text": {"color": c["comment"], "format": "Image: {{.text}} →"},
+        "code": role("markup.raw", prefix=" ", suffix=" ", background_color=c["bg_alt"]),
+        "code_block": {"color": c["fg"], "margin": 2, "chroma": chroma},
+        "table": {},
+        "definition_list": {},
+        "definition_term": {},
+        "definition_description": {"block_prefix": "\n🠶 "},
+        "html_block": {},
+        "html_span": {},
+    }
+    return json.dumps(style, indent=2, ensure_ascii=False) + "\n"
+
+
 def swatch_svg(spec):
     """A small palette strip for the README."""
     p = spec["palette"]
@@ -3237,6 +3316,7 @@ PER_VARIANT = [
     ("k9s", "general/k9s/{slug}.yaml", k9s),
     ("rofi", "general/rofi/{slug}.rasi", rofi),
     ("vivid", "general/vivid/{slug}.yml", vivid),
+    ("glamour", "general/glamour/{slug}.json", glamour),
 ]
 
 

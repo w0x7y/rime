@@ -371,6 +371,18 @@ echo 'export LS_COLORS="$(vivid generate rime)"' >> ~/.bashrc  # or ~/.zshrc
 
 In fish, add `set -gx LS_COLORS (vivid generate rime)` to `config.fish`.
 
+## glamour
+
+A [glamour](https://github.com/charmbracelet/glamour) style per variant, for Markdown in [glow](https://github.com/charmbracelet/glow) and in `gh`'s issues, pull requests and READMEs. Headings, links, quotes and inline code take the editors' Markdown colors, and code blocks follow the same syntax roles as the editor ports.
+
+```sh
+mkdir -p ~/.config/glow
+cp glamour/rime.json ~/.config/glow/
+glow -s ~/.config/glow/rime.json README.md
+```
+
+To make it glow's default, run `glow config` and set `style:` to the file's full path, such as `"/home/you/.config/glow/rime.json"`; glow doesn't expand `~` there. For `gh`, set `export GLAMOUR_STYLE="$HOME/.config/glow/rime.json"` in your shell's startup file. glow draws code blocks in the nearest of the 256 terminal colors, so they come out slightly off.
+
 ## btop
 
 A theme per variant for the [btop](https://github.com/aristocratos/btop) system monitor. Box outlines and empty meters take the selection gray, CPU and process graphs go from green through yellow to red, and each memory and network meter runs from its dimmed terminal color to the bright one.

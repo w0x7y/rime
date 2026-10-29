@@ -101,6 +101,7 @@ const PORTS: Port[] = [
   { slug: "btop", name: "btop", group: "more", blurb: "the system monitor" },
   { slug: "k9s", name: "k9s", group: "more", blurb: "kubernetes in the terminal" },
   { slug: "vivid", name: "vivid", group: "more", blurb: "LS_COLORS" },
+  { slug: "glamour", name: "glamour", group: "more", blurb: "markdown in glow and gh" },
   { slug: "tmux", name: "tmux", group: "more", blurb: "status bar, borders and copy mode" },
   { slug: "zellij", name: "zellij", group: "more", blurb: "tabs, modes and pane frames" },
   { slug: "bat", name: "bat", group: "more", blurb: "a syntax theme" },
