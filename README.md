@@ -91,7 +91,7 @@ the same 16 colors per variant. there's a base16 template for almost any softwar
 
 **[terminals and the rest](./general)**
 
-kitty, alacritty, ghostty, wezterm, foot, windows terminal, iterm2, warp, xresources, the noctalia shell, tmux, zellij, bat, delta, css variables and fzf. apps too: obsidian, discord, spotify through spicetify, firefox color and telegram. on the desktop and in the shell: hyprland, dunst, mako, fish, starship, lazygit, gitui and btop
+kitty, alacritty, ghostty, wezterm, foot, windows terminal, iterm2, warp, xresources, the noctalia shell, tmux, zellij, bat, delta, css variables and fzf. apps too: obsidian, discord, spotify through spicetify, firefox color and telegram. on the desktop and in the shell: hyprland, dunst, mako, fish, starship, lazygit, gitui, btop and k9s
 
 for kitty, put `general/kitty/rime.conf` into `~/.config/kitty/rime.conf`, then add `include rime.conf` to your kitty config. install a Noctalia palette from `general/noctalia/` with the [setup instructions](./general#noctalia); the others are explained in [general/](./general)
 

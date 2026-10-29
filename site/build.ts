@@ -98,6 +98,7 @@ const PORTS: Port[] = [
   { slug: "lazygit", name: "lazygit", group: "more", blurb: "the git tui" },
   { slug: "gitui", name: "gitui", group: "more", blurb: "the other git tui" },
   { slug: "btop", name: "btop", group: "more", blurb: "the system monitor" },
+  { slug: "k9s", name: "k9s", group: "more", blurb: "kubernetes in the terminal" },
   { slug: "tmux", name: "tmux", group: "more", blurb: "status bar, borders and copy mode" },
   { slug: "zellij", name: "zellij", group: "more", blurb: "tabs, modes and pane frames" },
   { slug: "bat", name: "bat", group: "more", blurb: "a syntax theme" },
@@ -376,7 +377,7 @@ async function build() {
   const started = performance.now();
   const highlighter = await createHighlighter({
     themes: [shikiTheme()],
-    langs: ["lua", "shellscript", "toml", "ini", "json", "jsonc", "css", "viml", "emacs-lisp", "kdl"],
+    langs: ["lua", "shellscript", "toml", "ini", "json", "jsonc", "css", "viml", "emacs-lisp", "kdl", "yaml"],
   });
   const highlight = (code: string, lang: string) => highlighter.codeToHtml(code, { lang: lang || "text", theme: "rime" });
 

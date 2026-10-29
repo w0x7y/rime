@@ -1,0 +1,111 @@
+# Rime Abyss: The coldest take, on a darker background: no yellow or orange anywhere, with rose as the only warm accent.
+# https://github.com/w0x7y/rime
+k9s:
+  body:
+    fgColor: "#c2cde0"
+    bgColor: "#15171c"
+    logoColor: "#6b9cf4"
+    logoColorMsg: "#c2cde0"
+    logoColorInfo: "#6fd0a8"
+    logoColorWarn: "#9cf0dc"
+    logoColorError: "#e8879f"
+  prompt:
+    fgColor: "#c2cde0"
+    bgColor: "#15171c"
+    suggestColor: "#6b768c"
+    border:
+      default: "#6b9cf4"
+      command: "#937ff2"
+  info:
+    fgColor: "#c2cde0"
+    sectionColor: "#9aa4b6"
+    cpuColor: "#6fd0a8"
+    memColor: "#4fb4dc"
+    k9sRevColor: "#6b9cf4"
+  help:
+    fgColor: "#c2cde0"
+    bgColor: "#15171c"
+    sectionColor: "#937ff2"
+    keyColor: "#6b9cf4"
+    numKeyColor: "#d4aaff"
+  dialog:
+    fgColor: "#c2cde0"
+    bgColor: "#15171c"
+    buttonFgColor: "#c2cde0"
+    buttonBgColor: "#2c3039"
+    buttonFocusFgColor: "#15171c"
+    buttonFocusBgColor: "#6b9cf4"
+    labelFgColor: "#9cf0dc"
+    fieldFgColor: "#c2cde0"
+  frame:
+    border:
+      fgColor: "#2c3039"
+      focusColor: "#6b9cf4"
+    menu:
+      fgColor: "#9aa4b6"
+      keyColor: "#6b9cf4"
+      numKeyColor: "#d4aaff"
+    crumbs:
+      fgColor: "#15171c"
+      bgColor: "#9aa4b6"
+      activeColor: "#6b9cf4"
+    status:
+      newColor: "#6b9cf4"
+      modifyColor: "#6fd0a8"
+      addColor: "#4fb4dc"
+      pendingColor: "#9cf0dc"
+      errorColor: "#e8879f"
+      highlightColor: "#d4aaff"
+      killColor: "#937ff2"
+      completedColor: "#6b768c"
+    title:
+      fgColor: "#dde5f2"
+      bgColor: "#15171c"
+      highlightColor: "#6b9cf4"
+      counterColor: "#9aa4b6"
+      filterColor: "#937ff2"
+  views:
+    charts:
+      bgColor: "#15171c"
+      dialBgColor: "#15171c"
+      chartBgColor: "#15171c"
+      defaultDialColors: ["#6fd0a8", "#e8879f"]
+      defaultChartColors: ["#6fd0a8", "#e8879f"]
+      resourceColors:
+        cpu: ["#6b9cf4", "#937ff2"]
+        mem: ["#9cf0dc", "#d4aaff"]
+      focusFgColor: "#dde5f2"
+      focusBgColor: "#2c3039"
+    table:
+      fgColor: "#c2cde0"
+      bgColor: "#15171c"
+      cursorFgColor: "#dde5f2"
+      cursorBgColor: "#2c3039"
+      markColor: "#9cf0dc"
+      header:
+        fgColor: "#9aa4b6"
+        bgColor: "#15171c"
+        sorterColor: "#4fb4dc"
+        selectedSortColumnColor: "#6b9cf4"
+    xray:
+      fgColor: "#c2cde0"
+      bgColor: "#15171c"
+      cursorColor: "#2c3039"
+      cursorTextColor: "#dde5f2"
+      graphicColor: "#6b768c"
+    yaml:
+      keyColor: "#e8879f"
+      colonColor: "#7182a8"
+      valueColor: "#6fd0a8"
+    picker:
+      mainColor: "#c2cde0"
+      focusColor: "#6b9cf4"
+      shortcutColor: "#d4aaff"
+    logs:
+      fgColor: "#c2cde0"
+      bgColor: "#15171c"
+      indicator:
+        fgColor: "#6b9cf4"
+        bgColor: "#15171c"
+        toggleOnColor: "#6fd0a8"
+        toggleOffColor: "#6b768c"

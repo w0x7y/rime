@@ -2938,6 +2938,89 @@ def btop(spec):
     return header(spec) + "".join(f'theme[{k}]="{col}"\n' for k, col in v.items())
 
 
+def k9s(spec):
+    """A k9s skin: tables, frames and selection as in the other ports, and resource YAML colored by SYNTAX."""
+    c = colours(spec)
+    bg, fg = c["bg"], c["fg"]
+    skin = {
+        "body": {
+            "fgColor": fg, "bgColor": bg, "logoColor": c["blue"], "logoColorMsg": fg,
+            "logoColorInfo": c["green"], "logoColorWarn": c["yellow"], "logoColorError": c["red"],
+        },
+        "prompt": {
+            "fgColor": fg, "bgColor": bg, "suggestColor": c["comment"],
+            "border": {"default": c["blue"], "command": c["violet"]},
+        },
+        "info": {
+            "fgColor": fg, "sectionColor": c["muted"], "cpuColor": c["green"],
+            "memColor": c["cyan"], "k9sRevColor": c["blue"],
+        },
+        "help": {
+            "fgColor": fg, "bgColor": bg, "sectionColor": c["violet"],
+            "keyColor": c["blue"], "numKeyColor": c["pink"],
+        },
+        "dialog": {
+            "fgColor": fg, "bgColor": bg, "buttonFgColor": fg, "buttonBgColor": c["bg_sel"],
+            "buttonFocusFgColor": bg, "buttonFocusBgColor": c["blue"],
+            "labelFgColor": c["yellow"], "fieldFgColor": fg,
+        },
+        "frame": {
+            "border": {"fgColor": c["bg_sel"], "focusColor": c["blue"]},
+            "menu": {"fgColor": c["muted"], "keyColor": c["blue"], "numKeyColor": c["pink"]},
+            "crumbs": {"fgColor": bg, "bgColor": c["muted"], "activeColor": c["blue"]},
+            "status": {
+                "newColor": c["blue"], "modifyColor": c["green"], "addColor": c["cyan"],
+                "pendingColor": c["yellow"], "errorColor": c["red"], "highlightColor": c["pink"],
+                "killColor": c["violet"], "completedColor": c["comment"],
+            },
+            "title": {
+                "fgColor": c["fg_bright"], "bgColor": bg, "highlightColor": c["blue"],
+                "counterColor": c["muted"], "filterColor": c["violet"],
+            },
+        },
+        "views": {
+            "charts": {
+                "bgColor": bg, "dialBgColor": bg, "chartBgColor": bg,
+                "defaultDialColors": [c["green"], c["red"]], "defaultChartColors": [c["green"], c["red"]],
+                "resourceColors": {"cpu": [c["blue"], c["violet"]], "mem": [c["yellow"], c["pink"]]},
+                "focusFgColor": c["fg_bright"], "focusBgColor": c["bg_sel"],
+            },
+            "table": {
+                "fgColor": fg, "bgColor": bg, "cursorFgColor": c["fg_bright"], "cursorBgColor": c["bg_sel"],
+                "markColor": c["yellow"],
+                "header": {
+                    "fgColor": c["muted"], "bgColor": bg, "sorterColor": c["cyan"],
+                    "selectedSortColumnColor": c["blue"],
+                },
+            },
+            "xray": {
+                "fgColor": fg, "bgColor": bg, "cursorColor": c["bg_sel"],
+                "cursorTextColor": c["fg_bright"], "graphicColor": c["comment"],
+            },
+            "yaml": {
+                "keyColor": syntax(c, "property")[0], "colonColor": syntax(c, "punctuation")[0],
+                "valueColor": syntax(c, "string")[0],
+            },
+            "picker": {"mainColor": fg, "focusColor": c["blue"], "shortcutColor": c["pink"]},
+            "logs": {
+                "fgColor": fg, "bgColor": bg,
+                "indicator": {"fgColor": c["blue"], "bgColor": bg, "toggleOnColor": c["green"], "toggleOffColor": c["comment"]},
+            },
+        },
+    }
+
+    def emit(d, depth):
+        pad = "  " * depth
+        return "".join(
+            f"{pad}{k}:\n" + emit(v, depth + 1) if isinstance(v, dict)
+            else f"{pad}{k}: [" + ", ".join(f'"{x}"' for x in v) + "]\n" if isinstance(v, list)
+            else f'{pad}{k}: "{v}"\n'
+            for k, v in d.items()
+        )
+
+    return header(spec) + "k9s:\n" + emit(skin, 1)
+
+
 def swatch_svg(spec):
     """A small palette strip for the README."""
     p = spec["palette"]
@@ -3066,6 +3149,7 @@ PER_VARIANT = [
     ("zellij", "general/zellij/{slug}.kdl", zellij),
     ("gitui", "general/gitui/{slug}.ron", gitui),
     ("btop", "general/btop/{slug}.theme", btop),
+    ("k9s", "general/k9s/{slug}.yaml", k9s),
 ]
 
 

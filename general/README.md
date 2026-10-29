@@ -340,6 +340,25 @@ cp bat/rime.tmTheme ~/.config/gitui/
 
 To keep several themes, copy `gitui/rime.ron` under its own name instead and start gitui with `gitui -t rime.ron`. On Windows the folder is `%APPDATA%\gitui`.
 
+## k9s
+
+A skin per variant for [k9s](https://k9scli.io). Frames and the table cursor match the other ports: gray borders with a blue one around the focused view, and the selection gray under the cursor. Resource YAML takes the editors' colors for keys and strings.
+
+```sh
+mkdir -p ~/.config/k9s/skins
+cp k9s/rime.yaml ~/.config/k9s/skins/
+```
+
+Then set the skin in `~/.config/k9s/config.yaml`:
+
+```yaml
+k9s:
+  ui:
+    skin: rime
+```
+
+Or try it for one session with `K9S_SKIN=rime k9s`. On macOS the folder is `~/Library/Application Support/k9s` unless `XDG_CONFIG_HOME` is set; `k9s info` prints it.
+
 ## btop
 
 A theme per variant for the [btop](https://github.com/aristocratos/btop) system monitor. Box outlines and empty meters take the selection gray, CPU and process graphs go from green through yellow to red, and each memory and network meter runs from its dimmed terminal color to the bright one.

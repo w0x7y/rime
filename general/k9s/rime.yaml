@@ -1,0 +1,111 @@
+# Rime: Soft and muted pastels for long sessions.
+# https://github.com/w0x7y/rime
+k9s:
+  body:
+    fgColor: "#c3ccd9"
+    bgColor: "#23272e"
+    logoColor: "#7aa4e4"
+    logoColorMsg: "#c3ccd9"
+    logoColorInfo: "#9ad8ac"
+    logoColorWarn: "#e4d098"
+    logoColorError: "#d98a9c"
+  prompt:
+    fgColor: "#c3ccd9"
+    bgColor: "#23272e"
+    suggestColor: "#6b768c"
+    border:
+      default: "#7aa4e4"
+      command: "#bb98d6"
+  info:
+    fgColor: "#c3ccd9"
+    sectionColor: "#9aa4b6"
+    cpuColor: "#9ad8ac"
+    memColor: "#7cc4d0"
+    k9sRevColor: "#7aa4e4"
+  help:
+    fgColor: "#c3ccd9"
+    bgColor: "#23272e"
+    sectionColor: "#bb98d6"
+    keyColor: "#7aa4e4"
+    numKeyColor: "#e8a8cc"
+  dialog:
+    fgColor: "#c3ccd9"
+    bgColor: "#23272e"
+    buttonFgColor: "#c3ccd9"
+    buttonBgColor: "#3a404b"
+    buttonFocusFgColor: "#23272e"
+    buttonFocusBgColor: "#7aa4e4"
+    labelFgColor: "#e4d098"
+    fieldFgColor: "#c3ccd9"
+  frame:
+    border:
+      fgColor: "#3a404b"
+      focusColor: "#7aa4e4"
+    menu:
+      fgColor: "#9aa4b6"
+      keyColor: "#7aa4e4"
+      numKeyColor: "#e8a8cc"
+    crumbs:
+      fgColor: "#23272e"
+      bgColor: "#9aa4b6"
+      activeColor: "#7aa4e4"
+    status:
+      newColor: "#7aa4e4"
+      modifyColor: "#9ad8ac"
+      addColor: "#7cc4d0"
+      pendingColor: "#e4d098"
+      errorColor: "#d98a9c"
+      highlightColor: "#e8a8cc"
+      killColor: "#bb98d6"
+      completedColor: "#6b768c"
+    title:
+      fgColor: "#dce2eb"
+      bgColor: "#23272e"
+      highlightColor: "#7aa4e4"
+      counterColor: "#9aa4b6"
+      filterColor: "#bb98d6"
+  views:
+    charts:
+      bgColor: "#23272e"
+      dialBgColor: "#23272e"
+      chartBgColor: "#23272e"
+      defaultDialColors: ["#9ad8ac", "#d98a9c"]
+      defaultChartColors: ["#9ad8ac", "#d98a9c"]
+      resourceColors:
+        cpu: ["#7aa4e4", "#bb98d6"]
+        mem: ["#e4d098", "#e8a8cc"]
+      focusFgColor: "#dce2eb"
+      focusBgColor: "#3a404b"
+    table:
+      fgColor: "#c3ccd9"
+      bgColor: "#23272e"
+      cursorFgColor: "#dce2eb"
+      cursorBgColor: "#3a404b"
+      markColor: "#e4d098"
+      header:
+        fgColor: "#9aa4b6"
+        bgColor: "#23272e"
+        sorterColor: "#7cc4d0"
+        selectedSortColumnColor: "#7aa4e4"
+    xray:
+      fgColor: "#c3ccd9"
+      bgColor: "#23272e"
+      cursorColor: "#3a404b"
+      cursorTextColor: "#dce2eb"
+      graphicColor: "#6b768c"
+    yaml:
+      keyColor: "#d98a9c"
+      colonColor: "#7987a1"
+      valueColor: "#9ad8ac"
+    picker:
+      mainColor: "#c3ccd9"
+      focusColor: "#7aa4e4"
+      shortcutColor: "#e8a8cc"
+    logs:
+      fgColor: "#c3ccd9"
+      bgColor: "#23272e"
+      indicator:
+        fgColor: "#7aa4e4"
+        bgColor: "#23272e"
+        toggleOnColor: "#9ad8ac"
+        toggleOffColor: "#6b768c"
