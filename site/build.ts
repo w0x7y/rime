@@ -94,6 +94,7 @@ const PORTS: Port[] = [
   { slug: "dunst", name: "dunst", group: "desktop", blurb: "notifications" },
   { slug: "mako", name: "mako", group: "desktop", blurb: "notifications" },
   { slug: "rofi", name: "rofi", group: "desktop", blurb: "the launcher" },
+  { slug: "kde", name: "kde plasma", group: "desktop", blurb: "a color scheme" },
   { slug: "fish", name: "fish", group: "more", blurb: "a theme for fish_config" },
   { slug: "starship", name: "starship", group: "more", blurb: "a prompt palette" },
   { slug: "lazygit", name: "lazygit", group: "more", blurb: "the git tui" },

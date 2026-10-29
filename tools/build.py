@@ -3267,6 +3267,64 @@ def yazi(spec):
     return "\n".join(out)
 
 
+def kde(spec):
+    """A KDE Plasma color scheme, laid out like the editors: views on bg, window chrome in bg_dark, buttons and
+    tooltips in the popup shade. Blue is the selection, which Plasma also uses as its accent."""
+    c = colours(spec)
+    rgb_ = lambda h: ",".join(str(v) for v in rgb(h))
+
+    def colour_set(normal, alternate, **over):
+        keys = {
+            "BackgroundAlternate": alternate,
+            "BackgroundNormal": normal,
+            "DecorationFocus": c["blue"],
+            "DecorationHover": c["blue"],
+            "ForegroundActive": c["blue"],
+            "ForegroundInactive": c["muted"],
+            "ForegroundLink": c["blue"],
+            "ForegroundNegative": c["red"],
+            "ForegroundNeutral": c["yellow"],
+            "ForegroundPositive": c["green"],
+            "ForegroundNormal": c["fg"],
+            "ForegroundVisited": c["violet"],
+        } | over
+        return {k: rgb_(v) for k, v in sorted(keys.items())}
+
+    window = colour_set(c["bg_dark"], c["bg"])
+    # text on the blue selection takes the background color; its accents go most of the way there, about 4:1 on blue
+    on_blue = {f"Foreground{k}": mix(c[a], c["bg"], 0.85) for k, a in (("Negative", "red"), ("Neutral", "yellow"), ("Positive", "green"))}
+    sections = {
+        "ColorEffects:Disabled": {
+            "Color": rgb_(c["bg_sel"]), "ColorAmount": "0", "ColorEffect": "0", "ContrastAmount": "0.65",
+            "ContrastEffect": "1", "IntensityAmount": "0.1", "IntensityEffect": "2",
+        },
+        "ColorEffects:Inactive": {
+            "ChangeSelectionColor": "true", "Color": rgb_(c["bg_sel"]), "ColorAmount": "0.025", "ColorEffect": "2",
+            "ContrastAmount": "0.1", "ContrastEffect": "2", "Enable": "false", "IntensityAmount": "0", "IntensityEffect": "0",
+        },
+        "Colors:Button": colour_set(c["bg_alt"], c["diff_text"]),
+        "Colors:Complementary": window,
+        "Colors:Header": window,
+        "Colors:Header][Inactive": window,
+        "Colors:Selection": colour_set(
+            c["blue"], c["diff_text"], ForegroundNormal=c["bg"], ForegroundActive=c["bg"], ForegroundInactive=c["bg_sel"],
+            ForegroundLink=c["bg"], ForegroundVisited=c["bg_sel"], **on_blue,
+        ),
+        "Colors:Tooltip": colour_set(c["bg_alt"], c["bg"]),
+        "Colors:View": colour_set(c["bg"], c["colorcolumn"]),
+        "Colors:Window": window,
+        "General": {"ColorScheme": spec["slug"], "Name": spec["name"], "shadeSortColumn": "true"},
+        "KDE": {"contrast": "4"},
+        "WM": {
+            "activeBackground": rgb_(c["bg_dark"]), "activeBlend": rgb_(c["fg_bright"]), "activeForeground": rgb_(c["fg"]),
+            "inactiveBackground": rgb_(c["bg_dark"]), "inactiveBlend": rgb_(c["comment"]), "inactiveForeground": rgb_(c["comment"]),
+        },
+    }
+    return header(spec) + "\n" + "\n".join(
+        f"[{name}]\n" + "".join(f"{k}={v}\n" for k, v in keys.items()) for name, keys in sections.items()
+    )
+
+
 def swatch_svg(spec):
     """A small palette strip for the README."""
     p = spec["palette"]
@@ -3400,6 +3458,7 @@ PER_VARIANT = [
     ("vivid", "general/vivid/{slug}.yml", vivid),
     ("glamour", "general/glamour/{slug}.json", glamour),
     ("yazi", "general/yazi/{slug}.yazi/flavor.toml", yazi),
+    ("kde", "general/kde/{slug}.colors", kde),
 ]
 
 

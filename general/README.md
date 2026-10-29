@@ -445,6 +445,18 @@ echo '@theme "rime"' >> ~/.config/rofi/config.rasi
 
 Or try it once with `rofi -show drun -theme rime`. `@theme` drops any theme loaded before it, so keep your own tweaks below that line.
 
+## KDE Plasma
+
+A color scheme per variant for KDE Plasma and the Qt and KDE apps that follow it. Lists and text areas take the editors' background, window chrome and title bars the darker sidebar shade, and buttons and tooltips the popup shade. The selection is blue, and Plasma uses it as the accent color too.
+
+```sh
+mkdir -p ~/.local/share/color-schemes
+cp kde/rime.colors ~/.local/share/color-schemes/
+plasma-apply-colorscheme rime
+```
+
+Or pick it under **System Settings → Colors & Themes → Colors**. Keep the accent color on **From current color scheme** to get Rime's blue.
+
 ## Hyprland
 
 A Lua module per variant for Hyprland 0.55 or later, which reads `hyprland.lua`. It colors window borders, groups and the groupbar: the focused window and group in blue, locked groups in yellow.

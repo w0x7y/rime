@@ -1,6 +1,6 @@
 ---
 title: ports
-description: rime for neovim, vs code, zed, helix, sublime text, vim, micro, emacs, nine terminals, obsidian, discord, spotify, firefox, telegram, the noctalia shell, hyprland, dunst, mako, rofi, fish, starship, lazygit, gitui, btop, k9s, vivid, glow, yazi, tmux, zellij, bat, delta, base16, css and fzf.
+description: rime for neovim, vs code, zed, helix, sublime text, vim, micro, emacs, nine terminals, obsidian, discord, spotify, firefox, telegram, the noctalia shell, kde plasma, hyprland, dunst, mako, rofi, fish, starship, lazygit, gitui, btop, k9s, vivid, glow, yazi, tmux, zellij, bat, delta, base16, css and fzf.
 ---
 
 # ports

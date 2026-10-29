@@ -38,7 +38,7 @@ Each is a small file per variant, about the size of the tmux or fzf ports.
 - [x] dunst: `general/dunst/`, a `dunstrc.d` drop-in.
 - [x] mako: `general/mako/`, a config to `include`.
 - [x] Hyprland: `general/hyprland/`, a Lua module with border and group colors, for Hyprland 0.55+.
-- [ ] KDE color scheme: `.colors`.
+- [x] KDE color scheme: `general/kde/`, a `.colors` file for Plasma and its apps.
 - [ ] qutebrowser
 
 ## Apps
