@@ -28,7 +28,7 @@ Each is a small file per variant, about the size of the tmux or fzf ports.
 - [x] starship: `general/starship/`, a `[palettes.<variant>]` block.
 - [x] fish: `general/fish/`, a `.theme` file for `fish_config theme`. The command line reads `SYNTAX`.
 - [x] k9s: `general/k9s/`, a skin. Resource YAML reads `SYNTAX`.
-- [ ] vivid, for `LS_COLORS`
+- [x] vivid: `general/vivid/`, a theme that `vivid generate` turns into `LS_COLORS`.
 - [x] gitui: `general/gitui/`, a `theme.ron` that highlights files with the bat theme.
 - [ ] glamour, used by glow
 

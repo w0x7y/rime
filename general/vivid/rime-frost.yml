@@ -1,0 +1,92 @@
+# Rime Frost: Frost-white paper under the same cold accents, deepened to read on it.
+# https://github.com/w0x7y/rime
+colors:
+  blue: '2e62c0'
+  cyan: '0f7480'
+  yellow: '866405'
+  violet: '7650c4'
+  red: 'b83d63'
+  bg: 'eef1f5'
+  green: '267b4f'
+  diag_ok: 'dae5e4'
+  muted: '566073'
+  fg: '363d4a'
+  pink: 'a34396'
+  comment: '7f899b'
+
+core:
+  normal_text: {}
+  regular_file: {}
+  reset_to_normal: {}
+  multi_hard_link: {}
+  file_with_capability: {}
+  directory:
+    foreground: blue
+  symlink:
+    foreground: cyan
+  fifo:
+    foreground: yellow
+  socket:
+    foreground: violet
+  door:
+    foreground: violet
+  block_device:
+    foreground: yellow
+    font-style: bold
+  character_device:
+    foreground: yellow
+    font-style: bold
+  broken_symlink:
+    foreground: red
+  missing_symlink_target:
+    foreground: red
+  setuid:
+    foreground: bg
+    background: red
+  setgid:
+    foreground: bg
+    background: yellow
+  sticky_other_writable:
+    foreground: bg
+    background: green
+  other_writable:
+    foreground: blue
+    background: diag_ok
+  sticky:
+    foreground: bg
+    background: blue
+  executable_file:
+    foreground: green
+    font-style: bold
+text:
+  special:
+    foreground: yellow
+    font-style: bold
+  todo:
+    foreground: yellow
+    font-style: bold
+  licenses:
+    foreground: muted
+  configuration:
+    foreground: yellow
+  other:
+    foreground: fg
+markup:
+  foreground: fg
+programming:
+  source:
+    foreground: violet
+  tooling:
+    foreground: yellow
+media:
+  foreground: pink
+office:
+  foreground: fg
+archives:
+  foreground: red
+  font-style: bold
+executable:
+  foreground: green
+  font-style: bold
+unimportant:
+  foreground: comment

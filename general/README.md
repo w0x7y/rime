@@ -359,6 +359,18 @@ k9s:
 
 Or try it for one session with `K9S_SKIN=rime k9s`. On macOS the folder is `~/Library/Application Support/k9s` unless `XDG_CONFIG_HOME` is set; `k9s info` prints it.
 
+## vivid
+
+A [vivid](https://github.com/sharkdp/vivid) theme per variant, which vivid turns into `LS_COLORS` for `ls`, `eza`, `fd`, `tree` and other programs that read it. Directories are blue as in Neovim, README-style files and config files yellow, source code violet, media pink, archives bold red and executables bold green. Backups and lock files take the comment gray, and documents the plain text color.
+
+```sh
+mkdir -p ~/.config/vivid/themes
+cp vivid/rime.yml ~/.config/vivid/themes/
+echo 'export LS_COLORS="$(vivid generate rime)"' >> ~/.bashrc  # or ~/.zshrc
+```
+
+In fish, add `set -gx LS_COLORS (vivid generate rime)` to `config.fish`.
+
 ## btop
 
 A theme per variant for the [btop](https://github.com/aristocratos/btop) system monitor. Box outlines and empty meters take the selection gray, CPU and process graphs go from green through yellow to red, and each memory and network meter runs from its dimmed terminal color to the bright one.

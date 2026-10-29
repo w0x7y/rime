@@ -3045,6 +3045,67 @@ def rofi(spec):
     return header(spec, "//") + '@import "default"\n\n' + "\n".join(block(sel, props) for sel, props in rules.items())
 
 
+def vivid(spec):
+    """A vivid theme for LS_COLORS. Directories are blue as in Neovim, special files yellow as in its file trees,
+    and executables and archives keep GNU's bold green and bold red. Documents take the text color."""
+    c = colours(spec)
+    style = lambda fg=None, bg=None, font=None: {
+        k: v for k, v in (("foreground", fg), ("background", bg), ("font-style", font)) if v
+    }
+    on = lambda accent: style("bg", accent)  # GNU's special permissions: dark text on a colored block
+    categories = {
+        "core": {
+            **{k: {} for k in ("normal_text", "regular_file", "reset_to_normal", "multi_hard_link", "file_with_capability")},
+            "directory": style("blue"),
+            "symlink": style("cyan"),
+            "fifo": style("yellow"),
+            "socket": style("violet"),
+            "door": style("violet"),
+            "block_device": style("yellow", font="bold"),
+            "character_device": style("yellow", font="bold"),
+            "broken_symlink": style("red"),
+            "missing_symlink_target": style("red"),
+            "setuid": on("red"),
+            "setgid": on("yellow"),
+            "sticky_other_writable": on("green"),
+            "other_writable": style("blue", "diag_ok"),
+            "sticky": on("blue"),
+            "executable_file": style("green", font="bold"),
+        },
+        "text": {
+            "special": style("yellow", font="bold"),
+            "todo": style("yellow", font="bold"),
+            "licenses": style("muted"),
+            "configuration": style("yellow"),
+            "other": style("fg"),
+        },
+        "markup": style("fg"),
+        "programming": {"source": style("violet"), "tooling": style("yellow")},
+        "media": style("pink"),
+        # vivid needs a style for every category; an empty one only works on a leaf such as core.regular_file
+        "office": style("fg"),
+        "archives": style("red", font="bold"),
+        "executable": style("green", font="bold"),
+        "unimportant": style("comment"),
+    }
+    def names(d):  # the colour names the styles use, which vivid wants defined under colors:
+        for k, v in d.items():
+            if isinstance(v, dict):
+                yield from names(v)
+            elif k != "font-style":
+                yield v
+
+    def emit(d, depth):
+        pad = "  " * depth
+        return "".join(
+            f"{pad}{k}: {{}}\n" if v == {} else f"{pad}{k}:\n" + emit(v, depth + 1) if isinstance(v, dict) else f"{pad}{k}: {v}\n"
+            for k, v in d.items()
+        )
+
+    colors = "colors:\n" + "".join(f"  {n}: '{c[n].lstrip('#')}'\n" for n in dict.fromkeys(names(categories)))
+    return header(spec) + colors + "\n" + emit(categories, 0)
+
+
 def swatch_svg(spec):
     """A small palette strip for the README."""
     p = spec["palette"]
@@ -3175,6 +3236,7 @@ PER_VARIANT = [
     ("btop", "general/btop/{slug}.theme", btop),
     ("k9s", "general/k9s/{slug}.yaml", k9s),
     ("rofi", "general/rofi/{slug}.rasi", rofi),
+    ("vivid", "general/vivid/{slug}.yml", vivid),
 ]
 
 

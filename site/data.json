@@ -688,6 +688,7 @@
     "btop": "general/btop/{slug}.theme",
     "k9s": "general/k9s/{slug}.yaml",
     "rofi": "general/rofi/{slug}.rasi",
+    "vivid": "general/vivid/{slug}.yml",
     "zed": "zed/themes/rime.json",
     "windows-terminal": "general/windows-terminal/rime.json",
     "spicetify": "general/spicetify/color.ini"
