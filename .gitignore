@@ -1,9 +1,4 @@
 *.vsix
 __pycache__/
 
-# graft's local graph cache — regenerable, not committed (run `graft build`).
-/graft/
-# graft writes this so ripgrep still searches /graft/; it only matters locally
-/.ignore
-
 wallpapers/
